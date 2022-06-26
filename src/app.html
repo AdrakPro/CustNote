@@ -5,6 +5,30 @@
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
+
+		<script>
+			import { initializeApp } from 'firebase/app';
+			import { getAnalytics } from 'firebase/analytics';
+
+			// TODO: Add SDKs for Firebase products that you want to use
+
+			// https://firebase.google.com/docs/web/setup#available-libraries
+
+			const firebaseConfig = {
+				apiKey: 'AIzaSyAaIIJhfRy6Mhik1OkYbhgzNdk3l9Jn1TY',
+				authDomain: 'custnote-38c35.firebaseapp.com',
+				projectId: 'custnote-38c35',
+				storageBucket: 'custnote-38c35.appspot.com',
+				messagingSenderId: '554174210361',
+				appId: '1:554174210361:web:a4118343fda470722ec8e8',
+				measurementId: 'G-RL5TBB5YHE'
+			};
+
+			// Initialize Firebase
+
+			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
+		</script>
 	</head>
 	<body>
 		<div>%sveltekit.body%</div>

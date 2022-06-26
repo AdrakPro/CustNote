@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.21.0",
-		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-auto": "^1.0.0-next.52",
 		"@sveltejs/kit": "^1.0.0-next.350",
 		"@typescript-eslint/eslint-plugin": "^5.10.1",
 		"@typescript-eslint/parser": "^5.10.1",
@@ -29,5 +29,8 @@
 	},
 	"type": "module",
 	"main": "index.js",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"firebase": "^9.8.4"
+	}
 }
