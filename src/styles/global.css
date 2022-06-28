@@ -1,3 +1,9 @@
+@font-face {
+    font-family: Arimo;
+    font-weight: 400;
+    src: url('static/fonts/Arimo.ttf') format('ttf');
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -9,4 +15,5 @@ body {
     color: #e7e4f9;
     background: #484848;
     overflow-x: hidden;
+    font-family: Arimo, sans-serif;
 }
