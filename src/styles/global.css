@@ -9,11 +9,12 @@
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    color: #e7e4f9;
-    background: #484848;
-    overflow-x: hidden;
     font-family: Arimo, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    direction: ltr;
+    color: #e7e4f9;
+    background-color: #43484D;
 }
