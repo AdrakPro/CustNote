@@ -71,14 +71,14 @@
     svg {
       display: block;
       fill: $primary;
-      fill-opacity: 0.95;
+      transform: translateY(1px);
     }
   }
 
   .wave-extension {
     background-color: $primary;
+      display: block;
     height: 12vh;
-    opacity: 0.95;
     width: 100%;
   }
 </style>
