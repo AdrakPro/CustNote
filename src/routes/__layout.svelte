@@ -1,98 +1,94 @@
 <script>
-    import '../styles/global.css';
+    import '../styles/global.scss';
 
     let isOpenMenu = false;
 </script>
 
 <div class:mobile-nav={ isOpenMenu }>
-    <header>
-        <div class="logo">
-            <img src="favicon.png" width="64" height="64" alt="icon">
-        </div>
-        <input type="checkbox" id="toggle-menu" class="toggle-menu" bind:checked={ isOpenMenu }>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Why CustNote?</a></li>
-                <li><a href="#">Plans</a></li>
-            </ul>
-            <ul class:utility-nav={ !isOpenMenu }>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Login</a></li>
-            </ul>
-        </nav>
-        <label for="toggle-menu" class="toggle-menu-label">
-            <span></span>
-        </label>
-    </header>
+  <header>
+    <div class="logo">
+      <img alt="icon" height="64" src="favicon.png" width="64" />
+    </div>
+    <input bind:checked={ isOpenMenu } class="toggle-menu" id="toggle-menu" type="checkbox">
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Why CustNote?</a></li>
+        <li><a href="#">Plans</a></li>
+      </ul>
+      <ul class:utility-nav={ !isOpenMenu }>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </nav>
+    <label class="toggle-menu-label" for="toggle-menu">
+      <span></span>
+    </label>
+  </header>
 
-    <main>
-        <div class="header-dummy"></div>
-        <slot />
-    </main>
+  <main>
+    <div class="header-dummy"></div>
+    <slot />
+  </main>
 
-    <footer></footer>
+  <footer></footer>
 </div>
 
 <style lang="scss">
-  /* FULL PAGE OVERLAY */
   .mobile-nav {
-    main, .logo {
+    .logo,
+    main {
       filter: brightness(45%);
     }
   }
 
   /* HEADER */
   header {
+    height: 4em;
     position: fixed;
     width: 100%;
-    height: 64px;
     z-index: 999;
   }
 
   /* NAVIGATION */
   nav {
     position: absolute;
-    width: 100%;
-    height: 100vh;
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 400ms ease-in-out;
-    padding-top: 1em;
+    width: 100%;
 
     ul {
-      margin: 0;
-      padding: 0;
       list-style: none;
     }
 
     li {
-      text-align: center;
       margin-bottom: 1.6em;
+      text-align: center;
     }
 
     a {
-      transition: opacity 150ms ease-in-out;
       color: #e7e4f9;
-      text-decoration: none;
       font-size: 1.2em;
       opacity: 0;
       text-align: center;
+      text-decoration: none;
+      transition: opacity 150ms ease-in-out;
     }
   }
 
   /* TOGGLE MENU BUTTON */
   /* Allow menu button to me taggable */
   .toggle-menu {
-    position: absolute !important;
-    top: -9999px !important;
-    left: -9999px !important;
+    left: -9999px;
+    position: absolute;
+    top: -9999px;
   }
 
   /* Todo - Add circle instead of outline */
-  .toggle-menu:focus ~ .toggle-menu-label {
+  .toggle-menu:focus-visible ~ .toggle-menu-label {
     margin-top: 1px;
-    outline: 1px solid white;
+    outline: 1px solid $font-color;
   }
 
   .toggle-menu:checked ~ nav {
@@ -105,30 +101,30 @@
   }
 
   .toggle-menu-label {
-    display: flex;
-    position: absolute;
-    height: 100%;
-    top: 0;
-    right: 0;
-    margin-right: 1em;
     align-items: center;
+    display: flex;
+    height: 100%;
+    margin-right: 1em;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 
   .toggle-menu-label span,
   .toggle-menu-label span::before,
   .toggle-menu-label span::after {
-    display: block;
-    position: relative;
-    height: 2px;
-    width: 1.7rem;
-    background: #e7e4f9;
+    background-color: $font-color;
     border-radius: 2px;
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 1.7em;
   }
 
   .toggle-menu-label span::before,
   .toggle-menu-label span::after {
-    position: absolute;
     content: "";
+    position: absolute;
   }
 
   .toggle-menu-label span::before {
@@ -151,50 +147,51 @@
     }
 
     nav {
-      display: flex;
+      background: none;
 
       /* Edge support */
-      position: relative;
-      top: initial;
+      display: flex;
       left: initial;
+      position: relative;
+      text-align: left;
+      top: initial;
       transform: scale(1, 1);
       transition: none;
-      text-align: left;
-      background: none;
 
       ul {
         display: flex;
+        padding-top: 0.9em;
       }
 
       li {
-        line-height: 36px;
+        line-height: 2.25em;
         margin-left: 2em;
       }
 
       /* Todo - Based on site hover a nav button (Welcome page -> Home button is hovered) */
       a {
-        position: relative;
         opacity: 1;
+        position: relative;
 
         &::before {
+          background-color: $primary;
+          content: "";
           display: block;
-          position: absolute;
           height: 3px;
-          top: 1.5em;
           left: 0;
+          position: absolute;
           right: 0;
+          top: 1.5em;
           transform: scale(0, 1);
           transition: transform ease-in-out 250ms;
-          content: "";
-          background: #46bddf;
         }
 
         &:hover {
           opacity: 0.9;
-        }
 
-        &:hover::before {
-          transform: scale(1, 1);
+          &::before {
+            transform: scale(1, 1);
+          }
         }
       }
     }
@@ -202,12 +199,11 @@
 
   /* Experimental - used to fix fixed header */
   .header-dummy {
-    height: 64px;
+    height: 4em;
   }
 
   /* Experimental - used to align li elements to the right of the nav */
   .utility-nav {
-    margin-left: auto;
-    margin-right: 1.5em;
+    margin: 0 1.5em 0 auto;
   }
 </style>
