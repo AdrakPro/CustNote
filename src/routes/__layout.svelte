@@ -68,7 +68,7 @@
     }
 
     a {
-      color: #e7e4f9;
+      color: $font-color;
       font-size: 1.2em;
       opacity: 0;
       text-align: center;

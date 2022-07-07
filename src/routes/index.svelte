@@ -20,13 +20,12 @@
 <style lang="scss">
   /* INFO PAGE*/
   .info {
-    height: calc(90vh - 6px);
+    height: calc(100vh - 64px);
     position: relative;
   }
 
   .text {
-    margin-top: 2em;
-    padding: 0 5px;
+    padding: 2em 5px;
     text-align: center;
   }
 
@@ -77,7 +76,7 @@
 
   .wave-extension {
     background-color: $primary;
-      display: block;
+    display: block;
     height: 12vh;
     width: 100%;
   }
