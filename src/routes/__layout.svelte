@@ -18,7 +18,7 @@
       </ul>
       <ul class:utility-nav={ !isOpenMenu }>
         <li><a href="#">Help</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="/login">Login</a></li>
       </ul>
     </nav>
     <label class="toggle-menu-label" for="toggle-menu">
@@ -69,7 +69,7 @@
 
     a {
       color: $font-color;
-      font-size: 1.2em;
+      font-size: 1.2rem;
       opacity: 0;
       text-align: center;
       text-decoration: none;

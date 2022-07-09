@@ -2,7 +2,7 @@
 
 </script>
 
-<div class="info">
+<section class="welcome">
     <div class="text">
         <h1 class="quote">A better way to write, share and organize your notes</h1>
         <p>Take your notes to the next level with a blazing fast speed and various customizing features</p>
@@ -15,29 +15,29 @@
         </svg>
         <div class="wave-extension"></div>
     </div>
-</div>
+</section>
 
 <style lang="scss">
   /* INFO PAGE*/
-  .info {
+  .welcome {
     height: calc(100vh - 64px);
     position: relative;
   }
 
   .text {
-    padding: 2em 5px;
+    padding: 2em 0.5em;
     text-align: center;
   }
 
   .quote {
-    font-size: 2.75em;
+    font-size: 2.75rem;
     font-weight: 600;
     letter-spacing: -0.008em;
     margin-bottom: 0.7em;
   }
 
   p {
-    font-size: 1.125em;
+    font-size: 1.125rem;
     margin-bottom: 1em;
   }
 
@@ -77,7 +77,14 @@
   .wave-extension {
     background-color: $primary;
     display: block;
-    height: 12vh;
+    height: 10vh;
     width: 100%;
+  }
+
+  // Hide wave to not overflow the text
+  @media screen and (max-height: 600px) {
+      .wave {
+        display: none;
+      }
   }
 </style>

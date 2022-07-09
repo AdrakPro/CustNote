@@ -41,7 +41,7 @@ body {
 
 /* Set core body defaults */
 body {
-  background-color: $dark;
+  background: $dark-gradient;
   color: $font-color;
   direction: ltr;
   font-family: Arimo, sans-serif;
