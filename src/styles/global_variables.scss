@@ -1,4 +1,20 @@
-$primary: #46bdff;
-$font-color: #e7e4f9;
-$dark: #43484d;
-$dark-gradient: linear-gradient(140deg, #43484d, #46484b, #484848);;
+/* COLORS */
+$blue: #44A1FA;
+$light-blue: #46BDFF;
+$dark-blue: #4393F7;
+$white: #E7E4F9;
+$dark: #43484D;
+$dark-gradient: linear-gradient(140deg, #43484D, #46484B, #484848);;
+
+/* FONT WEIGHT */
+$fw-thin: 100;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-semibold: 500;
+$fw-bold: 700;
+$fw-ultra: 800;
+
+/* BASE FONT */
+$base-font-size: 16px;
+$base-font-weight: $fw-regular;
+$base-line-height: 1.5;
