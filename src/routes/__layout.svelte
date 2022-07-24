@@ -9,7 +9,7 @@
 <div class:mobile-nav={ isOpenMenu }>
   <header>
     <Icon src="favicon.png"/>
-    <NavBar bind:isOpenMenu={isOpenMenu} />
+    <NavBar bind:isOpenMenu={ isOpenMenu } />
   </header>
 
   <main>

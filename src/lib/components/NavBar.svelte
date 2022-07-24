@@ -8,7 +8,6 @@
     <li><a href="#">Home</a></li>
     <li><a href="#">Why CustNote?</a></li>
     <li><a href="#">Plans</a></li>
-    <li><a href="#">Help</a></li>
     <li><a href="/auth">Login</a></li>
   </ul>
 </nav>
@@ -35,7 +34,7 @@
 
     a {
       color: $white;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       opacity: 0;
       text-decoration: none;
       transition: opacity 150ms ease-in-out;
@@ -123,11 +122,16 @@
       ul {
         display: flex;
         padding-top: 0.9em;
+        width: 100%;
       }
 
       li {
         line-height: 2.25em;
         margin-left: 2em;
+
+        &:last-child {
+          margin: 0 1em 0 auto;
+        }
       }
 
       /* Todo - Based on site hover a nav button (Welcome page -> Home button is hovered) */
@@ -136,7 +140,7 @@
         position: relative;
 
         &::before {
-          background-color: $blue;
+          background-color: $light-blue;
           content: '';
           display: block;
           height: 3px;
