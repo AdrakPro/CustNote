@@ -20,6 +20,10 @@
       fill: $blue;
       transform: translateY(1px);
     }
+
+    @media screen and (max-height: 600px) {
+      display: none;
+    }
   }
 
   .wave-extension {
