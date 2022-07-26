@@ -1,16 +1,15 @@
 <script>
-    import Wave from '$lib/utils/Wave.svelte';
+    import Wave from '$lib/components/Wave.svelte';
 </script>
 
 <section class="welcome">
-    <div class="text">
-        <h1 class="quote">A better way to write, share and organize your notes</h1>
-        <p>Take your notes to the next level with a blazing fast speed and various customizing features</p>
-        <button class="nav-button"><span>Get started now</span></button>
-        <button class="nav-button"><span>See how CustNote works</span></button>
-    </div>
-<!--    kilka nakladajcych sie fali -->
-    <Wave />
+  <div class="text">
+      <h1 class="quote">A better way to write, share and organize your notes</h1>
+      <p>Take your notes to the next level with a blazing fast speed and various customizing features</p>
+      <button class="nav-button"><span>Get started now</span></button>
+      <button class="nav-button"><span>See how CustNote works</span></button>
+  </div>
+  <Wave />
 </section>
 
 <style lang="scss">
