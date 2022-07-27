@@ -6,7 +6,10 @@ module.exports = {
 		'plugin:promise/recommended',
 		'prettier',
 	],
-	plugins: ['svelte3', '@typescript-eslint'],
+	plugins: [
+		'svelte3',
+		'@typescript-eslint'
+	],
 	ignorePatterns: ['*.cjs'],
 	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
 	settings: {

@@ -10,7 +10,7 @@ const config = {
 	preprocess: preprocess({
 		scss: {
 			prependData: `@import '${globalStylePath}';`,
-		}
+		},
 	}),
 
 	kit: {
