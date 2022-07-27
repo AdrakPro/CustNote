@@ -1,0 +1,30 @@
+// Experimental - find other way to import
+@import '../global';
+
+.input-fields {
+  input {
+    background-color: $gray;
+    border: none;
+    border-radius: 5px;
+    color: $white;
+    height: 2.5em;
+    margin-bottom: 0.7em;
+    outline: none;
+    padding: 5px;
+    width: 80%;
+  }
+}
+
+.submit-button {
+  background-color: $blue;
+  border: none;
+  bottom: 0;
+  color: $white;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: $fw-semibold;
+  height: 4.5em;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
