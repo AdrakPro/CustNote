@@ -1,36 +1,46 @@
 <script>
-  import Wave from '$lib/utils/Wave.svelte'
-
+	import Icon from '$lib/components/Icon.svelte';
+	import Auth from '$lib/components/auth/Auth.svelte';
 </script>
 
 <div class="container">
-
-  <div class="wave">
-    <Wave position="relative" thickness="45" />
+  <div class="auth-form">
+    <div class="logo">
+      <Icon src="favicon.png" />
+    </div>
+    <Auth />
   </div>
 </div>
 
 <style lang="scss">
-  .container {
-    height: 100vh;
-    overflow: hidden;
-  }
+	.container {
+		height: 100vh;
+		overflow: hidden;
+	}
 
-  .wave {
-    overflow-x: hidden;
-    transform: rotate(20deg) translateY(450px) translateX(-120px);
-    width: 160vw;
-  }
-// wycentruj tak samo nav liste
-  .login-form {
-    background-color: transparent;
-    height: 600px;
-    left: 50%;
-    margin-left: -200px;
-    margin-top: -300px;
-    position: fixed;
-    top: 50%;
-    width: 400px;
-    z-index: 100;
-  }
+	.auth-form {
+		border: 3px solid $blue;
+		border-bottom: none;
+		height: 600px;
+		left: 50%;
+		margin: -300px 0 0 -160px;
+		padding-top: 1em;
+		position: fixed;
+		text-align: center;
+		top: 50%;
+		width: 320px;
+		z-index: 100;
+	}
+
+	/* Remove border on mobile */
+	@media screen and (max-width: 420px) {
+		.auth-form {
+			border: none;
+		}
+	}
+
+	.logo {
+		display: flex;
+		justify-content: center;
+	}
 </style>

@@ -8,7 +8,7 @@ module.exports = {
 	],
 	plugins: [
 		'svelte3',
-		'@typescript-eslint'
+		'@typescript-eslint',
 	],
 	ignorePatterns: ['*.cjs'],
 	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
