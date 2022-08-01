@@ -3,12 +3,12 @@
 
 	export let isLoginForm = true;
 
-	$: authForm = () => isLoginForm ? 'LOG IN' : 'SIGN UP';
+	$: getText = () => isLoginForm ? 'LOG IN' : 'SIGN UP';
 </script>
 
 <button class="google-button">
   <Icon height="36" src="icons/google.png" width="36" />
-  <span class="text">{ authForm() } WITH GOOGLE</span>
+  <span class="text">{ getText() } WITH GOOGLE</span>
 </button>
 
 <style lang="scss">
