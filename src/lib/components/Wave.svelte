@@ -1,3 +1,8 @@
+<script>
+	export let thickness = 10;
+	export let position = 'absolute';
+</script>
+
 <div class="wave" style="position: { position };">
   <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -5,11 +10,6 @@
   </svg>
   <div class="wave-extension" style="height: { thickness + 'vh' }"></div>
 </div>
-
-<script>
-	export let thickness = 10;
-	export let position = 'absolute';
-</script>
 
 <style lang="scss">
 	.wave {
