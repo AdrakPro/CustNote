@@ -1,0 +1,90 @@
+<script>
+	import { page } from '$app/stores';
+	import 'styles/nav.scss';
+	import NotesNav from './NotesNav.svelte';
+	import WelcomeNav from './WelcomeNav.svelte';
+
+	export let isOpenMenu = false;
+
+	function getNavBar() {
+		const currentPathName = $page.url.pathname;
+		let navBar;
+
+		switch (currentPathName) {
+			case '/':
+				navBar = WelcomeNav;
+				break;
+			case '/notes':
+				navBar = NotesNav;
+				break;
+		}
+
+		return navBar;
+	}
+</script>
+
+<input bind:checked={ isOpenMenu } class="toggle-menu" id="toggle-menu" type="checkbox">
+<svelte:component this="{ getNavBar() }" />
+<label class="toggle-menu-label" for="toggle-menu">
+  <span></span>
+</label>
+
+<style lang="scss">
+	/* TOGGLE MENU BUTTON */
+	/* Allow menu button to me taggable */
+	.toggle-menu {
+		left: -9999px;
+		position: absolute;
+		top: -9999px;
+	}
+
+	/* Todo - Add circle instead of outline */
+	.toggle-menu:focus-visible ~ .toggle-menu-label {
+		margin-top: 1px;
+		outline: 1px solid $white;
+	}
+
+	.toggle-menu-label {
+		align-items: center;
+		cursor: pointer;
+		display: flex;
+		height: 100%;
+		margin-right: 1em;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	.toggle-menu-label span,
+	.toggle-menu-label span::before,
+	.toggle-menu-label span::after {
+		background-color: $white;
+		border-radius: 2px;
+		display: block;
+		height: 2px;
+		position: relative;
+		width: 1.7em;
+	}
+
+	.toggle-menu-label span::before,
+	.toggle-menu-label span::after {
+		content: '';
+		position: absolute;
+	}
+
+	.toggle-menu-label span::before {
+		bottom: 7px;
+	}
+
+	.toggle-menu-label span::after {
+		top: 7px;
+	}
+
+	/* TODO CLOSE MENU BUTTON */
+	/* RESPONSIVE STYLE WHEN SCREEN EXCEEDS 900PX */
+	@media screen and (min-width: 900px) {
+		.toggle-menu-label {
+			display: none;
+		}
+	}
+</style>
