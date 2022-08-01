@@ -29,6 +29,7 @@
   <input bind:value={ username } name="username" placeholder="username" type="text">
   <input bind:value={ password } name="password" placeholder="your password" type="password">
 </div>
-<p class="text">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy policy</a>.
+<p class="semibold-text">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
+  policy</a>.
 </p>
 <button class="submit-button" on:click={ signUp }>Sign Up ></button>

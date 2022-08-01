@@ -6,11 +6,11 @@
 
 	let isLoginForm = true;
 
-	function selectLogInTab () {
+	function selectLogInTab() {
 		isLoginForm = true;
 	}
 
-	function selectSignUpTab () {
+	function selectSignUpTab() {
 		isLoginForm = false;
 	}
 </script>

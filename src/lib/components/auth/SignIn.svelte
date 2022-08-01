@@ -22,5 +22,5 @@
   <input bind:value={ email } name="email" placeholder="yours@example.com" type="email">
   <input bind:value={ password } name="password" placeholder="your password" type="password">
 </div>
-<p class="text"><a href="#">Don't remember your password?</a></p>
+<p class="semibold-text"><a href="#">Don't remember your password?</a></p>
 <button class="submit-button" on:click={ signIn }>Login ></button>

@@ -1,9 +1,9 @@
 <script>
-  import '../styles/global.scss'
-  import Icon from '$lib/components/Icon.svelte'
-  import NavBar from '$lib/components/NavBar.svelte'
+	import '../styles/global.scss';
+	import Icon from '$lib/components/Icon.svelte';
+	import NavBar from '$lib/components/navbar/NavBar.svelte';
 
-  let isOpenMenu = false
+	let isOpenMenu = false;
 </script>
 
 <div class:mobile-nav={ isOpenMenu }>
@@ -21,29 +21,29 @@
 </div>
 
 <style lang="scss">
-  .mobile-nav {
-    .logo,
-    main {
-      filter: brightness(40%);
-    }
-  }
+	.mobile-nav {
+		.logo,
+		main {
+			filter: brightness(40%);
+		}
+	}
 
-  /* HEADER */
-  header {
-    height: 4em;
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-  }
+	/* HEADER */
+	header {
+		height: 4em;
+		position: fixed;
+		width: 100%;
+		z-index: 999;
+	}
 
-  @media screen and (min-width: 900px) {
-    header {
-      display: flex;
-    }
-  }
+	@media screen and (min-width: 900px) {
+		header {
+			display: flex;
+		}
+	}
 
-  /* Experimental - used to fix fixed header */
-  .header-dummy {
-    height: 4em;
-  }
+	/* Experimental - used to fix fixed header */
+	.header-dummy {
+		height: 4em;
+	}
 </style>

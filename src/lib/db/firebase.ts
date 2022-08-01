@@ -25,4 +25,4 @@ const db = getFirestore(app);
 
 const userDoc = (userId: string) => doc(db, 'users', userId);
 
-export { auth, db, userDoc };
+export { auth, userDoc };
