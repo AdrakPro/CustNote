@@ -1,5 +1,5 @@
 <script>
-	import { page } from '$app/stores';
+  import { page } from '$app/stores';
 	import NotesNav from './NotesNav.svelte';
 	import WelcomeNav from './WelcomeNav.svelte';
 	import 'styles/nav.scss';

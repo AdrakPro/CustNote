@@ -6,8 +6,8 @@
   <div class="text">
     <h1 class="quote">A better way to write, share and organize your notes</h1>
     <p>Take your notes to the next level with a blazing fast speed and various customizing features</p>
-    <button class="nav-button"><span>Get started now</span></button>
-    <button class="nav-button"><span>See how CustNote works</span></button>
+    <button class="nav-button"><a href="/auth">Get started now</a></button>
+    <button class="nav-button" on:click><a href="#">See how CustNote works</a></button>
   </div>
   <Wave />
 </section>
@@ -41,7 +41,6 @@
 		background-color: $blue;
 		border: 1px solid transparent;
 		border-radius: 5px;
-		color: $white;
 		display: inline-block;
 		font-weight: $fw-bold;
 		height: 3em;
@@ -50,8 +49,10 @@
 		position: relative;
 		text-align: left;
 
-		span {
+		a {
 			padding: 5px;
+			color: $white;
+			text-decoration: none;
 		}
 	}
 </style>

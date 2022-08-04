@@ -22,6 +22,7 @@
 		justify-content: center;
 		margin: 0 1em 0.2em 1em;
 		width: 90%;
+    cursor: pointer;
 
 		&:hover {
 			background-color: $dark-blue;
