@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { auth, userDoc } from '$lib/db/firebase';
+	import { auth } from '$lib/db/firebase';
 	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-	import { setDoc } from 'firebase/firestore/lite';
 
 	let email: string;
 	let username: string;
@@ -11,12 +10,9 @@
 	async function signUp() {
 		try {
 			let { user } = await createUserWithEmailAndPassword(auth, email, password);
-			await updateProfile(user, { displayName: username });
 
-			await setDoc(userDoc(auth.currentUser.uid), {
-				username: user.displayName,
-				email: user.email
-			});
+			await updateProfile(user, { displayName: username });
+			localStorage.setItem('uid', user.uid);
 			await goto('/');
 		} catch (e) {
 			console.log('Error from creating user', e);

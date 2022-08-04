@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { auth, userDoc } from '$lib/db/firebase';
+	import { auth } from '$lib/db/firebase';
 	import { signInWithEmailAndPassword } from 'firebase/auth';
-	import { setDoc } from 'firebase/firestore/lite';
 
 	let email: string;
 	let password: string;
@@ -10,7 +9,8 @@
 	async function signIn() {
 		try {
 			let { user } = await signInWithEmailAndPassword(auth, email, password);
-			await setDoc(userDoc(auth.currentUser.uid), { email: user.email });
+
+			localStorage.setItem('uid', user.uid);
 			await goto('/notes');
 		} catch (e) {
 			console.log('Error sign in', e.message);
