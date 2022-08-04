@@ -45,6 +45,7 @@
 
 		li {
 			cursor: pointer;
+			padding-bottom: 5px;
 			width: 50%;
 		}
 	}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { notify } from '$lib/components/notifications/notify.js';
 	import { auth } from '$lib/db/firebase';
 	import { signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -14,6 +15,7 @@
 			await goto('/notes');
 		} catch (e) {
 			console.log('Error sign in', e.message);
+			notify.danger(e.code, 2500);
 		}
 	}
 </script>
