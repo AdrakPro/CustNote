@@ -1,30 +1,25 @@
 import { derived, writable } from 'svelte/store';
 // TODO CLEAN UP
 function createNotificationStore() {
-	const _notifications = writable([]);
+	const notifications = writable([]);
 
 	function send(message, type, timeout) {
-		_notifications.update((state) => {
-			return [...state, { id: id(), type, message, timeout }];
-		});
+		notifications.update((state) => [...state, { id: id(), type, message, timeout }]);
 	}
 
-	const notifications = derived(_notifications, ($_notifications, set) => {
-		set($_notifications);
-		if ($_notifications.length > 0) {
+	const { subscribe } = derived(notifications, ($notifications, set) => {
+		set($notifications);
+		if ($notifications.length > 0) {
 			const timer = setTimeout(() => {
-				_notifications.update((state) => {
+				notifications.update((state) => {
 					state.shift();
 
 					return state;
 				});
-			}, $_notifications[0].timeout);
-			return () => {
-				clearTimeout(timer);
-			};
+			}, $notifications[0].timeout);
+			return () => clearTimeout(timer);
 		}
 	});
-	const { subscribe } = notifications;
 
 	return {
 		subscribe,
