@@ -25,7 +25,7 @@
   {/each}
 </div>
 
-<style>
+<style lang="scss">
 	.notifications {
 		align-items: center;
 		display: flex;
@@ -45,6 +45,7 @@
 		border-radius: 5px;
 		flex: 0 0 auto;
 		margin-bottom: 10px;
+		box-shadow: 15px 15px 24px 0 $dark;
 	}
 
 	.content {

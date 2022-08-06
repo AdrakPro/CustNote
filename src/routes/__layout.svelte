@@ -1,7 +1,7 @@
 <script>
-	import '../styles/global.scss';
 	import Icon from '$lib/components/Icon.svelte';
 	import NavBar from '$lib/components/navbar/NavBar.svelte';
+	import '../styles/global.scss';
 
 	let isOpenMenu = false;
 </script>

@@ -35,6 +35,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "firebase": "^9.9.1"
+    "@sveltejs/adapter-vercel": "^1.0.0-next.66",
+    "firebase": "^9.9.1",
+    "firebase-admin": "^11.0.1"
   }
 }

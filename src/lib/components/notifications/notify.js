@@ -1,5 +1,5 @@
 import { derived, writable } from 'svelte/store';
-// TODO CLEAN UP
+
 function createNotificationStore() {
 	const notifications = writable([]);
 
@@ -9,6 +9,7 @@ function createNotificationStore() {
 
 	const { subscribe } = derived(notifications, ($notifications, set) => {
 		set($notifications);
+
 		if ($notifications.length > 0) {
 			const timer = setTimeout(() => {
 				notifications.update((state) => {
