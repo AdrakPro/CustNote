@@ -24,7 +24,7 @@ function createNotificationStore() {
 
 	return {
 		subscribe,
-		danger: (msg, timeout) => send(msg, 'danger', timeout),
+		danger: (msg) => send(msg, 'danger', 2500),
 		warning: (msg, timeout) => send(msg, 'warning', timeout),
 		info: (msg, timeout) => send(msg, 'info', timeout),
 		success: (msg, timeout) => send(msg, 'success', timeout),

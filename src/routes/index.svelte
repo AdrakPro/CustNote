@@ -50,8 +50,8 @@
 		text-align: left;
 
 		a {
-			padding: 5px;
 			color: $white;
+			padding: 5px;
 			text-decoration: none;
 		}
 	}

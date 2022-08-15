@@ -1,5 +1,5 @@
 <script>
-	import Notify from '$lib/components/notifications/Notify.svelte';
+	import Notify from '$lib/components/Notify.svelte';
 	import '../styles/global.scss';
 </script>
 

@@ -1,7 +1,7 @@
 <script>
 	import { flip } from 'svelte/animate';
 	import { fly } from 'svelte/transition';
-	import { notify } from './notify.js';
+	import { notify } from '$lib/utils/notify.js';
 
 	let themes = {
 		danger: '#e26d69',
@@ -43,9 +43,9 @@
 
 	.toast {
 		border-radius: 5px;
+		box-shadow: 15px 15px 24px 0 $dark;
 		flex: 0 0 auto;
 		margin-bottom: 10px;
-		box-shadow: 15px 15px 24px 0 $dark;
 	}
 
 	.content {
