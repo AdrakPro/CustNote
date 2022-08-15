@@ -4,3 +4,4 @@ yarn.lock
 .env
 .svelte-kit
 .idea
+.vercel
