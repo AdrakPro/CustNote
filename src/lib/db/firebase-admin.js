@@ -1,5 +1,5 @@
 import admin from 'firebase-admin';
-import { SERVICE_ACCOUNT } from '$lib/utils/constans.js';
+import { SERVICE_ACCOUNT } from '$lib/utils/constants.js';
 
 const serviceAccount = JSON.parse(SERVICE_ACCOUNT);
 
