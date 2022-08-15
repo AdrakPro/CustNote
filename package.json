@@ -36,6 +36,7 @@
   "license": "MIT",
   "dependencies": {
     "@sveltejs/adapter-vercel": "^1.0.0-next.66",
+    "cookie": "^0.5.0",
     "firebase": "^9.9.1",
     "firebase-admin": "^11.0.1"
   }

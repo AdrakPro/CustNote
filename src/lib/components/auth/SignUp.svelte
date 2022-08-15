@@ -1,31 +1,40 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { notify } from '$lib/components/notifications/notify.js';
-	import { auth } from '$lib/db/firebase';
-	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+	import { notify } from '$lib/utils/notify.js';
+	import { validateSignUpForm } from '$lib/utils/validators.ts';
 
 	let email: string;
 	let username: string;
 	let password: string;
 
 	async function signUp() {
-		try {
-			let { user } = await createUserWithEmailAndPassword(auth, email, password);
+		const error = validateSignUpForm(email, username, password);
 
-			await updateProfile(user, { displayName: username });
-			localStorage.setItem('uid', user.uid);
-			await goto('/');
-		} catch (e) {
-			console.log('Error from creating user', e);
-			notify.danger(e.code, 2500);
+		if (error) {
+			notify.danger(error);
+			return;
+		}
+
+		const signUpRes = await fetch('/api/new-user.json', {
+			method: 'POST',
+			headers: new Headers({ 'Content-Type': 'application/json' }),
+			credentials: 'same-origin',
+			body: JSON.stringify({ email, password, username }),
+		});
+
+		if (signUpRes.ok) {
+			await goto('/notes');
+		} else {
+			notify.danger('The email is already in use!');
 		}
 	}
 </script>
 
+<!-- Styles imported from Auth.svelte (auth.scss) -->
 <div class="input-fields">
-  <input bind:value={ email } name="email" placeholder="yours@example.com" type="email">
-  <input bind:value={ username } name="username" placeholder="username" type="text">
-  <input bind:value={ password } name="password" placeholder="your password" type="password">
+  <input bind:value={ email } name="email" placeholder="Email" type="email">
+  <input bind:value={ username } name="username" placeholder="Username" type="text">
+  <input bind:value={ password } name="password" placeholder="Password" type="password">
 </div>
 <p class="semibold-text">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
   policy</a>.

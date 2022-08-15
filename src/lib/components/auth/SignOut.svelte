@@ -1,12 +1,19 @@
-<script lang="ts">
-	import { auth } from '$lib/db/firebase';
-	import { signOut } from 'firebase/auth';
+<script>
+	import Icon from '../Icon.svelte';
+	import { goto } from '$app/navigation';
+	import { auth } from '$lib/db/firebase.ts';
 
-	function signOutUser() {
-		signOut(auth).then(() => {
-			localStorage.removeItem('uid');
-		}).catch((e) => console.log(e));
+	async function signOut() {
+		await auth.signOut();
+		await fetch('/api/signOut.json', {
+			method: 'POST',
+			headers: new Headers({ 'Content-Type': 'application/json' }),
+			credentials: 'same-origin'
+		});
+		await goto('/auth');
 	}
 </script>
 
-<li><a href="/" on:click={ () => signOutUser() }>Log out</a></li>
+<li on:click={ signOut }>
+  <Icon height="36" src="icons/signOut.png" width="36" />
+</li>

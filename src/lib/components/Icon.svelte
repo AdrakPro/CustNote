@@ -5,3 +5,9 @@
 </script>
 
 <img { height } { src } { width } alt="icon" />
+
+<style lang="scss">
+  img {
+    cursor: pointer;
+  }
+</style>
