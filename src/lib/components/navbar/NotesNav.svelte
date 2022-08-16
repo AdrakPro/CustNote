@@ -4,7 +4,6 @@
 
 <nav>
   <ul>
-    <li><a href="/">Home</a></li>
     <SignOut />
   </ul>
 </nav>

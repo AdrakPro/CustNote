@@ -32,9 +32,9 @@
 
 <!-- Styles imported from Auth.svelte (auth.scss) -->
 <div class="input-fields">
-  <input bind:value={ email } name="email" placeholder="Email" type="email">
-  <input bind:value={ username } name="username" placeholder="Username" type="text">
-  <input bind:value={ password } name="password" placeholder="Password" type="password">
+  <input bind:value={ email } name="email" placeholder="Email" type="email" />
+  <input bind:value={ username } name="username" placeholder="Username" type="text" />
+  <input bind:value={ password } name="password" placeholder="Password" type="password" />
 </div>
 <p class="semibold-text">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
   policy</a>.

@@ -6,6 +6,7 @@
 			return { status: 302, redirect: '/auth' };
 		}
 		const auth = await authRes.json();
+
 		return {
 			props: {
 				user: auth.user,
