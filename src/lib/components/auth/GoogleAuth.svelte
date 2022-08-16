@@ -1,5 +1,5 @@
 <script>
-	import Icon from '../view/Icon.svelte';
+	import Icon from '../Icon.svelte';
 
 	export let isLoginForm = true;
 

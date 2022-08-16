@@ -1,6 +1,6 @@
 <script>
-	import Icon from '$lib/components/view/Icon.svelte';
-	import NavBar from '$lib/components/view/nav/NavBar.svelte';
+	import Icon from '$lib/components/Icon.svelte';
+	import NavBar from '$lib/components/nav/NavBar.svelte';
 	import '../styles/global.scss';
 
 	let isOpenMenu = false;

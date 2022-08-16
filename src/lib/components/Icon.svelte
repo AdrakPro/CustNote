@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let width = 64;
-	export let height = 64;
+	export let width: number;
+	export let height: number;
 	export let src: string;
 	export let style: string;
 </script>
