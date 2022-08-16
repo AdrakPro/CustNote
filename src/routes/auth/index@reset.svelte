@@ -18,7 +18,7 @@
 </script>
 
 <script>
-	import Icon from '$lib/components/Icon.svelte';
+	import Icon from '$lib/components/view/Icon.svelte';
 	import Auth from '$lib/components/auth/Auth.svelte';
 </script>
 

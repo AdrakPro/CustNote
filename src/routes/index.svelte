@@ -1,5 +1,5 @@
 <script>
-	import Wave from '$lib/components/Wave.svelte';
+	import Wave from '$lib/components/view/Wave.svelte';
 </script>
 
 <section class="welcome">
