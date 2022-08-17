@@ -3,7 +3,7 @@
 </script>
 
 <section class="welcome">
-  <div class="text">
+  <div class="info">
     <h1 class="quote">A better way to write, share and organize your notes</h1>
     <p>Take your notes to the next level with a blazing fast speed and various customizing features</p>
     <button class="nav-button"><a href="/auth">Get started now</a></button>
@@ -19,7 +19,7 @@
 		position: relative;
 	}
 
-	.text {
+	.info {
 		padding: 2em 0.5em;
 		text-align: center;
 	}
@@ -36,21 +36,15 @@
 		margin-bottom: 1em;
 	}
 
-	/* BUTTONS TODO STYLING */
 	.nav-button {
 		background-color: $blue;
-		border: 1px solid transparent;
-		border-radius: 5px;
-		display: inline-block;
-		font-weight: $fw-bold;
-		height: 3em;
-		line-height: 3em;
+		border-radius: $base-radius;
+		height: 48px;
 		margin: 0 10px;
-		position: relative;
-		text-align: left;
 
 		a {
 			color: $white;
+			font-weight: $fw-bold;
 			padding: 5px;
 			text-decoration: none;
 		}

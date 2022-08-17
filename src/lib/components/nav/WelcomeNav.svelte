@@ -8,7 +8,7 @@
 </nav>
 
 <style>
-  .settings {
-	  margin: 0 1em 0 auto;
-  }
+	.settings {
+		margin: 0 1em 0 auto;
+	}
 </style>

@@ -19,3 +19,18 @@ $fw-ultra: 800;
 $base-font-size: 16px;
 $base-font-weight: $fw-regular;
 $base-line-height: 1.5;
+
+/* BORDER */
+$base-radius: 5px;
+
+/* BREAK POINTS */
+$b_mobile: 700px;
+$b_desktop: 1200px;
+
+/* Z-INDEX */
+$z-index-base: 1;
+$z-index-back: -1;
+$z-index-max: 9999;
+
+/* BOX SHADOW */
+$base-shadow: #0000003d 0 3px 8px;

@@ -1,11 +1,11 @@
 /* Import global variables */
-@import './global_variables.scss';
+@import 'global_variables';
 
 /* Load a font  */
 @font-face {
 	font-family: Arimo;
 	font-weight: $base-font-weight;
-	src: url('static/fonts/Arimo.ttf') format('ttf');
+	src: url('../../static/fonts/Arimo.ttf') format('ttf');
 }
 
 /* Box sizing rules */
@@ -30,6 +30,12 @@ body {
 	font-size: $base-font-size;
 	line-height: $base-line-height;
 	text-rendering: optimizeSpeed;
+}
+
+input,
+button {
+	border: none;
+	outline: none;
 }
 
 /* Make images easier to work with */

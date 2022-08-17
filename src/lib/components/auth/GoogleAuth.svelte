@@ -8,28 +8,27 @@
 
 <button class="google-button">
   <Icon height="36" src="icons/google.png" width="36" />
-  <span class="text">{ getText() } WITH GOOGLE</span>
+  <span>{ getText() } WITH GOOGLE</span>
 </button>
 
 <style lang="scss">
 	.google-button {
 		align-items: center;
 		background-color: $blue;
-		border: none;
-		border-radius: 5px;
+		border-radius: $base-radius;
+		cursor: pointer;
 		display: flex;
-		height: 2.5em;
+		height: 40px;
 		justify-content: center;
-		margin: 0 1em 0.2em 1em;
+		margin: 0 1rem 0.2rem 1rem;
 		width: 90%;
-    cursor: pointer;
 
 		&:hover {
 			background-color: $dark-blue;
-			transition: background-color 0.2s ease-in-out;
+			transition: background-color 200ms ease-in-out;
 		}
 
-		.text {
+		span {
 			color: $white;
 			font-size: 0.9rem;
 			font-weight: $fw-bold;

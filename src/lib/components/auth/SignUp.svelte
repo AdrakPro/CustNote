@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { notify } from '../../utils/notify.js';
-	import { validateSignUpForm } from '../../utils/validators.ts';
+	import { notify } from '$lib/utils/notify.js';
+	import { validateSignUpForm } from '$lib/utils/validators.ts';
 
 	let email: string;
 	let username: string;
@@ -36,7 +36,7 @@
   <input bind:value={ username } name="username" placeholder="Username" type="text" />
   <input bind:value={ password } name="password" placeholder="Password" type="password" />
 </div>
-<p class="semibold-text">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
+<p class="info">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
   policy</a>.
 </p>
 <button class="submit-button" on:click={ signUp }>Sign Up ></button>

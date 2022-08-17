@@ -11,13 +11,13 @@ nav {
 	}
 
 	li {
-		margin-bottom: 2.5em;
+		margin-bottom: 2.5rem;
 		text-align: center;
 	}
 
 	a {
 		color: $white;
-		font-size: 1.2rem;
+		font-size: 1.3rem;
 		opacity: 0;
 		text-decoration: none;
 		transition: opacity 150ms ease-in-out;
@@ -35,7 +35,7 @@ nav {
 }
 
 /* RESPONSIVE STYLE WHEN SCREEN EXCEEDS 900PX */
-@media screen and (min-width: 900px) {
+@media screen and (min-width: $b_mobile) {
 	nav {
 		background: none;
 
@@ -50,16 +50,17 @@ nav {
 
 		ul {
 			display: flex;
-			padding-top: 0.9em;
+			padding-top: 1rem;
 			width: 100%;
 		}
 
 		li {
 			line-height: 2.25em;
-			margin-left: 2em;
+			margin-left: 2rem;
 		}
 
 		/* Todo - Based on site hover a nav button (Welcome page -> Home button is hovered) */
+		/* Nav highlighting */
 		a {
 			opacity: 1;
 			position: relative;
@@ -74,11 +75,11 @@ nav {
 				right: 0;
 				top: 1.5em;
 				transform: scale(0, 1);
-				transition: transform ease-in-out 250ms;
+				transition: transform ease-in-out 350ms;
 			}
 
 			&:hover {
-				opacity: 0.9;
+				opacity: 0.8;
 
 				&::before {
 					transform: scale(1, 1);

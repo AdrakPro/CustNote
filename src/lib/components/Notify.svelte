@@ -4,23 +4,23 @@
 	import { notify } from '$lib/utils/notify.js';
 
 	let themes = {
-		danger: '#e26d69',
+		danger: '#e95065',
 		success: '#84c991',
 		warning: '#f0ad4e',
-		info: '#5bc0de',
+		info: '#46bddf',
 	};
 </script>
 
 <div class="notifications">
-  {#each $notify as notification (notification.id)}
+  {#each $notify as { type, message, id } (id)}
     <div
       animate:flip
       class="toast"
-      style="background: { themes[notification.type] };"
+      style="background: { themes[type] };"
       transition:fly={ { y: 15, duration: '1200' } }
     >
-      <div class="content">{ notification.message }</div>
-      <!--{#if notification.icon}<i class={notification.icon} />{/if}-->
+      <p class="content">{ message }</p>
+      <!--{#if icon}<Icon src="icons/{ icon }.png" />{/if}-->
     </div>
   {/each}
 </div>
@@ -33,25 +33,23 @@
 		justify-content: flex-start;
 		left: 0;
 		margin: 0 auto;
-		padding: 0;
 		pointer-events: none;
 		position: fixed;
 		right: 0;
 		top: 10px;
-		z-index: 9999;
+		z-index: $z-index-max;
 	}
 
 	.toast {
-		border-radius: 5px;
-		box-shadow: 15px 15px 24px 0 $dark;
+		border-radius: $base-radius;
+		box-shadow: $base-shadow;
 		flex: 0 0 auto;
 		margin-bottom: 10px;
 	}
 
 	.content {
-		color: white;
-		display: block;
-		font-weight: 500;
+		color: $white;
+		font-weight: $fw-semibold;
 		padding: 10px;
 	}
 </style>

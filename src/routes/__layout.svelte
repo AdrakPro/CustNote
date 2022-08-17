@@ -8,7 +8,7 @@
 
 <div class:mobile-nav={ isOpenMenu }>
   <header>
-    <Icon src="favicon.png" />
+    <Icon height="64" src="favicon.png" width="64" />
     <NavBar bind:isOpenMenu={ isOpenMenu } />
   </header>
 
@@ -30,13 +30,13 @@
 
 	/* HEADER */
 	header {
-		height: 4em;
+		height: 64px;
 		position: fixed;
 		width: 100%;
-		z-index: 999;
+		z-index: $z-index-max;
 	}
 
-	@media screen and (min-width: 900px) {
+	@media screen and (min-width: $b-mobile) {
 		header {
 			display: flex;
 		}
@@ -44,6 +44,6 @@
 
 	/* Experimental - used to fix fixed header */
 	.header-dummy {
-		height: 4em;
+		height: 64px;
 	}
 </style>

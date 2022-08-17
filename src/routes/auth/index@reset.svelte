@@ -6,27 +6,23 @@
 			return { status: 302, redirect: '/notes' };
 		}
 
-		const auth = await authRes.json();
-
-		return {
-			props: {
-				user: auth.user,
-				customToken: auth.customToken
-			}
-		};
+		// const auth = await authRes.json();
+		//
+		// return {
+		// 	props: {
+		// 		user: auth.user,
+		// 		customToken: auth.customToken
+		// 	}
+		// };
 	}
 </script>
 
 <script>
-	import Icon from '$lib/components/Icon.svelte';
 	import Auth from '$lib/components/auth/Auth.svelte';
 </script>
 
 <div class="container">
   <div class="auth-form">
-    <div class="logo">
-      <Icon src="favicon.png" />
-    </div>
     <Auth />
   </div>
 </div>
@@ -48,18 +44,12 @@
 		text-align: center;
 		top: 50%;
 		width: 320px;
-		z-index: 100;
 	}
 
 	/* Remove border on mobile */
-	@media screen and (max-width: 420px) {
+	@media screen and (max-width: $b_mobile) {
 		.auth-form {
 			border: none;
 		}
-	}
-
-	.logo {
-		display: flex;
-		justify-content: center;
 	}
 </style>

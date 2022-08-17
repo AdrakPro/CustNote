@@ -22,6 +22,7 @@
 			transform: translateY(1px);
 		}
 
+		// Hide wave when overflow content
 		@media screen and (max-height: 600px) {
 			display: none;
 		}
@@ -29,7 +30,5 @@
 
 	.wave-extension {
 		background-color: $blue;
-		display: block;
-		width: 100%;
 	}
 </style>

@@ -34,7 +34,7 @@
 	.title {
 		font-size: 2rem;
 		font-weight: $fw-bold;
-		margin-bottom: 1em;
+		margin-bottom: 1rem;
 	}
 
 	.auth-tabs {

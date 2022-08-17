@@ -3,42 +3,38 @@
 .input-fields {
 	input {
 		background-color: $gray;
-		border: none;
-		border-radius: 5px;
+		border-radius: $base-radius;
 		color: $white;
-		height: 2.5em;
-		margin-bottom: 0.7em;
-		outline: none;
-		padding: 5px;
+		height: 40px;
+		margin-bottom: 0.5rem;
+		padding: 1rem;
 		width: 80%;
 	}
 }
 
 .submit-button {
 	background-color: $blue;
-	border: none;
 	bottom: 0;
 	color: $white;
 	cursor: pointer;
-	font-size: 1rem;
-	font-weight: $fw-semibold;
-	height: 4.5em;
+	font-weight: $fw-bold;
+	height: 72px;
 	position: absolute;
 	right: 0;
 	width: 100%;
 
 	&:hover {
 		background-color: $dark-blue;
-		transition: background-color 0.2s ease-in-out;
+		transition: background-color 200ms ease-in-out;
 	}
 }
 
-.semibold-text {
-	font-weight: $fw-light;
-	margin-top: 0.5em;
-	color: $gray;
+.info {
+	margin-top: 1rem;
+	color: $white;
 
 	a {
-		color: $gray;
+		color: $blue;
+		text-decoration: none;
 	}
 }

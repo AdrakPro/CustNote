@@ -34,5 +34,5 @@
   <input bind:value={ email } name="email" placeholder="Email" type="email" />
   <input bind:value={ password } name="password" placeholder="Password" type="password" />
 </div>
-<p class="semibold-text"><a href="#">Don't remember your password?</a></p>
+<p class="info"><a href="#">Don't remember your password?</a></p>
 <button class="submit-button" on:click={ signIn }>Login ></button>

@@ -31,7 +31,7 @@
 
 <style lang="scss">
 	/* TOGGLE MENU BUTTON */
-	/* Allow menu button to me taggable */
+	/* Allow menu button to be taggable */
 	.toggle-menu {
 		left: -9999px;
 		position: absolute;
@@ -63,7 +63,7 @@
 		display: block;
 		height: 2px;
 		position: relative;
-		width: 1.7em;
+		width: 30px;
 	}
 
 	.toggle-menu-label span::before,
@@ -82,7 +82,7 @@
 
 	/* TODO CLOSE MENU BUTTON */
 	/* RESPONSIVE STYLE WHEN SCREEN EXCEEDS 900PX */
-	@media screen and (min-width: 900px) {
+	@media screen and (min-width: $b_mobile) {
 		.toggle-menu-label {
 			display: none;
 		}
