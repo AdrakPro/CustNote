@@ -1,7 +1,7 @@
 <script>
-	import SearchBar from '$lib/components/notes/SearchBar.svelte';
-	import Module from '$lib/components/notes/Module.svelte';
-	import AddNote from '$lib/components/notes/AddNote.svelte';
+	import SearchBar from '$lib/components/dashboard/SearchBar.svelte';
+	import Module from '$lib/components/dashboard/Module.svelte';
+	import AddNote from '$lib/components/dashboard/AddNote.svelte';
 </script>
 
 <section class="container" style="margin: 1em">

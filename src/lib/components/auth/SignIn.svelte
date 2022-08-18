@@ -22,7 +22,7 @@
 		});
 
 		if (signInRes.ok) {
-			await goto('/notes');
+			await goto('/dashboard');
 		} else {
 			notify.danger('Wrong email or password!');
 		}

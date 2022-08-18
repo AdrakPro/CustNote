@@ -4,7 +4,7 @@ export async function load({ fetch }) {
 	const authRes = await fetch('/api/auth.json');
 
 	if (authRes.ok) {
-		throw redirect(302, '/notes');
+		throw redirect(302, '/dashboard');
 	}
 
 	// const auth = await authRes.json();

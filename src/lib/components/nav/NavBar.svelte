@@ -14,7 +14,7 @@
 			case '/':
 				navBar = WelcomeNav;
 				break;
-			case '/notes':
+			case '/dashboard':
 				navBar = NotesNav;
 				break;
 		}

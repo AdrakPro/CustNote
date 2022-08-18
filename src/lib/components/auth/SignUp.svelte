@@ -23,7 +23,7 @@
 		});
 
 		if (signUpRes.ok) {
-			await goto('/notes');
+			await goto('/dashboard');
 		} else {
 			notify.danger('The email is already in use!');
 		}

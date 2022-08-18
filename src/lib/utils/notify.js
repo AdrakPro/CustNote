@@ -32,7 +32,7 @@ function createNotificationStore() {
 }
 
 function id() {
-	return '_' + Math.random().toString(36).substring(2, 9);
+	return crypto.randomUUID();
 }
 
 export const notify = createNotificationStore();
