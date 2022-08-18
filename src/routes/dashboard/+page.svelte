@@ -5,15 +5,17 @@
 </script>
 
 <section class="container" style="margin: 1em">
-  <SearchBar />
-  <AddNote />
+	<SearchBar />
+	<AddNote />
 </section>
 <section class="container">
-  <Module />
+	<Module />
 </section>
 
 <style>
-	.container {
-		display: flex;
-	}
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+  }
 </style>

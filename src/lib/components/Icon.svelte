@@ -5,4 +5,4 @@
 	export let style: string;
 </script>
 
-<img { height } { src } { style } { width } alt="icon" />
+<img { height } { src } { style } { width } class="{ $$props.class }" alt="icon" />

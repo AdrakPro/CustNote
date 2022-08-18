@@ -21,12 +21,11 @@
 
     &:hover {
       animation: opacity ease-in-out 250ms;
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     span {
       color: $white;
     }
-
   }
 </style>
