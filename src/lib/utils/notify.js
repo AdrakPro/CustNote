@@ -1,10 +1,16 @@
 import { derived, writable } from 'svelte/store';
 
-function createNotificationStore() {
+function createNotificationStore () {
 	const notifications = writable([]);
 
-	function send(message, type, timeout) {
-		notifications.update((state) => [...state, { id: id(), type, message, timeout }]);
+	function send (message, type, timeout) {
+		notifications.update((state) => {
+			if (type === 'danger' && state.length > 0) {
+				return [...state];
+			}
+
+			return [...state, { id: id(), type, message, timeout }];
+		});
 	}
 
 	const { subscribe } = derived(notifications, ($notifications, set) => {
@@ -31,7 +37,7 @@ function createNotificationStore() {
 	};
 }
 
-function id() {
+function id () {
 	return crypto.randomUUID();
 }
 

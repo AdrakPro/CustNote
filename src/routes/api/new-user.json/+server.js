@@ -1,7 +1,8 @@
 import { auth } from '$lib/db/firebase-admin.js';
-import { SECURE, WEB_API_KEY } from '$lib/utils/constants.js';
+import { WEB_API_KEY } from '$lib/utils/constants.js';
+import { createTokens } from '$lib/utils/tokenManager.js';
 
-export async function POST (event) {
+export async function POST(event) {
 	const { email, password, username } = await event.request.json();
 	const userRecord = await auth().createUser({
 		email,
@@ -27,10 +28,7 @@ export async function POST (event) {
 
 	const { refreshToken } = await signInRes.json();
 	const customToken = await auth().createCustomToken(uid);
-	const headers = new Headers();
-	headers.append('set-cookie', `customToken=${ customToken }; Max-Age=${ 60 * 55 }; Path=/;${ SECURE } HttpOnly`);
-	headers.append('set-cookie', `refreshToken=${ refreshToken }; Max-Age=${ 60 * 60 * 24 * 30 }; Path=/;${ SECURE } HttpOnly`);
-	headers.set('cache-control', 'no-store');
+	const headers = createTokens(refreshToken, customToken);
 
 	return new Response(undefined, { headers, status: 200 });
 }

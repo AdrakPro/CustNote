@@ -1,9 +1,10 @@
-import { json as json$1 } from '@sveltejs/kit';
+import { json } from '@sveltejs/kit';
 import { auth } from '$lib/db/firebase-admin.js';
-import { SECURE, WEB_API_KEY } from '$lib/utils/constants.js';
+import { WEB_API_KEY } from '$lib/utils/constants.js';
+import { createCustomToken, createTokens, removeRefreshToken } from '$lib/utils/tokenManager.js';
 import cookie from 'cookie';
 
-export async function POST (event) {
+export async function POST(event) {
 	const { email, password } = await event.request.json();
 	const signInRes = await fetch(
 		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${ WEB_API_KEY }`,
@@ -20,24 +21,18 @@ export async function POST (event) {
 
 	const { refreshToken, localId } = await signInRes.json();
 	const customToken = await auth().createCustomToken(localId);
-
-	const headers = new Headers();
-	headers.append('set-cookie', `customToken=${ customToken }; Max-Age=${ 60 * 55 }; Path=/;${ SECURE } HttpOnly`);
-	headers.append('set-cookie', `refreshToken=${ refreshToken }; Max-Age=${ 60 * 60 * 24 * 30 }; Path=/;${ SECURE } HttpOnly`);
-	headers.set('cache-control', 'no-store');
+	const headers = createTokens(refreshToken, customToken);
 
 	return new Response(undefined, { headers, status: 200 });
 }
 
-function unauthorized () {
-	const headers = new Headers();
-	headers.set('set-cookie', `refreshToken=; Max-Age=0; Path=/;${ SECURE } HttpOnly`);
-	headers.set('cache-control', 'no-store');
+function unauthorized() {
+	const headers = removeRefreshToken();
 
 	return new Response(undefined, { headers, status: 401 });
 }
 
-export async function GET (event) {
+export async function GET(event) {
 	const getCookie = event.request.headers.get('cookie') || '';
 	let { refreshToken, customToken } = cookie.parse(getCookie);
 
@@ -71,14 +66,11 @@ export async function GET (event) {
 		try {
 			user = await auth().verifyIdToken(idToken);
 			customToken = await auth().createCustomToken(user.uid);
-			headers = {
-				'set-cookie': `customToken=${ customToken }; Max-Age=${ 60 * 55 }; Path=/;${ SECURE } HttpOnly;`,
-				'cache-control': 'no-store',
-			};
+			headers = createCustomToken(customToken);
 		} catch (error) {
 			unauthorized();
 		}
 	}
 
-	return json$1({ user, customToken }, { headers });
+	return json({ user, customToken }, { headers });
 }
