@@ -2,7 +2,7 @@
 	import GoogleAuth from './GoogleAuth.svelte';
 	import SignIn from './SignIn.svelte';
 	import SignUp from './SignUp.svelte';
-	import 'styles/auth.scss';
+	import '$styles/auth.scss';
 
 	let isLoginForm = true;
 
