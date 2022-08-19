@@ -41,5 +41,6 @@
     position: absolute;
     right: 0;
     width: 450px;
+    z-index: $z-index-max;
   }
 </style>
