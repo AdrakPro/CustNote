@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	// svelte bug wait to repair ( error page override redirect )
 </script>
 
 <div class="container">

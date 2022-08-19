@@ -19,7 +19,7 @@
 
     &:hover {
       animation: border-color ease-in-out 250ms;
-      border-color: rgba($white, 0.7);
+      border-color: rgba($white, 0.8);
     }
 
     input[type='text'] {
