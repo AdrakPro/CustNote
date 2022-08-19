@@ -1,8 +1,13 @@
 <script>
 	import Icon from '../Icon.svelte';
+	import { dialog } from '$lib/stores/dialog.js';
+
+	function show() {
+		dialog.show();
+	}
 </script>
 
-<button>
+<button on:click={ () => show() }>
 	<Icon src="icons/plus.png" />
 	<span>New note</span>
 </button>
@@ -14,6 +19,7 @@
     border: 3px $white solid;
     border-radius: $base-radius;
     box-shadow: $base-shadow;
+    color: $white;
     cursor: pointer;
     display: flex;
     margin-left: 1em;
@@ -23,9 +29,6 @@
       animation: opacity ease-in-out 250ms;
       opacity: 0.8;
     }
-
-    span {
-      color: $white;
-    }
   }
 </style>
+<!-- TODO mixin dla hovera, zmien navbara z component na slota  -->

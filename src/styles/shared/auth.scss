@@ -1,40 +1,40 @@
 @import '../global_variables';
 
 .input-fields {
-	input {
-		background-color: $gray;
-		border-radius: $base-radius;
-		color: $white;
-		height: 40px;
-		margin-bottom: 0.5rem;
-		padding: 1rem;
-		width: 80%;
-	}
+  input {
+    background-color: $gray;
+    border-radius: $base-radius;
+    color: $white;
+    height: 40px;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    width: 80%;
+  }
 }
 
 .submit-button {
-	background-color: $blue;
-	bottom: 0;
-	color: $white;
-	cursor: pointer;
-	font-weight: $fw-bold;
-	height: 72px;
-	position: absolute;
-	right: 0;
-	width: 100%;
+  background-color: $blue;
+  bottom: 0;
+  color: $white;
+  cursor: pointer;
+  font-weight: $fw-bold;
+  height: 72px;
+  position: absolute;
+  right: 0;
+  width: 100%;
 
-	&:hover {
-		background-color: $dark-blue;
-		transition: background-color 200ms ease-in-out;
-	}
+  &:hover {
+    background-color: $dark-blue;
+    transition: background-color 200ms ease-in-out;
+  }
 }
 
 .info {
-	margin-top: 1rem;
-	color: $white;
+  margin-top: 1rem;
+  color: $white;
 
-	a {
-		color: $blue;
-		text-decoration: none;
-	}
+  a {
+    color: $blue;
+    text-decoration: none;
+  }
 }

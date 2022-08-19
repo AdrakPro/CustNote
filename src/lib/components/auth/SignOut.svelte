@@ -8,12 +8,12 @@
 		await fetch('/api/signOut.json', {
 			method: 'POST',
 			headers: new Headers({ 'Content-Type': 'application/json' }),
-			credentials: 'same-origin'
+			credentials: 'same-origin',
 		});
 		await goto('/auth');
 	}
 </script>
 
 <li on:click={ signOut }>
-  <Icon height="36" src="icons/signOut.png" width="36" />
+	<Icon height="36" src="icons/signOut.png" width="36" />
 </li>

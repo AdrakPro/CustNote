@@ -1,18 +1,22 @@
 import { json } from '@sveltejs/kit';
 import { auth } from '$lib/db/firebase-admin.js';
 import { WEB_API_KEY } from '$lib/utils/constants.js';
-import { createCustomToken, createTokens, removeRefreshToken } from '$lib/utils/tokenManager.js';
+import {
+	createCustomToken,
+	createTokens,
+	removeRefreshToken,
+} from '$lib/utils/tokenManager.js';
 import cookie from 'cookie';
 
 export async function POST(event) {
 	const { email, password } = await event.request.json();
 	const signInRes = await fetch(
-		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${ WEB_API_KEY }`,
+		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${WEB_API_KEY}`,
 		{
 			method: 'POST',
 			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify({ email, password, returnSecureToken: true }),
-		},
+		}
 	);
 
 	if (!signInRes.ok) {
@@ -46,11 +50,17 @@ export async function GET(event) {
 	try {
 		user = await auth().verifyIdToken(customToken);
 	} catch (error) {
-		const refreshRes = await fetch(`https://identitytoolkit.googleapis.com/v1/token?key=${ WEB_API_KEY }`, {
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({ grant_type: 'refresh_token', 'refresh_token': refreshToken }),
-		});
+		const refreshRes = await fetch(
+			`https://identitytoolkit.googleapis.com/v1/token?key=${WEB_API_KEY}`,
+			{
+				method: 'POST',
+				headers: { 'content-type': 'application/json' },
+				body: JSON.stringify({
+					grant_type: 'refresh_token',
+					refresh_token: refreshToken,
+				}),
+			}
+		);
 
 		if (!refreshRes.ok) {
 			return unauthorized();

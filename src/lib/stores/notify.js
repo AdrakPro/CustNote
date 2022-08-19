@@ -1,9 +1,9 @@
 import { derived, writable } from 'svelte/store';
 
-function createNotificationStore () {
+function createNotificationStore() {
 	const notifications = writable([]);
 
-	function send (message, type, timeout) {
+	function send(message, type, timeout) {
 		notifications.update((state) => {
 			if (type === 'danger' && state.length > 0) {
 				return [...state];
@@ -37,7 +37,7 @@ function createNotificationStore () {
 	};
 }
 
-function id () {
+function id() {
 	return crypto.randomUUID();
 }
 

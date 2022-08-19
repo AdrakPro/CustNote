@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { notify } from '$lib/utils/notify.js';
+	import { notify } from '$lib/stores/notify.js';
 	import { validateEmailAndPassword } from '$lib/utils/validators.ts';
 
 	let email: string;
@@ -18,7 +18,7 @@
 			method: 'POST',
 			headers: new Headers({ 'Content-Type': 'application/json' }),
 			credentials: 'same-origin',
-			body: JSON.stringify({ email, password })
+			body: JSON.stringify({ email, password }),
 		});
 
 		if (signInRes.ok) {
@@ -31,8 +31,8 @@
 
 <!-- Styles imported from Auth.svelte (auth.scss) -->
 <div class="input-fields">
-  <input bind:value={ email } name="email" placeholder="Email" type="email" />
-  <input bind:value={ password } name="password" placeholder="Password" type="password" />
+	<input bind:value={ email } name="email" placeholder="Email" type="email" />
+	<input bind:value={ password } name="password" placeholder="Password" type="password" />
 </div>
 <p class="info"><a href="#">Don't remember your password?</a></p>
-<button class="submit-button" on:click={ signIn }>Login ></button>
+<button class="submit-button" on:click={ () => signIn() }>Login ></button>

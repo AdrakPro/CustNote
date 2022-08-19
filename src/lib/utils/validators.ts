@@ -12,7 +12,6 @@ function validateUsername(username: string) {
 		return 'Username must be at least 3 characters long!';
 }
 
-
 export function validateSignUpForm(email = '', username = '', password = '') {
 	return (
 		validateEmailAndPassword(username, password) && validateUsername(email)

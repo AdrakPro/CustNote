@@ -6,14 +6,11 @@ module.exports = {
 		'plugin:promise/recommended',
 		'prettier',
 	],
-	plugins: [
-		'svelte3',
-		'@typescript-eslint',
-	],
+	plugins: ['svelte3', '@typescript-eslint'],
 	ignorePatterns: ['*.cjs'],
 	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
 	settings: {
-		'svelte3/typescript': () => require('typescript')
+		'svelte3/typescript': () => require('typescript'),
 	},
 	parserOptions: {
 		sourceType: 'module',
@@ -23,7 +20,7 @@ module.exports = {
 	env: {
 		browser: true,
 		es2017: true,
-		node: true
+		node: true,
 	},
-	rules: {}
+	rules: {},
 };

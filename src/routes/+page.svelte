@@ -7,7 +7,7 @@
 		<h1 class="quote">A better way to write, share and organize your notes</h1>
 		<p>Take your notes to the next level with a blazing fast speed and various customizing features</p>
 		<button class="nav-button"><a href="/auth">Get started now</a></button>
-		<button class="nav-button" on:click><a href="#">See how CustNote works</a></button>
+		<button class="nav-button"><a href="#">See how CustNote works</a></button>
 	</div>
 	<Wave />
 </section>

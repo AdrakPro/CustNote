@@ -14,12 +14,12 @@ export async function POST(event) {
 	await auth().setCustomUserClaims(uid, { early_access: true });
 
 	const signInRes = await fetch(
-		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${ WEB_API_KEY }`,
+		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${WEB_API_KEY}`,
 		{
 			method: 'POST',
 			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify({ email, password, returnSecureToken: true }),
-		},
+		}
 	);
 
 	if (!signInRes.ok) {

@@ -16,7 +16,7 @@
   .title {
     font-size: 2rem;
     font-weight: $fw-semibold;
-		margin-bottom: 1em;
+    margin-bottom: 1em;
   }
 
   .home {

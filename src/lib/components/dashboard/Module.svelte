@@ -1,33 +1,12 @@
 <script>
-	let modules = [
-		{
-			title: 'Geometria analityczna',
-			lastEdit: 'Wektory 27/3/22'
-		},
-    {
-      title: 'Geometria analityczna',
-      lastEdit: 'Wektory 27/3/22'
-    },
-    {
-      title: 'Geometria analityczna',
-      lastEdit: 'Wektory 27/3/22'
-    },
-    {
-      title: 'Geometria',
-      lastEdit: 'Wektory 27/3/22'
-    },
-    {
-      title: 'Geometria analityczna',
-      lastEdit: 'Wektory 27/3/22'
-    },
-	];
+  import { modules } from '$lib/stores/modules.js';
 </script>
 
-{#each modules as { title, lastEdit }}
-  <div class="module">
-    <h1 class="title">{ title }</h1>
-    <p class="sub-text">Last edit: { lastEdit }</p>
-  </div>
+{#each $modules as { name, lastEdit }}
+	<div class="module">
+		<h1 class="title">{ name }</h1>
+		<p class="sub-text">Last edit: { lastEdit }</p>
+	</div>
 {/each}
 
 <style lang="scss">
