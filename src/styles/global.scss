@@ -1,13 +1,6 @@
 /* Import global variables */
 @import 'global_variables';
 
-/* Load a font  */
-@font-face {
-  font-family: Arimo;
-  font-weight: $base-font-weight;
-  src: url('../../static/fonts/Arimo.ttf') format('ttf');
-}
-
 /* Box sizing rules */
 *,
 *::before,

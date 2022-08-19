@@ -24,6 +24,7 @@
 
 <style lang="scss">
   .dialog {
+    align-items: center;
     display: flex;
 
     h1 {
@@ -33,6 +34,7 @@
 
     input {
       padding: 0 5px 0 5px;
+      width: 200px;
     }
   }
 </style>
