@@ -1,5 +1,5 @@
 <script>
-  import { modules } from '$lib/stores/modules.js';
+	import { modules } from '$lib/stores/modules.js';
 </script>
 
 {#each $modules as { name, lastEdit }}

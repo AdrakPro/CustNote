@@ -23,16 +23,16 @@
 <svelte:window on:keydown={ (event) => submit(event) } />
 
 <style lang="scss">
-	.dialog {
-		display: flex;
+  .dialog {
+    display: flex;
 
-		h1 {
-			font-weight: $fw-bold;
-			margin-right: 10px;
-		}
+    h1 {
+      font-weight: $fw-bold;
+      margin-right: 10px;
+    }
 
-		input {
-			padding: 0 5px 0 5px;
-		}
-	}
+    input {
+      padding: 0 5px 0 5px;
+    }
+  }
 </style>

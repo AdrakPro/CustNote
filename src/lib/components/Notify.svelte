@@ -1,9 +1,9 @@
 <script>
-  import { flip } from 'svelte/animate';
-  import { fly } from 'svelte/transition';
-  import { notify } from '$lib/stores/notify.js';
+	import { flip } from 'svelte/animate';
+	import { fly } from 'svelte/transition';
+	import { notify } from '$lib/stores/notify.js';
 
-  let themes = {
+	let themes = {
 		danger: '#e95065',
 		success: '#84c991',
 		warning: '#f0ad4e',

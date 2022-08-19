@@ -1,5 +1,5 @@
 <script>
-  import SignOut from '../auth/SignOut.svelte';
+	import SignOut from '../auth/SignOut.svelte';
 </script>
 
 <nav>

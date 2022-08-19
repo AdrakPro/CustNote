@@ -1,6 +1,6 @@
 <script>
-  import Auth from '$lib/components/auth/Auth.svelte';
-  import Notify from '$lib/components/Notify.svelte';
+	import Auth from '$lib/components/auth/Auth.svelte';
+	import Notify from '$lib/components/Notify.svelte';
 </script>
 
 <Notify />

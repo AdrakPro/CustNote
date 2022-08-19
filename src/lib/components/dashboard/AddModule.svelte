@@ -1,6 +1,6 @@
 <script>
-	import Icon from '../Icon.svelte';
 	import { dialog } from '$lib/stores/dialog.js';
+	import Icon from '../Icon.svelte';
 
 	function show() {
 		dialog.show();
@@ -31,4 +31,3 @@
     }
   }
 </style>
-<!-- TODO mixin dla hovera, zmien navbara z component na slota  -->

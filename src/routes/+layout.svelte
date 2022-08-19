@@ -1,9 +1,9 @@
 <script>
-  import Icon from '$lib/components/Icon.svelte';
-  import NavBar from '$lib/components/nav/NavBar.svelte';
-  import '../styles/global.scss';
+	import Icon from '$lib/components/Icon.svelte';
+	import NavBar from '$lib/components/nav/NavBar.svelte';
+	import '../styles/global.scss';
 
-  let isOpenMenu = false;
+	let isOpenMenu = false;
 </script>
 
 <div class:mobile-nav={ isOpenMenu }>
