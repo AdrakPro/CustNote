@@ -1,7 +1,7 @@
 
 # CustNote :fire:
 
-Blazing fast and highly customizable note taking web application that will fit your needs!
+Blazing fast and highly customizable note-taking web application that will fit your needs!
 
 ## Run Locally
 
