@@ -1,7 +1,7 @@
-<script lang="ts">
+<script>
 	import Icon from '../Icon.svelte';
 
-	export let searchedText: string;
+	export let searchedText = '';
 </script>
 
 <div class="search-bar">

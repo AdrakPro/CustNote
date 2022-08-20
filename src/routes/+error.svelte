@@ -1,10 +1,11 @@
 <script>
 	import { page } from '$app/stores';
-	// svelte bug wait to repair ( error page override redirect )
+	// svelte-kit bug redirect causes error page
+	console.log($page.error);
 </script>
 
 <div class="container">
-	<h1 class="title">Opss something went wrong with status code: { $page.status }</h1>
+	<h1 class="title">Opss something went wrong with status code: { $page.error.status }</h1>
 	<p class="home"><a href="/">Go back home</a></p>
 	<img alt="gif" src="https://c.tenor.com/7tzqV8r23qoAAAAd/jd.gif" />
 </div>
