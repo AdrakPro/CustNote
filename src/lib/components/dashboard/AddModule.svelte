@@ -9,7 +9,7 @@
 
 <button on:click={ () => show() }>
 	<Icon src="icons/plus.png" />
-	<span>New note</span>
+	<span>New module</span>
 </button>
 
 <style lang="scss">
