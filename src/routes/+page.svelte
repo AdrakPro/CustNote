@@ -17,6 +17,7 @@
   .welcome {
     height: calc(100vh - 64px);
     position: relative;
+    overflow-y: hidden;
   }
 
   .info {

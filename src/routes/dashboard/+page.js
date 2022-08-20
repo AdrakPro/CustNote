@@ -6,4 +6,6 @@ export async function load({ fetch }) {
 	if (!authRes.ok) {
 		throw redirect(302, '/auth');
 	}
+
+	return {};
 }

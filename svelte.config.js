@@ -1,7 +1,7 @@
 import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 
-const globalStylePath = './src/styles/global.scss';
+const globalVariables = './src/styles/global_variables.scss';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -9,7 +9,7 @@ const config = {
 	// for more information about preprocessors
 	preprocess: preprocess({
 		scss: {
-			prependData: `@import '${globalStylePath}';`,
+			prependData: `@import '${globalVariables}';`,
 		},
 	}),
 

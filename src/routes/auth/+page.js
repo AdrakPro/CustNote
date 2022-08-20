@@ -7,6 +7,7 @@ export async function load({ fetch }) {
 		throw redirect(302, '/dashboard');
 	}
 
+	return {};
 	// const auth = await authRes.json();
 	//
 	// return {
