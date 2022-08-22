@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("VITE_DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model User {
+  id        String    @id
+  modules   Module[]
+  role      Role      @default(USER)
+}
+
+model Module {
+  id        String    @id @default(uuid())
+  name      String    @db.VarChar(255)
+  notes     Note[]
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String
+}
+
+model Note {
+  id        String    @id @default(uuid())
+  name      String    @db.VarChar(255)
+  content   String?   @db.Text
+  createdAt DateTime  @default(now())
+  module    Module    @relation(fields: [moduleId], references: [id])
+  moduleId  String
+}
+
+enum Role {
+  USER
+  ADMIN
+}

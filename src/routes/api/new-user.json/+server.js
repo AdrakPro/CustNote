@@ -1,4 +1,4 @@
-import { auth } from '$lib/db/firebase-admin.js';
+import { auth } from '$lib/firebase/firebase-admin.js';
 import { WEB_API_KEY } from '$lib/utils/constants.js';
 import { createTokens } from '$lib/utils/tokenManager.js';
 
