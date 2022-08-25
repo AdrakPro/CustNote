@@ -10,6 +10,10 @@
 	</div>
 </div>
 
+<svelte:head>
+	<title>CustNote | Auth</title>
+</svelte:head>
+
 <style lang="scss">
   .container {
     height: 100vh;

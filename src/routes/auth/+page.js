@@ -8,10 +8,4 @@ export async function load({ fetch }) {
 	}
 
 	return {};
-	// const auth = await authRes.json();
-	//
-	// return {
-	//  user: auth.user,
-	// 	customToken: auth.customToken
-	// };
 }

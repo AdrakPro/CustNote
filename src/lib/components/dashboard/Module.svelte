@@ -1,13 +1,22 @@
 <script>
-	import { modules } from '$lib/stores/modules.js';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+
+	const { username } = $page.data;
+	export let name;
+	export let lastEdit;
+
+	async function redirectToModule() {
+		const moduleName = name.toLowerCase();
+
+		await goto(`/${ username }/${ moduleName }`);
+	}
 </script>
 
-{#each $modules as { name, lastEdit }}
-	<div class="module">
-		<h1 class="title">{ name }</h1>
-		<p class="sub-text">Last edit: { lastEdit }</p>
-	</div>
-{/each}
+<div class="module" on:click={ () => redirectToModule() }>
+	<h1 class="title">{ name }</h1>
+	<p class="sub-text">Last edit: { lastEdit }</p>
+</div>
 
 <style lang="scss">
   .module {
@@ -22,6 +31,7 @@
     max-width: 420px;
     min-width: 290px;
     padding: 1rem;
+    user-select: none;
 
     .title {
       font-size: 2rem;

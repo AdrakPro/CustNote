@@ -7,5 +7,12 @@ export async function load({ fetch }) {
 		throw redirect(302, '/auth');
 	}
 
-	return {};
+	const { user } = await authRes.json();
+	const { name, user_id } = user;
+	const username = name.toLowerCase();
+
+	return {
+		username,
+		userId: user_id,
+	};
 }
