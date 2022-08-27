@@ -32,11 +32,15 @@ export async function POST(event) {
 	const headers = createTokens(refreshToken, customToken);
 
 	// Create user in database
-	await prisma.user.create({
-		data: {
-			id: uid,
-		},
-	});
+	try {
+		await prisma.user.create({
+			data: {
+				id: uid,
+			},
+		});
+	} catch (e) {
+		console.log(e);
+	}
 
 	return new Response(undefined, { headers, status: 200 });
 }
