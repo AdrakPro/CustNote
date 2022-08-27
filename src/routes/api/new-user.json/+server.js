@@ -1,4 +1,5 @@
-import prisma from '$lib/prisma.ts';
+import { error } from '@sveltejs/kit';
+import prisma from '$lib/prisma.js';
 import { auth } from '$lib/firebase/firebase-admin.js';
 import { WEB_API_KEY } from '$lib/utils/constants.js';
 import { createTokens } from '$lib/utils/tokenManager.js';
@@ -39,7 +40,7 @@ export async function POST(event) {
 			},
 		});
 	} catch (e) {
-		console.log(e);
+		throw new error(400, e.message);
 	}
 
 	return new Response(undefined, { headers, status: 200 });

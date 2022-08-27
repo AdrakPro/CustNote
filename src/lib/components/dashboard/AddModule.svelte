@@ -23,7 +23,7 @@
     cursor: pointer;
     display: flex;
     margin-left: 1rem;
-    padding: 0 10px 0 10px;
+    padding: 0 $s-12 0 $s-12;
 
     &:hover {
       animation: opacity ease-in-out 250ms;

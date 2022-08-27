@@ -4,9 +4,11 @@
 	import AddModule from '$lib/components/dashboard/AddModule.svelte';
 	import AddModuleContent from '$lib/components/dialog/AddModuleContent.svelte';
 	import Dialog from '$lib/components/dialog/Dialog.svelte';
+	import Notify from '$lib/components/Notify.svelte';
 	import { modules } from '$lib/stores/modules.js';
 </script>
 
+<Notify />
 <section class="container" style="margin: 1rem">
 	<SearchBar />
 	<AddModule />

@@ -2,15 +2,33 @@
 	import { onMount } from 'svelte';
 	import { modules } from '$lib/stores/modules.js';
 	import { dialog } from '$lib/stores/dialog.js';
+	import { page } from '$app/stores';
+	import { notify } from '$lib/stores/notify.js';
 
+	const { userId } = $page.data;
 	let nameInput;
 
 	onMount(() => nameInput.focus());
 
-	function submit(event) {
-		if (event.keyCode === 13 && nameInput.value !== '') {
-			modules.addModule(nameInput.value);
+	async function submit(event) {
+		const name = nameInput.value;
+
+		if (event.keyCode === 13 && name !== '') {
+			modules.addModule(name);
 			dialog.close();
+
+			// Create a module in database
+			const newModuleRes = await fetch('/api/modules/new-module.json', {
+				method: 'POST',
+				headers: new Headers({ 'Content-Type': 'application/json' }),
+				credentials: 'same-origin',
+				body: JSON.stringify({ name, userId }),
+			});
+
+			if (newModuleRes.ok) {
+			} else {
+				notify.danger('Module cannot be saved! Try again!');
+			}
 		}
 	}
 </script>
