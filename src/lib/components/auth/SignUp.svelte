@@ -39,4 +39,5 @@
 <p class="info">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
 	policy</a>.
 </p>
-<button class="submit-button" on:click={ () => signUp() }>Sign Up ></button>
+<!-- Temporary disable sign up -->
+<button class="submit-button" on:click={ () => {} }>Sign Up ></button>
