@@ -32,15 +32,15 @@
 
 <style lang="scss">
   .title {
-    font-size: 2rem;
+    font-size: $fs-32;
     font-weight: $fw-bold;
-    margin-bottom: 1rem;
+    margin-bottom: $s-20;
   }
 
   .auth-tabs {
     display: flex;
     list-style: none;
-    margin-bottom: 1em;
+    margin-bottom: $s-16;
     user-select: none;
 
     li {
@@ -57,7 +57,7 @@
   .line {
     color: #fff;
     font-weight: $fw-light;
-    margin: 0.7em auto;
+    margin: 0.7rem auto;
     overflow: hidden;
     width: 70%;
 
@@ -66,13 +66,13 @@
       border-bottom: 1px solid;
       content: '';
       display: inline-block;
-      margin: 0 .5em 0 -55%;
+      margin: 0 0.5rem 0 -55%;
       vertical-align: middle;
       width: 50%;
     }
 
     &::after {
-      margin: 0 -55% 0 0.5em;
+      margin: 0 -55% 0 0.5rem;
     }
 
     span {

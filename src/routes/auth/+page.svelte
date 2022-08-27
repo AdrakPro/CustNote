@@ -20,13 +20,14 @@
     overflow: hidden;
   }
 
+  // Center auth-form using top/left/margin/height/width
   .auth-form {
     border: 3px solid $blue;
     border-bottom: none;
-    height: 600px;
+    height: 550px;
     left: 50%;
-    margin: -300px 0 0 -160px;
-    padding-top: 1em;
+    margin: -275px 0 0 -160px;
+    padding-top: $s-12;
     position: fixed;
     text-align: center;
     top: 50%;
@@ -34,7 +35,7 @@
   }
 
   /* Remove border on mobile */
-  @media screen and (max-width: $b_mobile) {
+  @media screen and (max-width: $b-mobile) {
     .auth-form {
       border: none;
     }

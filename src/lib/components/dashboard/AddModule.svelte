@@ -22,12 +22,12 @@
     color: $white;
     cursor: pointer;
     display: flex;
-    margin-left: 1em;
+    margin-left: 1rem;
     padding: 0 10px 0 10px;
 
     &:hover {
       animation: opacity ease-in-out 250ms;
-      opacity: 0.8;
+      opacity: $base-opacity;
     }
   }
 </style>

@@ -27,16 +27,16 @@
     box-shadow: $base-shadow;
     cursor: pointer;
     height: 160px;
-    margin: 1rem;
+    margin: $s-16;
     max-width: 420px;
     min-width: 290px;
-    padding: 1rem;
+    padding: $s-16;
     user-select: none;
 
     .title {
-      font-size: 2rem;
+      font-size: $fs-32;
       font-weight: $fw-semibold;
-      padding-bottom: 2em;
+      padding-bottom: $s-32;
       text-align: center;
     }
 

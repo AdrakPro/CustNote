@@ -5,7 +5,7 @@
 </script>
 
 <div class="container">
-	<h1 class="title">Opss something went wrong with status code: { $page.error.status }</h1>
+	<h1 class="title">Oops something went wrong with status code: { $page.error.status }</h1>
 	<p class="home"><a href="/">Go back home</a></p>
 	<img alt="gif" src="https://c.tenor.com/7tzqV8r23qoAAAAd/jd.gif" />
 </div>
@@ -16,18 +16,17 @@
   }
 
   .title {
-    font-size: 2rem;
+    font-size: $fs-32;
     font-weight: $fw-semibold;
-    margin-bottom: 1em;
+    margin: $s-16 0 $s-16;
   }
 
   .home {
-    font-size: 1.5rem;
-    margin-bottom: 1em;
+    font-size: $fs-24;
+    margin-bottom: $s-16;
 
     a {
       color: $blue;
-      text-decoration: none;
     }
   }
 </style>

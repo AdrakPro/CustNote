@@ -16,7 +16,11 @@ function validateUsername(username: string) {
 	}
 }
 
-export function validateSignUpForm(email: string, username: string, password: string) {
+export function validateSignUpForm(
+	email: string,
+	username: string,
+	password: string
+) {
 	return (
 		validateUsername(username) || validateEmailAndPassword(email, password)
 	);

@@ -17,37 +17,34 @@
   .welcome {
     height: calc(100vh - 64px);
     position: relative;
-    overflow-y: hidden;
   }
 
   .info {
-    padding: 2em 0.5em;
+    padding: $s-32 $s-12;
     text-align: center;
   }
 
   .quote {
-    font-size: 2.75rem;
+    font-size: $fs-42;
     font-weight: $fw-semibold;
     letter-spacing: -0.008em;
-    margin-bottom: 0.7em;
+    margin-bottom: $s-20;
   }
 
   p {
-    font-size: 1.125rem;
-    margin-bottom: 1em;
+    font-size: $fs-18;
+    margin-bottom: $s-20;
   }
 
   .nav-button {
     background-color: $blue;
     border-radius: $base-radius;
     height: 48px;
-    margin: 0 10px;
+    margin: 0 $s-12;
 
     a {
-      color: $white;
       font-weight: $fw-bold;
-      padding: 5px;
-      text-decoration: none;
+      padding: $s-12;
     }
   }
 </style>

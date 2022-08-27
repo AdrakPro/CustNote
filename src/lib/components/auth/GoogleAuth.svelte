@@ -30,7 +30,7 @@
 
     span {
       color: $white;
-      font-size: 0.9rem;
+      font-size: $fs-14;
       font-weight: $fw-bold;
     }
   }

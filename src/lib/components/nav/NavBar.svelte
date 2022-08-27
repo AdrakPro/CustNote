@@ -82,7 +82,7 @@
 
   /* TODO CLOSE MENU BUTTON */
   /* RESPONSIVE STYLE WHEN SCREEN EXCEEDS 900PX */
-  @media screen and (min-width: $b_mobile) {
+  @media screen and (min-width: $b-mobile) {
     .toggle-menu-label {
       display: none;
     }

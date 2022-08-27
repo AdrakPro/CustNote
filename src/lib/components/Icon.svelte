@@ -3,7 +3,8 @@
 	export let height = 32;
 	export let style = '';
 	export let src: string;
-	export let onClick = () => {};
+	export let onClick = () => {
+	};
 
 </script>
 

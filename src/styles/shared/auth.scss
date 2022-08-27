@@ -6,8 +6,8 @@
     border-radius: $base-radius;
     color: $white;
     height: 40px;
-    margin-bottom: 0.5rem;
-    padding: 1rem;
+    margin-bottom: $s-12;
+    padding: $s-16;
     width: 80%;
   }
 }
@@ -22,7 +22,7 @@
   position: absolute;
   right: 0;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: $fs-20;
 
   &:hover {
     background-color: $dark-blue;
@@ -31,11 +31,9 @@
 }
 
 .info {
-  margin-top: 1rem;
-  color: $white;
+  margin-top: $s-16;
 
   a {
     color: $blue;
-    text-decoration: none;
   }
 }

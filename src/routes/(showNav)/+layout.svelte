@@ -1,14 +1,13 @@
 <script>
 	import Icon from '$lib/components/Icon.svelte';
 	import NavBar from '$lib/components/nav/NavBar.svelte';
-	import '../../styles/global.scss';
 
 	let isOpenMenu = false;
 </script>
 
 <div class:mobile-nav={ isOpenMenu }>
 	<header>
-		<Icon height="64" src="favicon.png" width="64" />
+		<span class="logo"><Icon height="64" src="favicon.png" width="64" /></span>
 		<NavBar bind:isOpenMenu={ isOpenMenu } />
 	</header>
 
@@ -31,7 +30,7 @@
     height: 64px;
     position: fixed;
     width: 100%;
-    z-index: $z-index-max;
+    z-index: $max-z-index;
   }
 
   @media screen and (min-width: $b-mobile) {

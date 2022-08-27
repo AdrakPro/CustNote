@@ -14,22 +14,37 @@ $fw-semibold: 500;
 $fw-bold: 700;
 $fw-ultra: 800;
 
-/* BASE FONT */
-$base-font-size: 16px;
-$base-font-weight: $fw-regular;
-$base-line-height: 1.5;
+/* FONT SIZE */
+$fs-14: 0.875rem;
+$fs-16: 1rem;
+$fs-18: 1.125rem;
+$fs-20: 1.25rem;
+$fs-24: 1.5rem;
+$fs-32: 2rem;
+$fs-42: 2.625rem;
+
+/* SPACING */
+$s-12: 0.75rem;
+$s-16: 1rem;
+$s-20: 1.25rem;
+$s-32: 2rem;
 
 /* BORDER */
 $base-radius: 5px;
 
 /* BREAK POINTS */
-$b_mobile: 700px;
-$b_desktop: 1200px;
+$b-mobile: 700px;
+$b-desktop: 1200px;
 
 /* Z-INDEX */
-$z-index-base: 1;
-$z-index-back: -1;
-$z-index-max: 9999;
+$max-z-index: 9999;
+$base-z-index: 1;
+$back-z-index: -1;
 
 /* BOX SHADOW */
 $base-shadow: #0000003d 0 3px 8px;
+
+/* OPACITY */
+$max-opacity: 0;
+$base-opacity: 0.8;
+$min-opacity: 1;

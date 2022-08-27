@@ -37,7 +37,7 @@
     position: fixed;
     right: 0;
     top: 10px;
-    z-index: $z-index-max;
+    z-index: $max-z-index;
   }
 
   .toast {
@@ -48,7 +48,6 @@
   }
 
   .content {
-    color: $white;
     font-weight: $fw-semibold;
     padding: 10px;
   }
