@@ -25,6 +25,8 @@ model Module {
   createdAt DateTime  @default(now())
   user      User      @relation(fields: [userId], references: [id])
   userId    String
+
+  @@index([userId])
 }
 
 model Note {
@@ -34,6 +36,8 @@ model Note {
   createdAt DateTime  @default(now())
   module    Module    @relation(fields: [moduleId], references: [id])
   moduleId  String
+
+  @@index([moduleId])
 }
 
 enum Role {

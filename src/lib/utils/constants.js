@@ -3,3 +3,4 @@ export const SECURE = import.meta.env.VITE_SECURE;
 export const SERVICE_ACCOUNT = import.meta.env
 	.VITE_FIREBASE_SERVICE_ACCOUNT_KEY;
 export const DATABASE_URL = import.meta.env.VITE_DATABASE_URL;
+export const DEV = import.meta.env.VERCEL_ENV;

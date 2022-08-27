@@ -1,3 +1,4 @@
+import prisma from '$lib/prisma/prisma.js';
 import { auth } from '$lib/firebase/firebase-admin.js';
 import { WEB_API_KEY } from '$lib/utils/constants.js';
 import { createTokens } from '$lib/utils/tokenManager.js';
@@ -29,6 +30,13 @@ export async function POST(event) {
 	const { refreshToken } = await signInRes.json();
 	const customToken = await auth().createCustomToken(uid);
 	const headers = createTokens(refreshToken, customToken);
+
+	// Create user in database
+	await prisma.user.create({
+		data: {
+			id: uid,
+		},
+	});
 
 	return new Response(undefined, { headers, status: 200 });
 }

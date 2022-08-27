@@ -3,9 +3,9 @@
 	import { notify } from '$lib/stores/notify.js';
 	import { validateSignUpForm } from '$lib/utils/validators.ts';
 
-	let email: string;
-	let username: string;
-	let password: string;
+	let email = '';
+	let username = '';
+	let password = '';
 
 	async function signUp() {
 		const error = validateSignUpForm(email, username, password);

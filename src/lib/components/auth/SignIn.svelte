@@ -3,8 +3,8 @@
 	import { notify } from '$lib/stores/notify.js';
 	import { validateEmailAndPassword } from '$lib/utils/validators.ts';
 
-	let email: string;
-	let password: string;
+	let email = '';
+	let password = '';
 
 	async function signIn() {
 		const error = validateEmailAndPassword(email, password);
@@ -24,6 +24,7 @@
 		if (signInRes.ok) {
 			await goto('/dashboard');
 		} else {
+			// TODO sprawdz czy ma polaczenie z internetem
 			notify.danger('Wrong email or password!');
 		}
 	}
