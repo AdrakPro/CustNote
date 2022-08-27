@@ -1,7 +1,7 @@
 <script>
+	import WelcomeNav from '$lib/components/nav/WelcomeNav.svelte';
+	import NotesNav from '$lib/components/nav/NotesNav.svelte';
 	import { page } from '$app/stores';
-	import NotesNav from './NotesNav.svelte';
-	import WelcomeNav from './WelcomeNav.svelte';
 	import '$styles/nav.scss';
 
 	export let isOpenMenu = false;
