@@ -35,7 +35,7 @@
   }
 
   /* Remove border on mobile */
-  @media screen and (max-width: $b-mobile) {
+  @media screen and (max-width: $bh-mobile) {
     .auth-form {
       border: none;
     }

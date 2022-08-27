@@ -33,7 +33,7 @@
     z-index: $max-z-index;
   }
 
-  @media screen and (min-width: $b-mobile) {
+  @media screen and (min-width: $bh-mobile) {
     header {
       display: flex;
     }

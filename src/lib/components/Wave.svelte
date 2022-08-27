@@ -23,7 +23,7 @@
     }
 
     // Hide wave when overflow content
-    @media screen and (max-height: 600px) {
+    @media screen and (max-height: $bh-mobile) {
       display: none;
     }
   }

@@ -32,9 +32,13 @@ $s-32: 2rem;
 /* BORDER */
 $base-radius: 5px;
 
-/* BREAK POINTS */
-$b-mobile: 700px;
-$b-desktop: 1200px;
+/* BREAK POINTS WIDTHS */
+$bw-mobile: 414px;
+$bw-desktop: 962px;
+
+/* BREAK POINTS HEIGHTS */
+$bh-mobile: 640px;
+$bh-desktop: 768px;
 
 /* Z-INDEX */
 $max-z-index: 9999;

@@ -33,7 +33,7 @@ nav {
 }
 
 /* RESPONSIVE STYLE WHEN SCREEN EXCEEDS 900PX */
-@media screen and (min-width: $b-mobile) {
+@media screen and (min-width: $bh-mobile) {
   nav {
     background: none;
 
@@ -75,7 +75,7 @@ nav {
         left: 0;
         position: absolute;
         right: 0;
-        top: 1.5rem;
+        top: 1.5em;
         transform: scale(0, 1);
         transition: transform ease-in-out 350ms;
       }
