@@ -40,4 +40,4 @@
 	policy</a>.
 </p>
 <!-- Temporary disable sign up -->
-<button class="submit-button" on:click={ () => {} }>Sign Up ></button>
+<button disabled class="submit-button" on:click={ () => signUp() }>Sign Up ></button>
