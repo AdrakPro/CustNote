@@ -39,5 +39,5 @@
 <p class="info">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
 	policy</a>.
 </p>
-<!-- Temporary disable sign up -->
+<p style="color: red">Registration is temporarily disabled</p>
 <button disabled class="submit-button" on:click={ () => signUp() }>Sign Up ></button>
