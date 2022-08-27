@@ -1,4 +1,4 @@
-export function validateEmailAndPassword(email = '', password = '') {
+export function validateEmailAndPassword(email: string, password: string) {
 	const emailReg = /\S+@\S+\.\S+/;
 
 	if (!emailReg.test(email)) {
@@ -11,17 +11,13 @@ export function validateEmailAndPassword(email = '', password = '') {
 }
 
 function validateUsername(username: string) {
-	const whitespaceReg = /\S/g;
-
 	if (username.length < 3) {
 		return 'Username must be at least 3 characters long!';
-	} else if (whitespaceReg.test(username)) {
-		return 'Username cannot contain any whitespaces!'
 	}
 }
 
-export function validateSignUpForm(email = '', username = '', password = '') {
+export function validateSignUpForm(email: string, username: string, password: string) {
 	return (
-		validateEmailAndPassword(username, password) && validateUsername(email)
+		validateUsername(username) || validateEmailAndPassword(email, password)
 	);
 }
