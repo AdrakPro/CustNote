@@ -1,6 +1,6 @@
 import { SECURE } from './constants.js';
 
-function createCustomToken(customToken) {
+export function createCustomToken(customToken) {
 	const headers = new Headers();
 	headers.set(
 		'set-cookie',
@@ -13,7 +13,7 @@ function createCustomToken(customToken) {
 	return headers;
 }
 
-function createTokens(refreshToken, customToken) {
+export function createTokens(refreshToken, customToken) {
 	const headers = new Headers();
 	headers.append(
 		'set-cookie',
@@ -32,7 +32,7 @@ function createTokens(refreshToken, customToken) {
 	return headers;
 }
 
-function removeTokens() {
+export function removeTokens() {
 	const headers = new Headers();
 	headers.append(
 		'set-cookie',
@@ -47,7 +47,7 @@ function removeTokens() {
 	return headers;
 }
 
-function removeRefreshToken() {
+export function removeRefreshToken() {
 	const headers = new Headers();
 	headers.set(
 		'set-cookie',
@@ -57,5 +57,3 @@ function removeRefreshToken() {
 
 	return headers;
 }
-
-export { createCustomToken, createTokens, removeTokens, removeRefreshToken };
