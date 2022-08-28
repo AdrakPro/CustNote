@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite dev",
+    "db": "pscale connect custnote main --port 3309",
     "build": "vite build",
     "package": "svelte-kit package",
     "preview": "vite preview",
