@@ -1,0 +1,40 @@
+{
+  "background_color": "#484848",
+  "theme_color": "#44a1fa",
+  "name": "CustNote",
+  "short_name": "CustNote",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/icons/close.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/google.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/logo.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/magnify.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/plus.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/signOut.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    }
+  ]
+}
