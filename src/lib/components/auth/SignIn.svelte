@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { notify } from '$lib/stores/notify.js';
-	import { validateEmailAndPassword } from '$lib/utils/validators.js';
+	import { validateEmailAndPassword } from '$lib/utils/validators.ts';
 
 	let email = '';
 	let password = '';
