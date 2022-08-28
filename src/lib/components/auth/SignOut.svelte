@@ -7,7 +7,7 @@
 		await auth.signOut();
 		await fetch('/api/signOut.json', {
 			method: 'POST',
-			headers: new Headers({ 'Content-Type': 'application/json' }),
+			headers: new Headers({ 'content-type': 'application/json' }),
 			credentials: 'same-origin',
 		});
 		await goto('/auth');
@@ -15,5 +15,9 @@
 </script>
 
 <li on:click={ signOut }>
-	<Icon height="36" src="icons/signOut.png" width="36" />
+	<Icon
+		src="icons/signOut.png"
+		width="36"
+		height="36"
+	/>
 </li>

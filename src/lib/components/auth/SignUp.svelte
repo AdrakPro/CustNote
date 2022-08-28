@@ -17,7 +17,7 @@
 
 		const signUpRes = await fetch('/api/new-user.json', {
 			method: 'POST',
-			headers: new Headers({ 'Content-Type': 'application/json' }),
+			headers: new Headers({ 'content-type': 'application/json' }),
 			credentials: 'same-origin',
 			body: JSON.stringify({ email, password, username }),
 		});
@@ -32,12 +32,30 @@
 
 <!-- Styles imported from Auth.svelte (auth.scss) -->
 <div class="input-fields">
-	<input bind:value={ email } name="email" placeholder="Email" type="email" />
-	<input bind:value={ username } name="username" placeholder="Username" type="text" />
-	<input bind:value={ password } name="password" placeholder="Password" type="password" />
+	<input
+		bind:value={ email }
+		type="email"
+		name="email"
+		placeholder="Email"
+	/>
+	<input
+		bind:value={ username }
+		type="text"
+		name="username"
+		placeholder="Username"
+	/>
+	<input
+		bind:value={ password }
+		type="password"
+		name="password"
+		placeholder="Password"
+	/>
 </div>
 <p class="info">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
 	policy</a>.
 </p>
 <!--<p style="color: red">Registration is temporarily disabled</p>-->
-<button class="submit-button" on:click={ () => signUp() }>Sign Up ></button>
+<button
+	class="submit-button"
+	on:click={ () => signUp() }
+>Sign Up ></button>

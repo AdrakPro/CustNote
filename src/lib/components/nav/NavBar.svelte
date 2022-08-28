@@ -23,9 +23,17 @@
 	}
 </script>
 
-<input bind:checked={ isOpenMenu } class="toggle-menu" id="toggle-menu" type="checkbox">
+<input
+	id="toggle-menu"
+	class="toggle-menu"
+	bind:checked={ isOpenMenu }
+	type="checkbox"
+>
 <svelte:component this="{ getNavBar() }" />
-<label class="toggle-menu-label" for="toggle-menu">
+<label
+	class="toggle-menu-label"
+	for="toggle-menu"
+>
 	<span></span>
 </label>
 

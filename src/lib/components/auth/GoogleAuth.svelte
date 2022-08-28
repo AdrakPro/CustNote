@@ -7,7 +7,11 @@
 </script>
 
 <button class="google-button">
-	<Icon height="36" src="icons/google.png" width="36" />
+	<Icon
+		src="icons/google.png"
+		width="36"
+		height="36"
+	/>
 	<span>{ getText() } WITH GOOGLE</span>
 </button>
 

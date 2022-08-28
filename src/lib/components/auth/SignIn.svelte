@@ -16,7 +16,7 @@
 
 		const signInRes = await fetch('/api/auth.json', {
 			method: 'POST',
-			headers: new Headers({ 'Content-Type': 'application/json' }),
+			headers: new Headers({ 'content-type': 'application/json' }),
 			credentials: 'same-origin',
 			body: JSON.stringify({ email, password }),
 		});
@@ -32,8 +32,21 @@
 
 <!-- Styles imported from Auth.svelte (auth.scss) -->
 <div class="input-fields">
-	<input bind:value={ email } name="email" placeholder="Email" type="email" />
-	<input bind:value={ password } name="password" placeholder="Password" type="password" />
+	<input
+		bind:value={ email }
+		type="email"
+		name="email"
+		placeholder="Email"
+	/>
+	<input
+		bind:value={ password }
+		type="password"
+		name="password"
+		placeholder="Password"
+	/>
 </div>
 <p class="info"><a href="#">Don't remember your password?</a></p>
-<button class="submit-button" on:click={ () => signIn() }>Login ></button>
+<button
+	class="submit-button"
+	on:click={ () => signIn() }
+>Login ></button>

@@ -9,7 +9,10 @@
 </script>
 
 <Notify />
-<section class="container" style="margin: 1rem">
+<section
+	class="container"
+	style="margin: 1rem"
+>
 	<SearchBar />
 	<AddModule />
 </section>

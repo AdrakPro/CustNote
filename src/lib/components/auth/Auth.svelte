@@ -18,8 +18,13 @@
 <div>
 	<h1 class="title">CustNote</h1>
 	<ul class="auth-tabs">
-		<li class:highlighted-tab={ isLoginForm } on:click={ () => selectLogInTab() }><span>Log In</span></li>
-		<li class:highlighted-tab={ !isLoginForm } on:click={ () => selectSignUpTab() }><span>Sign Up</span></li>
+		<li
+			class:highlighted-tab={ isLoginForm }
+			on:click={ () => selectLogInTab() }
+		><span>Log In</span></li>
+		<li class:highlighted-tab={ !isLoginForm }
+				on:click={ () => selectSignUpTab() }
+		><span>Sign Up</span></li>
 	</ul>
 	<GoogleAuth { isLoginForm } />
 	<p class="line"><span>or</span></p>

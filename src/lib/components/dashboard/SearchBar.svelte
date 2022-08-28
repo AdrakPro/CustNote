@@ -5,8 +5,16 @@
 </script>
 
 <div class="search-bar">
-	<Icon src="icons/magnify.png" style="margin-left: 5px" />
-	<input bind:value={ searchedText } name="search" placeholder="Search..." type="text" />
+	<Icon
+		src="icons/magnify.png"
+		style="margin-left: 5px"
+	/>
+	<input
+		bind:value={ searchedText }
+		type="text"
+		name="search"
+		placeholder="Search..."
+	/>
 </div>
 
 <style lang="scss">

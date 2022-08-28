@@ -13,7 +13,10 @@
 	}
 </script>
 
-<div class="module" on:click={ () => redirectToModule() }>
+<div
+	class="module"
+	on:click={ () => redirectToModule() }
+>
 	<h1 class="title">{ name }</h1>
 	<p class="sub-text">Last edit: { lastEdit }</p>
 </div>

@@ -1,4 +1,4 @@
-import prisma from '$lib/prisma.js';
+import prisma from '$lib/prisma';
 import { error } from '@sveltejs/kit';
 
 export async function POST(event) {
@@ -12,7 +12,7 @@ export async function POST(event) {
 			},
 		});
 	} catch (e) {
-		throw new error(400, e.message,);
+		throw new error(400, e.message);
 	}
 
 	return new Response(undefined, { status: 200 });

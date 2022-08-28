@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 function createModuleStore() {
-	const { subscribe, update } = writable([]);
+	const { subscribe, set, update } = writable([]);
 
 	return {
 		subscribe,
@@ -14,6 +14,7 @@ function createModuleStore() {
 					createdAt: Date.now(),
 				},
 			]),
+		setModules: (modules) => set(modules),
 	};
 }
 

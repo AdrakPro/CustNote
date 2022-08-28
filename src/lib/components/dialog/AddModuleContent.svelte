@@ -20,13 +20,12 @@
 			// Create a module in database
 			const newModuleRes = await fetch('/api/modules/new-module.json', {
 				method: 'POST',
-				headers: new Headers({ 'Content-Type': 'application/json' }),
+				headers: new Headers({ 'content-type': 'application/json' }),
 				credentials: 'same-origin',
 				body: JSON.stringify({ name, userId }),
 			});
 
-			if (newModuleRes.ok) {
-			} else {
+			if (!newModuleRes.ok) {
 				notify.danger('Module cannot be saved! Try again!');
 			}
 		}
@@ -35,7 +34,11 @@
 
 <div class="dialog">
 	<h1>Enter module name:</h1>
-	<input bind:this={ nameInput } name="module" type="text" />
+	<input
+		bind:this={ nameInput }
+		type="text"
+		name="module"
+	/>
 </div>
 
 <svelte:window on:keydown={ (event) => submit(event) } />
