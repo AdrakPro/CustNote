@@ -4,7 +4,7 @@ import { DEV } from '$lib/utils/constants.js';
 let prisma = global.prisma || new PrismaClient();
 
 if (DEV) {
-	global.prisma = prisma
+	global.prisma = prisma;
 }
 
 export default prisma;
