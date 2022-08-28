@@ -39,13 +39,13 @@
     .title {
       font-size: $fs-32;
       font-weight: $fw-semibold;
-      padding-bottom: $s-32;
+      padding-bottom: $s-64;
       text-align: center;
     }
 
     .sub-text {
       font-weight: $fw-light;
-      text-align: end;
+			text-align: end;
     }
   }
 </style>
