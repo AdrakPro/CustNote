@@ -1,7 +1,7 @@
 <script>
 	import Icon from '../Icon.svelte';
 	import { goto } from '$app/navigation';
-	import { auth } from '$lib/firebase/firebase.ts';
+	import { auth } from '$lib/firebase/firebase.js';
 
 	async function signOut() {
 		await auth.signOut();
