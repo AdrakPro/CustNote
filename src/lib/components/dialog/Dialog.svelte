@@ -20,8 +20,6 @@
 		<Icon
 			src="icons/close.png"
 			style="cursor: pointer; float: right"
-			width="24"
-			height="24"
 			onClick="{ () => close() }"
 		/>
 		<slot />

@@ -1,6 +1,6 @@
 <script lang="ts">
-	export let width = 32;
-	export let height = 32;
+	export let width = 24;
+	export let height = 24;
 	export let src: string;
 	export let onClick = () => {};
 </script>

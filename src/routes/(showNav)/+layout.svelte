@@ -7,7 +7,7 @@
 
 <div class:mobile-nav={ isOpenMenu }>
 	<header>
-		<span class="logo"><Icon height="64" src="favicon.png" width="64" /></span>
+		<span class="logo"><Icon height="64" src="icons/logo.png" width="64" /></span>
 		<NavBar bind:isOpenMenu={ isOpenMenu } />
 	</header>
 
