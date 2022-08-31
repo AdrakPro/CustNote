@@ -45,7 +45,7 @@
 
     .sub-text {
       font-weight: $fw-light;
-			text-align: end;
+      text-align: end;
     }
   }
 </style>

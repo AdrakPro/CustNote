@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { notify } from '$lib/stores/notify.js';
 	import { validateEmailAndPassword } from '$lib/utils/validators.ts';
+	import { post } from '$lib/api.js';
 
 	let email = '';
 	let password = '';
@@ -14,12 +15,7 @@
 			return;
 		}
 
-		const signInRes = await fetch('/api/auth.json', {
-			method: 'POST',
-			headers: new Headers({ 'content-type': 'application/json' }),
-			credentials: 'same-origin',
-			body: JSON.stringify({ email, password }),
-		});
+		const signInRes = await post('api/auth/signIn.json', { email, password }, null);
 
 		if (signInRes.ok) {
 			await goto('/dashboard');
@@ -49,4 +45,5 @@
 <button
 	class="submit-button"
 	on:click={ () => signIn() }
->Login ></button>
+>Login >
+</button>

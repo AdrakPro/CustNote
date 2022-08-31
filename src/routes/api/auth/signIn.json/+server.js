@@ -1,37 +1,34 @@
-import { json } from '@sveltejs/kit';
 import { auth } from '$lib/firebase/firebase-admin.js';
 import { WEB_API_KEY } from '$lib/utils/constants.js';
 import {
-	createCustomToken,
-	createTokens,
-	removeRefreshToken,
+	customTokenCookie,
+	resetRefreshToken,
+	tokensCookie,
 } from '$lib/utils/tokenManager.js';
+import { post } from '$lib/api.js';
+import { json } from '@sveltejs/kit';
 import cookie from 'cookie';
 
 export async function POST(event) {
 	const { email, password } = await event.request.json();
-	const signInRes = await fetch(
+	const userRes = await post(
 		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${WEB_API_KEY}`,
-		{
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({ email, password, returnSecureToken: true }),
-		}
+		{ email, password, returnSecureToken: true }
 	);
 
-	if (!signInRes.ok) {
-		return new Response(undefined, { status: signInRes.status });
+	if (!userRes.ok) {
+		return new Response(undefined, { status: userRes.status });
 	}
 
-	const { refreshToken, localId } = await signInRes.json();
+	const { refreshToken, localId } = await userRes.json();
 	const customToken = await auth().createCustomToken(localId);
-	const headers = createTokens(refreshToken, customToken);
+	const headers = tokensCookie(refreshToken, customToken);
 
 	return new Response(undefined, { headers, status: 200 });
 }
 
 function unauthorized() {
-	const headers = removeRefreshToken();
+	const headers = resetRefreshToken();
 
 	return new Response(undefined, { headers, status: 401 });
 }
@@ -49,17 +46,10 @@ export async function GET(event) {
 
 	try {
 		user = await auth().verifyIdToken(customToken);
-	} catch (error) {
-		const refreshRes = await fetch(
+	} catch (e) {
+		const refreshRes = await post(
 			`https://identitytoolkit.googleapis.com/v1/token?key=${WEB_API_KEY}`,
-			{
-				method: 'POST',
-				headers: { 'content-type': 'application/json' },
-				body: JSON.stringify({
-					grant_type: 'refresh_token',
-					refresh_token: refreshToken,
-				}),
-			}
+			{ grant_type: 'refresh_token', refresh_token: refreshToken }
 		);
 
 		if (!refreshRes.ok) {
@@ -67,20 +57,20 @@ export async function GET(event) {
 		}
 
 		const tokens = await refreshRes.json();
-		const idToken = tokens['id_token'];
+		const idToken = tokens.id_token;
 
-		if (tokens['refresh_token'] !== refreshToken) {
+		if (tokens.refresh_token !== refreshToken) {
 			return unauthorized();
 		}
 
 		try {
 			user = await auth().verifyIdToken(idToken);
 			customToken = await auth().createCustomToken(user.uid);
-			headers = createCustomToken(customToken);
-		} catch (error) {
+			headers = customTokenCookie(customToken);
+		} catch (e) {
 			unauthorized();
 		}
 	}
 
-	return json({ user, customToken }, { headers });
+	return json({ user }, { headers });
 }

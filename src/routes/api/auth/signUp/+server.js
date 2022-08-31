@@ -1,8 +1,9 @@
 import { error } from '@sveltejs/kit';
-import prisma from '$lib/prisma.js';
+import prisma from '$lib/../../../../lib/prisma';
 import { auth } from '$lib/firebase/firebase-admin.js';
 import { WEB_API_KEY } from '$lib/utils/constants.js';
-import { createTokens } from '$lib/utils/tokenManager.js';
+import { tokensCookie } from '$lib/utils/tokenManager.js';
+import { post } from '$lib/api.js';
 
 export async function POST(event) {
 	const { email, password, username } = await event.request.json();
@@ -15,13 +16,10 @@ export async function POST(event) {
 
 	await auth().setCustomUserClaims(uid, { early_access: true });
 
-	const signInRes = await fetch(
+	const signInRes = await post(
 		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${WEB_API_KEY}`,
-		{
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({ email, password, returnSecureToken: true }),
-		}
+		{ email, password, returnSecureToken: true },
+		null
 	);
 
 	if (!signInRes.ok) {
@@ -30,7 +28,7 @@ export async function POST(event) {
 
 	const { refreshToken } = await signInRes.json();
 	const customToken = await auth().createCustomToken(uid);
-	const headers = createTokens(refreshToken, customToken);
+	const headers = tokensCookie(refreshToken, customToken);
 
 	// Create user in database
 	try {

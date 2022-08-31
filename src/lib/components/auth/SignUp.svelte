@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { post } from '$lib/api.js';
 	import { notify } from '$lib/stores/notify.js';
 	import { validateSignUpForm } from '$lib/utils/validators.ts';
 
@@ -15,12 +16,7 @@
 			return;
 		}
 
-		const signUpRes = await fetch('/api/new-user.json', {
-			method: 'POST',
-			headers: new Headers({ 'content-type': 'application/json' }),
-			credentials: 'same-origin',
-			body: JSON.stringify({ email, password, username }),
-		});
+		const signUpRes = await post('api/auth/signUp', { email, password, username }, null);
 
 		if (signUpRes.ok) {
 			await goto('/dashboard');
@@ -34,21 +30,21 @@
 <div class="input-fields">
 	<input
 		bind:value={ email }
-		type="email"
 		name="email"
 		placeholder="Email"
+		type="email"
 	/>
 	<input
 		bind:value={ username }
-		type="text"
 		name="username"
 		placeholder="Username"
+		type="text"
 	/>
 	<input
 		bind:value={ password }
-		type="password"
 		name="password"
 		placeholder="Password"
+		type="password"
 	/>
 </div>
 <p class="info">By signing up, you agree to our <a href="#">terms of service</a> and <a href="#">privacy
@@ -58,4 +54,5 @@
 <button
 	class="submit-button"
 	on:click={ () => signUp() }
->Sign Up ></button>
+>Sign Up >
+</button>

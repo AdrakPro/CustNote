@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores';
-	// svelte-kit bug redirect causes error page
+
+	console.log($page.error);
 </script>
 
 <div class="container">
