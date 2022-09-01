@@ -31,8 +31,8 @@
     cursor: pointer;
     height: 160px;
     margin: $s-16;
-    max-width: 420px;
-    min-width: 290px;
+    max-width: 440px;
+    min-width: 280px;
     padding: $s-16;
     user-select: none;
 
