@@ -9,7 +9,7 @@
     "build": "vite build",
     "package": "svelte-kit package",
     "preview": "vite preview",
-    "vercel-build": "prisma generate && yarn build"
+    "vercel-build": "prisma generate && vite build"
   },
   "dependencies": {
     "@milkdown/core": "^6.3.2",

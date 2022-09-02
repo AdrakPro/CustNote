@@ -12,10 +12,6 @@
 	<Wave />
 </section>
 
-<svelte:head>
-	<title>CustNote</title>
-</svelte:head>
-
 <style lang="scss">
   /* INFO PAGE*/
   .welcome {
