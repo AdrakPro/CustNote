@@ -19,6 +19,18 @@ const config = {
 			allowed: ['PUT', 'DELETE'],
 		},
 	},
+
+	csp: {
+		mode: 'hash',
+		directives: {
+			'script-src': ['self'],
+			'img-src': ['*'],
+		},
+	},
+
+	csrf: {
+		checkOrigin: true,
+	},
 };
 
 export default config;

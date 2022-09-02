@@ -25,7 +25,6 @@
     }
   }
 
-  /* HEADER */
   header {
     height: 64px;
     position: fixed;
