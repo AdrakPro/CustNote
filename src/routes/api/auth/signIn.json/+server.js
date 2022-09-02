@@ -1,10 +1,6 @@
 import { auth } from '$lib/firebase/firebase-admin.js';
 import { WEB_API_KEY } from '$lib/utils/constants.js';
-import {
-	customTokenCookie,
-	resetRefreshToken,
-	tokensCookie,
-} from '$lib/utils/tokenManager.js';
+import { customTokenCookie, resetRefreshToken, tokensCookie } from '$lib/utils/tokenManager.js';
 import { post } from '$lib/api.js';
 import { json } from '@sveltejs/kit';
 import cookie from 'cookie';
@@ -74,8 +70,11 @@ export async function GET({ request }) {
 		}
 	}
 
-	return json({
-		username: user.name.toLowerCase(),
-		userId: user.uid
-	}, { headers, status: 200 });
+	return json(
+		{
+			username: user.name.toLowerCase(),
+			userId: user.uid,
+		},
+		{ headers, status: 200 }
+	);
 }

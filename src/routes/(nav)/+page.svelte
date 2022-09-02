@@ -20,6 +20,7 @@
   }
 
   .info {
+    margin: 0;
     padding: $s-32 $s-12;
     text-align: center;
   }
@@ -43,6 +44,7 @@
     margin: 0 $s-12;
 
     a {
+      color: $white;
       font-weight: $fw-bold;
       padding: $s-12;
     }
