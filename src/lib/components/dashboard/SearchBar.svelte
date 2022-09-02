@@ -6,7 +6,7 @@
 
 <div class="search-bar">
 	<Icon
-		src="icons/magnify.png"
+		src="/icons/magnify.png"
 		style="margin-left: 5px"
 	/>
 	<input
