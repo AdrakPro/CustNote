@@ -8,9 +8,9 @@
 
 <button class="google-button">
 	<Icon
+		height="28"
 		src="icons/google.png"
-		width="36"
-		height="36"
+		width="28"
 	/>
 	<span>{ getText() } WITH GOOGLE</span>
 </button>
@@ -28,14 +28,15 @@
     width: 90%;
 
     &:hover {
-      background-color: $dark-blue;
-      transition: background-color 200ms ease-in-out;
+      background-color: rgba($blue, $base-opacity);
+      transition: background-color 250ms ease-in-out;
     }
 
     span {
       color: $white;
       font-size: $fs-14;
       font-weight: $fw-bold;
+      padding-left: $s-6;
     }
   }
 </style>

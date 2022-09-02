@@ -71,7 +71,7 @@
     display: block;
     height: 2px;
     position: relative;
-    width: 30px;
+    width: 27px;
   }
 
   .toggle-menu-label span::before,

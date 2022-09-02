@@ -6,8 +6,8 @@
 	<div class="info">
 		<h1 class="quote">A better way to write, share and organize your notes</h1>
 		<p>Take your notes to the next level with a blazing fast speed and various customizing features</p>
-		<button class="nav-button"><a href="/auth">Get started now</a></button>
-		<button class="nav-button"><a href="#">See how CustNote works</a></button>
+		<button><a href="/auth">Get started now</a></button>
+		<button><a href="#">See how CustNote works</a></button>
 	</div>
 	<Wave />
 </section>
@@ -40,7 +40,7 @@
     margin-bottom: $s-20;
   }
 
-  .nav-button {
+  button {
     background-color: $blue;
     border-radius: $base-radius;
     height: 48px;

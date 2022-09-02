@@ -23,11 +23,6 @@
   right: 0;
   width: 100%;
   font-size: $fs-20;
-
-  &:hover {
-    background-color: $dark-blue;
-    transition: background-color 200ms ease-in-out;
-  }
 }
 
 .info {
