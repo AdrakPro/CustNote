@@ -1,12 +1,13 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 	import { modules } from '$lib/stores/modules.js';
 	import { dialog } from '$lib/stores/dialog.js';
 	import { page } from '$app/stores';
 	import { notify } from '$lib/stores/notify.js';
+	import { post } from '$lib/api.js';
 
 	const { userId } = $page.data;
-	let nameInput;
+	let nameInput: HTMLInputElement;
 
 	onMount(() => nameInput.focus());
 
@@ -18,14 +19,9 @@
 			dialog.close();
 
 			// Create a module in database
-			const newModuleRes = await fetch('/api/modules/new-module.json', {
-				method: 'POST',
-				headers: new Headers({ 'content-type': 'application/json' }),
-				credentials: 'same-origin',
-				body: JSON.stringify({ name, userId }),
-			});
+			const moduleRes = await post(`api/${userId}/module.json`, { name, userId }, userId);
 
-			if (!newModuleRes.ok) {
+			if (!moduleRes.ok) {
 				notify.danger('Module cannot be saved! Try again!');
 			}
 		}
@@ -36,8 +32,8 @@
 	<h1>Enter module name:</h1>
 	<input
 		bind:this={ nameInput }
-		type="text"
 		name="module"
+		type="text"
 	/>
 </div>
 
