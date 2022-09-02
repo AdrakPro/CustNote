@@ -1,5 +1,7 @@
 import { redirect } from '@sveltejs/kit';
+import { modules } from '$lib/stores/modules.js';
 
+/** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
 	const authRes = await fetch('/api/auth/signIn.json');
 
@@ -7,17 +9,14 @@ export async function load({ fetch }) {
 		throw redirect(302, '/auth');
 	}
 
-	const { user } = await authRes.json();
-	const token = user.uid;
+	const { userId } = await authRes.json();
+	const modulesRes = await fetch(`/api/${userId}/modules.json`);
 
-	// const { user } = await authRes.json();
-	// console.log(user);
-	// // ogarnij get z parametrem
-	// const modulesRes = await fetch(`/api/${user_id}/get-modules.json`);
-	// const fetchedModules = await modulesRes.json();
-	// modules.setModules(fetchedModules);
-	//
-	return {
-		token,
-	};
+	if (modulesRes.ok) {
+		const fetchedModules = await modulesRes.json();
+
+		modules.setModules(fetchedModules);
+	}
+
+	return { userId };
 }

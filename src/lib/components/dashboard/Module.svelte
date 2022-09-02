@@ -1,15 +1,13 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
 
-	const { username } = $page.data;
 	export let name;
 	export let lastEdit;
 
 	async function redirectToModule() {
 		const moduleName = name.toLowerCase();
 
-		await goto(`/${ username }/${ moduleName }`);
+		await goto(`/module/${ moduleName }`);
 	}
 </script>
 

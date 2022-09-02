@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 
+/** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
 	const authRes = await fetch('/api/auth/signIn.json');
 

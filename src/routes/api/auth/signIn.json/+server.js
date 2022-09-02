@@ -9,8 +9,9 @@ import { post } from '$lib/api.js';
 import { json } from '@sveltejs/kit';
 import cookie from 'cookie';
 
-export async function POST(event) {
-	const { email, password } = await event.request.json();
+/** @type {import('./$types').RequestHandler} */
+export async function POST({ request }) {
+	const { email, password } = await request.json();
 	const userRes = await post(
 		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${WEB_API_KEY}`,
 		{ email, password, returnSecureToken: true }
@@ -33,8 +34,9 @@ function unauthorized() {
 	return new Response(undefined, { headers, status: 401 });
 }
 
-export async function GET(event) {
-	const getCookie = event.request.headers.get('cookie') || '';
+/** @type {import('./$types').RequestHandler} */
+export async function GET({ request }) {
+	const getCookie = request.headers.get('cookie') || '';
 	let { refreshToken, customToken } = cookie.parse(getCookie);
 
 	if (!refreshToken) {
@@ -72,5 +74,8 @@ export async function GET(event) {
 		}
 	}
 
-	return json({ user }, { headers });
+	return json({
+		username: user.name.toLowerCase(),
+		userId: user.uid
+	}, { headers, status: 200 });
 }

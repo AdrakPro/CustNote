@@ -1,12 +1,12 @@
-import { error } from '@sveltejs/kit';
-import prisma from '$lib/../../../../lib/prisma';
+import { createDataInModel } from '$lib/prisma.js';
 import { auth } from '$lib/firebase/firebase-admin.js';
-import { WEB_API_KEY } from '$lib/utils/constants.js';
+import { USER, WEB_API_KEY } from '$lib/utils/constants.js';
 import { tokensCookie } from '$lib/utils/tokenManager.js';
 import { post } from '$lib/api.js';
 
-export async function POST(event) {
-	const { email, password, username } = await event.request.json();
+/** @type {import('./$types').RequestHandler} */
+export async function POST({ request }) {
+	const { email, password, username } = await request.json();
 	const userRecord = await auth().createUser({
 		email,
 		password,
@@ -30,16 +30,7 @@ export async function POST(event) {
 	const customToken = await auth().createCustomToken(uid);
 	const headers = tokensCookie(refreshToken, customToken);
 
-	// Create user in database
-	try {
-		await prisma.user.create({
-			data: {
-				id: uid,
-			},
-		});
-	} catch (e) {
-		throw new error(400, e.message);
-	}
+	await createDataInModel(USER, { id: uid });
 
 	return new Response(undefined, { headers, status: 200 });
 }
