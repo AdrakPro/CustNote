@@ -12,6 +12,6 @@ const auth = getAuth(app);
 export async function signOut() {
 	await post('/api/auth/signOut');
 	await _signOut(auth);
-	await goto('/auth');
 	modules.reset();
+	await goto('/auth');
 }
