@@ -1,11 +1,10 @@
 <script>
 	import SearchBar from '$lib/components/dashboard/SearchBar.svelte';
-	import Module from '$lib/components/dashboard/Module.svelte';
 	import AddModule from '$lib/components/dashboard/AddModule.svelte';
 	import AddModuleContent from '$lib/components/dialog/AddModuleContent.svelte';
 	import Dialog from '$lib/components/dialog/Dialog.svelte';
 	import Notify from '$lib/components/Notify.svelte';
-	import { modules } from '$lib/stores/modules.js';
+	import ModuleList from '$lib/components/dashboard/ModuleList.svelte';
 </script>
 
 <Notify />
@@ -17,9 +16,7 @@
 	<AddModule />
 </section>
 <section class="container">
-	{#each $modules as { name, lastEdit }}
-		<Module { name } { lastEdit } />
-	{/each}
+	<ModuleList />
 </section>
 <Dialog>
 	<AddModuleContent />

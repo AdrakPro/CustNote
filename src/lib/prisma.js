@@ -17,7 +17,7 @@ export async function createDataInModel(model, data) {
 }
 
 export async function getDataFromModel(model, id, include) {
-	let data = {};
+	let data;
 
 	try {
 		data = await prisma[model].findUnique({
