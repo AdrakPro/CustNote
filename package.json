@@ -12,6 +12,7 @@
     "vercel-build": "prisma generate && vite build"
   },
   "dependencies": {
+    "@macfja/svelte-persistent-store": "^2.1.0",
     "@milkdown/core": "^6.3.2",
     "@milkdown/preset-commonmark": "^6.3.2",
     "@milkdown/prose": "^6.3.2",

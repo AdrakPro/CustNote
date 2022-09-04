@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import { modules } from '$lib/stores/modules.js';
+import { isStoreEmpty } from '$lib/utils/persistentStore.js';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
@@ -10,9 +11,9 @@ export async function load({ fetch }) {
 	}
 
 	const { userId } = await authRes.json();
-	const modulesRes = await fetch(`/api/${userId}/modules.json`);
 
-	if (modulesRes.ok) {
+	if (isStoreEmpty(modules)) {
+		const modulesRes = await fetch(`/api/${userId}/modules.json`);
 		const fetchedModules = await modulesRes.json();
 
 		modules.setModules(fetchedModules);
