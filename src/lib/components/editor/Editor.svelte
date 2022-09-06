@@ -3,7 +3,7 @@
 	import { commonmark } from '@milkdown/preset-commonmark';
 	import { nord } from '@milkdown/theme-nord';
 
-	export let defaultValue: string;
+	export let defaultValue = '';
 
 	function editor(dom) {
 		Editor.make()

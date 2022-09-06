@@ -11,10 +11,10 @@
 
 	onMount(() => nameInput.focus());
 
-	async function submit(event) {
+	async function submit({ keyCode }) {
 		const name = nameInput.value;
 
-		if (event.keyCode === 13 && name !== '') {
+		if (keyCode === 13 && name !== '') {
 			modules.addModule(name);
 			dialog.close();
 

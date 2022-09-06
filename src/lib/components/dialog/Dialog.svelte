@@ -2,8 +2,8 @@
 	import { dialog } from '$lib/stores/dialog.js';
 	import Icon from '$lib/components/Icon.svelte';
 
-	function closeOnEscape(event) {
-		if (event.keyCode === 27) {
+	function closeOnEscape({ keyCode }) {
+		if (keyCode === 27) {
 			dialog.close();
 		}
 	}
