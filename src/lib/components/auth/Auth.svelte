@@ -2,6 +2,7 @@
 	import GoogleAuth from './GoogleAuth.svelte';
 	import SignIn from './SignIn.svelte';
 	import SignUp from './SignUp.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import '$styles/auth.scss';
 
 	let isLoginForm = true;
@@ -16,7 +17,9 @@
 </script>
 
 <div>
-	<h1 class="title">CustNote</h1>
+	<h1 class="title">
+		<Icon height="70" src="/logo.png" width="263" />
+	</h1>
 	<ul class="auth-tabs">
 		<li
 			class:highlighted-tab={ isLoginForm }
@@ -37,8 +40,6 @@
 
 <style lang="scss">
   .title {
-    font-size: $fs-32;
-    font-weight: $fw-bold;
     margin-bottom: $s-20;
   }
 

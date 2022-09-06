@@ -4,5 +4,12 @@
   "name": "CustNote",
   "short_name": "CustNote",
   "display": "minimal-ui",
-  "start_url": "/"
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }

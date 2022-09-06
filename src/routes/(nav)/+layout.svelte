@@ -7,7 +7,7 @@
 
 <div class:mobile-nav={ isOpenMenu }>
 	<header>
-		<span class="logo"><Icon height="64" src="/icons/logo.png" width="64" /></span>
+		<span class="logo"><Icon height="48" src="/logo-smaller.png" width="180" /></span>
 		<NavBar bind:isOpenMenu={ isOpenMenu } />
 	</header>
 
@@ -24,6 +24,11 @@
       filter: brightness(40%);
     }
   }
+
+	.logo {
+		margin-left: $s-12;
+		margin-top: $s-6;
+	}
 
   header {
     height: 64px;
