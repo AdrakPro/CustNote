@@ -51,7 +51,7 @@
 
     li {
       cursor: pointer;
-      padding-bottom: 5px;
+      padding-bottom: $s-6;
       width: 50%;
     }
   }

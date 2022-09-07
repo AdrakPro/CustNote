@@ -22,7 +22,7 @@
 
   // Center auth-form using top/left/margin/height/width
   .auth-form {
-    border: 3px solid $blue;
+    border: 3px $blue solid;
     border-bottom: none;
     height: 550px;
     left: 50%;
