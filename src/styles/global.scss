@@ -36,18 +36,20 @@ button {
 
 // Todo add firefox support
 ::-webkit-scrollbar {
-  width: 10px; /* Mostly for vertical scrollbars */
-  height: 10px; /* Mostly for horizontal scrollbars */
+  width: 6px;
+  height: 6px;
 }
-::-webkit-scrollbar-thumb { /* Foreground */
+
+::-webkit-scrollbar-thumb {
   background: #333;
   background-clip: content-box;
-  border-radius: 10px;
+  border-radius: 999px;
 
   &:hover {
     background: rgba(#2492f9, 0.5);
   }
 }
-::-webkit-scrollbar-track { /* Background */
+
+::-webkit-scrollbar-track {
   background: #484848;
 }
