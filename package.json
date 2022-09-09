@@ -13,10 +13,19 @@
   },
   "dependencies": {
     "@macfja/svelte-persistent-store": "^2.1.0",
-    "@milkdown/core": "^6.3.2",
-    "@milkdown/preset-commonmark": "^6.3.2",
-    "@milkdown/prose": "^6.3.2",
-    "@milkdown/theme-nord": "^6.3.2",
+    "@milkdown/core": "^6.4.0",
+    "@milkdown/design-system": "^6.4.0",
+    "@milkdown/plugin-clipboard": "^6.4.0",
+    "@milkdown/plugin-cursor": "^6.4.0",
+    "@milkdown/plugin-history": "^6.4.0",
+    "@milkdown/plugin-indent": "^6.4.0",
+    "@milkdown/plugin-listener": "^6.4.0",
+    "@milkdown/plugin-math": "^6.4.0",
+    "@milkdown/plugin-slash": "^6.4.0",
+    "@milkdown/preset-commonmark": "^6.4.0",
+    "@milkdown/preset-gfm": "^6.4.0",
+    "@milkdown/prose": "^6.4.0",
+    "@milkdown/theme-pack-helper": "^6.4.0",
     "@prisma/client": "^4.2.1",
     "@sveltejs/adapter-vercel": "^1.0.0-next.66",
     "cookie": "^0.5.0",
@@ -25,7 +34,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.21.0",
-    "@sveltejs/adapter-auto": "^1.0.0-next.64",
     "@sveltejs/kit": "^1.0.0-next.454",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
@@ -41,6 +49,6 @@
     "svelte-preprocess": "^4.10.1",
     "tslib": "^2.3.1",
     "typescript": "~4.6.2",
-    "vite": "^3.1.0-beta.1"
+    "vite": "^3.1.0-beta.2"
   }
 }
