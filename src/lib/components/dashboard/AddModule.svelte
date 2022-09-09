@@ -8,7 +8,7 @@
 </script>
 
 <button on:click={ () => show() }>
-	<Icon src="/icons/plus.png" />
+	<Icon name="add" />
 	<span>New module</span>
 </button>
 

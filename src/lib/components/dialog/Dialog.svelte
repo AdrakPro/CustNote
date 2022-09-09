@@ -18,7 +18,7 @@
 {#if $dialog}
 	<div class="container">
 		<Icon
-			src="/icons/close.png"
+			name="close"
 			style="cursor: pointer; float: right"
 			onClick="{ () => close() }"
 		/>
