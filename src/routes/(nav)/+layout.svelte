@@ -25,10 +25,9 @@
     }
   }
 
-	.logo {
-		margin-left: $s-12;
-		margin-top: $s-6;
-	}
+  .logo {
+    margin: $s-6 0 0 $s-12;
+  }
 
   header {
     height: 64px;
