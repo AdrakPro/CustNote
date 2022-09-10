@@ -1,7 +1,7 @@
-<script lang="ts">
+<script>
 	export let width = 24;
 	export let height = 24;
-	export let src: string;
+	export let src = '';
 	export let name = '';
 	export let onClick = () => {};
 </script>
