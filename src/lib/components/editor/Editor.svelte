@@ -13,8 +13,9 @@
 
 	const defaultValue = '';
 
-	function editor(dom) {
-		Editor.make()
+	// TODO SOME OPTIMZATION NEED #1 load non need plugins after
+	function createEditor(dom) {
+		return Editor.make()
 			.config((ctx) => {
 				ctx.set(rootCtx, dom);
 				ctx.set(defaultValueCtx, defaultValue);
@@ -34,4 +35,4 @@
 	}
 </script>
 
-<div spellcheck="false" use:editor></div>
+<div spellcheck="false" use:createEditor></div>
