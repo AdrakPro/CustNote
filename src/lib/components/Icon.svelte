@@ -2,7 +2,7 @@
 	export let width = 24;
 	export let height = 24;
 	export let src: string;
-	export let name: string;
+	export let name = '';
 	export let onClick = () => {};
 </script>
 
