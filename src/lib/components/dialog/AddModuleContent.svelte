@@ -14,7 +14,7 @@
 	async function submit({ keyCode }) {
 		const name = nameInput.value;
 
-		if (keyCode === 13 && name !== '') {
+		if (validateSubmit(keyCode, name)) {
 			modules.addModule(name);
 			dialog.close();
 
@@ -25,6 +25,10 @@
 				notify.danger('Module cannot be saved! Try again!');
 			}
 		}
+	}
+
+	function validateSubmit(keyCode, name) {
+		return keyCode === 13 && name !== '';
 	}
 </script>
 
