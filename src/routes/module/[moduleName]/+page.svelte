@@ -1,8 +1,9 @@
 <script>
 	import { page } from '$app/stores';
 	import NoteList from '$lib/components/notes/NoteList.svelte';
-	import Editor from '$lib/components/editor/Editor.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import Editor from '$lib/components/editor/Editor.svelte';
+	import { goto } from '$app/navigation';
 
 	const { moduleName, notes } = $page.data;
 	let open = true;
@@ -20,6 +21,10 @@
 	function selectNote({ detail }) {
 		noteContent = detail.content;
 	}
+
+	function redirectToDashboard() {
+		goto('/dashboard');
+	}
 </script>
 
 <div class="container">
@@ -27,19 +32,20 @@
 		<span
 			class="icon"
 			class:hidden={ !open }
+			on:click={ () => redirectToDashboard() }
 		><Icon
 			height="48"
 			src="/logo-smaller.png"
 			width="180"
 		/></span>
 		<NoteList
-			on:selectNote={ selectNote }
-			{ open }
 			{ notes }
+			{ open }
+			on:selectNote={ selectNote }
 		/>
 	</section>
 	<section class="editor">
-		<Editor bind:content="{ noteContent }"/>
+		<Editor bind:content="{ noteContent }" />
 	</section>
 </div>
 
@@ -72,8 +78,11 @@
   }
 
   .icon {
+    cursor: pointer;
     margin-top: $s-6;
     position: fixed;
+    user-select: none;
+    z-index: $max-z-index;
   }
 
   .hidden {

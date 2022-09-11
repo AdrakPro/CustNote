@@ -23,7 +23,7 @@
 
     &.open {
       transition: z-index 350ms step-start;
-      z-index: $max-z-index;
+      z-index: 20;
 
       .panel {
         transform: translate(0, 0);
