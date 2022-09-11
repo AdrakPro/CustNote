@@ -10,7 +10,7 @@
 
 	import { theme } from './style/theme.ts';
 	import 'katex/dist/katex.min.css';
-	import { insert } from '@milkdown/utils';
+	import { insert, replaceAll } from '@milkdown/utils';
 
 	export let content: string;
 
@@ -43,8 +43,16 @@
 		//	https://svelte.dev/docs#template-syntax-element-directives-use-action
 		return {
 			update(content) {
-				editor.then((editor) => editor.action(insert(content)));
+				// Render note content
+				editor.then((editor) => {
+					editor.action(replaceAll(''));
+					editor.action(insert(content));
+				});
 			},
+
+			destroy() {
+				console.log('destroyed');
+			}
 		};
 	}
 </script>
