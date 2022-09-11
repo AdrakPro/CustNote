@@ -4,8 +4,9 @@
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
-	const { moduleName } = $page.data;
+	const { moduleName, notes } = $page.data;
 	let open = true;
+	let noteContent = '';
 
 	$: size = open ? '300px' : '0';
 
@@ -14,6 +15,10 @@
 		if (keyCode === 27) {
 			open = !open;
 		}
+	}
+
+	function selectNote({ detail }) {
+		noteContent = detail.content;
 	}
 </script>
 
@@ -27,10 +32,14 @@
 			src="/logo-smaller.png"
 			width="180"
 		/></span>
-		<NoteList { open } />
+		<NoteList
+			on:selectNote={ selectNote }
+			{ open }
+			{ notes }
+		/>
 	</section>
 	<section class="editor">
-		<Editor />
+		<Editor bind:content="{ noteContent }"/>
 	</section>
 </div>
 

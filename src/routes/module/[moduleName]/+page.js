@@ -8,7 +8,11 @@ export async function load({ fetch, params }) {
 		throw redirect(302, '/auth');
 	}
 
+	const { userId } = await authRes.json();
 	const { moduleName } = params;
 
-	return { moduleName };
+	const notesRes = await fetch(`/api/${userId}/module/${moduleName}/notes.json`)
+	const notes = await notesRes.json();
+
+	return { moduleName, notes };
 }
