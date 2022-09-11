@@ -14,9 +14,12 @@ export async function load({ fetch }) {
 
 	if (isStoreEmpty(modules)) {
 		const modulesRes = await fetch(`/api/${userId}/modules.json`);
-		const fetchedModules = await modulesRes.json();
 
-		modules.setModules(fetchedModules);
+		if (modulesRes.ok) {
+			const fetchedModules = await modulesRes.json();
+
+			modules.setModules(fetchedModules);
+		}
 	}
 
 	return { userId };
