@@ -21,7 +21,7 @@
 
 		const selectedItem = document.getElementById(name);
 		selectedItem.style.color = '#2492f9';
-		selectedItem.style.transition = 'color 250ms ease-in 25ms';
+		selectedItem.style.transition = 'color 250ms ease-in 15ms';
 		currentSelectedItem = selectedItem;
 	}
 </script>

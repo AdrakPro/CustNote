@@ -1,9 +1,9 @@
 <script>
-	import { page } from '$app/stores';
 	import NoteList from '$lib/components/notes/NoteList.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	const { moduleName, notes } = $page.data;
 	let open = true;
@@ -44,8 +44,13 @@
 			{ open }
 		/>
 	</section>
+	<section class="header">
+		<div>Repetitions</div>
+	</section>
 	<section class="editor">
-		<Editor bind:content="{ content }" />
+		{#if content}
+			<Editor bind:content="{ content }" />
+		{/if}
 	</section>
 </div>
 
@@ -60,9 +65,10 @@
     display: grid;
     gap: 0 0;
     grid-template-areas:
-    'note-list editor';
+    "note-list header"
+    "note-list editor";
     grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 64px 1fr;
   }
 
   .note-list {
@@ -71,6 +77,11 @@
     height: 100%;
     justify-content: center;
   }
+
+	.header {
+		border-bottom: $blue 3px solid;
+		box-shadow: $base-shadow;
+	}
 
   .editor {
     grid-area: editor;
