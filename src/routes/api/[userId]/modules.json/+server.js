@@ -5,10 +5,23 @@ import { USER } from '$lib/utils/constants.js';
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ params }) {
 	const { userId } = params;
-	const data = await getDataFromModel(USER, { id: userId }, { modules: true });
+	const query = {
+		where: {
+			id: userId,
+		},
+		include: {
+			modules: {
+				select: {
+					name: true,
+					createdAt: true,
+				},
+			},
+		},
+	};
+	const data = await getDataFromModel(USER, query);
 
 	if (data === null) {
-		return json([]);
+		return json([], { status: 204 });
 	}
 
 	const { modules } = data;

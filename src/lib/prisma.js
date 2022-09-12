@@ -16,14 +16,31 @@ export async function createDataInModel(model, data) {
 	}
 }
 
-export async function getDataFromModel(model, where, include) {
+export async function getDataFromModel(model, query) {
 	let data;
 
 	try {
-		data = await prisma[model].findUnique({ where, include });
+		data = await prisma[model].findUnique(query);
 	} catch (e) {
 		throw new error(400, e.message);
 	}
 
 	return data;
+}
+
+export async function updateData(model, query) {
+	try {
+		await prisma[model].update(query);
+	} catch (e) {
+		throw new error(400, e.message);
+	}
+}
+
+export async function deleteData(model, query) {
+
+	try {
+		await prisma[model].delete(query);
+	} catch (e) {
+		throw new error(400, e.message);
+	}
 }

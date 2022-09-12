@@ -10,13 +10,19 @@ export async function GET({ params }) {
 			name: moduleName,
 		},
 		include: {
-			notes: true,
-		},
+			notes: {
+				select: {
+					name: true,
+					content: true,
+					createdAt: true,
+				}
+			}
+		}
 	};
 	const data = await getDataFromModel(MODULE, query);
 
 	if (data === null) {
-		return json([]);
+		return json([], { status: 204 });
 	}
 
 	const { notes, name } = data;

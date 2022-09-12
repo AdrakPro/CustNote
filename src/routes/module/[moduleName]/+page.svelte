@@ -39,18 +39,13 @@
 			width="180"
 		/></span>
 		<NoteList
-			on:selectNote={ selectNote }
 			{ notes }
 			{ open }
+			on:selectNote={ selectNote }
 		/>
 	</section>
-	<section class="header">
-		<div>Repetitions</div>
-	</section>
 	<section class="editor">
-		{#if content}
-			<Editor bind:content="{ content }" />
-		{/if}
+		<Editor bind:content="{ content }" />
 	</section>
 </div>
 
@@ -65,10 +60,9 @@
     display: grid;
     gap: 0 0;
     grid-template-areas:
-    "note-list header"
-    "note-list editor";
+    'note-list editor';
     grid-template-columns: auto 1fr;
-    grid-template-rows: 64px 1fr;
+    grid-template-rows: 1fr;
   }
 
   .note-list {
@@ -77,11 +71,6 @@
     height: 100%;
     justify-content: center;
   }
-
-	.header {
-		border-bottom: $blue 3px solid;
-		box-shadow: $base-shadow;
-	}
 
   .editor {
     grid-area: editor;
