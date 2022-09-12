@@ -1,23 +1,38 @@
-<script>
+<script lang="ts">
 	import Drawer from '$lib/components/notes/Drawer.svelte';
 	import { createEventDispatcher } from 'svelte';
 
 	export let open = true;
 	export let notes;
+	let currentSelectedItem: HTMLElement;
 
 	const dispatch = createEventDispatcher();
 
-	function selectNote(content) {
+	// Experimental usage of id
+	function selectNote(name, content) {
 		dispatch('selectNote', { content });
+		paintItem(name);
+	}
+
+	function paintItem(name) {
+		if (currentSelectedItem) {
+			currentSelectedItem.style.color = '#fff';
+		}
+
+		const selectedItem = document.getElementById(name);
+		selectedItem.style.color = '#2492f9';
+		selectedItem.style.transition = 'color 250ms ease-in 25ms';
+		currentSelectedItem = selectedItem;
 	}
 </script>
 
 <Drawer { open }>
 	<ul>
-		{#each notes as { name, content }}
-			<li on:click={ () => selectNote(content) }>
-				<span>{ name }</span>
-			</li>
+		{#each notes as { name, content } (name)}
+			<li
+				id="{ name }"
+				on:click={ () => selectNote(name, content) }
+			>{ name }</li>
 		{/each}
 	</ul>
 </Drawer>
