@@ -45,7 +45,9 @@
 		/>
 	</section>
 	<section class="editor">
-		<Editor bind:content="{ content }" />
+		{#if content}
+			<Editor bind:content="{ content }" />
+		{/if}
 	</section>
 </div>
 
@@ -75,6 +77,7 @@
   .editor {
     grid-area: editor;
     word-break: break-word;
+		height: 100vh;
   }
 
   .icon {
