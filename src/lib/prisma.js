@@ -37,7 +37,6 @@ export async function updateData(model, query) {
 }
 
 export async function deleteData(model, query) {
-
 	try {
 		await prisma[model].delete(query);
 	} catch (e) {

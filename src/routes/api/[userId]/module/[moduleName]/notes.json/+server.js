@@ -15,9 +15,9 @@ export async function GET({ params }) {
 					name: true,
 					content: true,
 					createdAt: true,
-				}
-			}
-		}
+				},
+			},
+		},
 	};
 	const data = await getDataFromModel(MODULE, query);
 

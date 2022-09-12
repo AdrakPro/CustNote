@@ -7,7 +7,7 @@
 	async function redirectToModule() {
 		const moduleName = name.toLowerCase();
 
-		await goto(`/module/${moduleName}`);
+		await goto(`/module/${ moduleName }`);
 	}
 </script>
 

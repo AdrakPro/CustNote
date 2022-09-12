@@ -76,8 +76,8 @@
 
   .editor {
     grid-area: editor;
+    height: 100vh;
     word-break: break-word;
-		height: 100vh;
   }
 
   .icon {
