@@ -44,6 +44,7 @@
 			on:selectNote={ selectNote }
 		/>
 	</section>
+<!--	opcje, dodawnie, na samym dole drawera sticky-->
 	<section class="editor">
 		{#if content}
 			<Editor bind:content="{ content }" />

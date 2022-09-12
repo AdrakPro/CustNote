@@ -16,7 +16,6 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 	const secondary = palette('secondary');
 	const neutral = palette('neutral');
 	const surface = palette('surface');
-	const solid = palette('solid');
 	const highlight = palette('line', 0.38);
 
 	const lineWidth = manager.get(ThemeSize, 'lineWidth');
@@ -138,7 +137,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 		}
 
 		.list-item_label {
-			color: ${secondary};
+			color: ${primary};
 			display: flex;
 			height: 24px;
 			justify-content: center;
@@ -241,7 +240,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
 		.link,
 		a {
-			color: ${solid};
+			color: ${secondary};
 			cursor: pointer;
 			font-weight: 500;
 
@@ -251,7 +250,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 		}
 
 		.strike-through {
-			text-decoration-color: ${solid};
+			text-decoration-color: ${secondary};
 		}
 	`;
 

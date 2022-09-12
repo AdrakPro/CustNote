@@ -2,7 +2,7 @@ import type { Color } from '@milkdown/core';
 
 const theme = {
 	blue: '#2492f9',
-	purple: '#ae50e8',
+	purple: '#A82FFC',
 	gray: '#6272a4',
 	white: '#fff',
 	pink: '#ff79c6',
