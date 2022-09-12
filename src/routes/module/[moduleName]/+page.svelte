@@ -7,7 +7,7 @@
 
 	const { moduleName, notes } = $page.data;
 	let open = true;
-	let noteContent = '';
+	let content = '';
 
 	$: size = open ? '300px' : '0';
 
@@ -19,7 +19,7 @@
 	}
 
 	function selectNote({ detail }) {
-		noteContent = detail.content;
+		content = detail.content;
 	}
 
 	function redirectToDashboard() {
@@ -39,13 +39,13 @@
 			width="180"
 		/></span>
 		<NoteList
+			on:selectNote={ selectNote }
 			{ notes }
 			{ open }
-			on:selectNote={ selectNote }
 		/>
 	</section>
 	<section class="editor">
-		<Editor bind:content="{ noteContent }" />
+		<Editor bind:content="{ content }" />
 	</section>
 </div>
 
