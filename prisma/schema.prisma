@@ -19,7 +19,8 @@ model User {
 }
 
 model Module {
-  name      String    @id @db.VarChar(255)
+  id        String    @id @default(uuid())
+  name      String    @db.VarChar(255) @unique
   notes     Note[]
   createdAt DateTime  @default(now())
   user      User      @relation(fields: [userId], references: [id])
@@ -29,13 +30,14 @@ model Module {
 }
 
 model Note {
-  name        String    @id @db.VarChar(255)
-  content     String?   @db.Text
-  createdAt   DateTime  @default(now())
-  module      Module    @relation(fields: [moduleName], references: [name])
-  moduleName  String
+  id        String    @id @default(uuid())
+  name      String    @db.VarChar(255) @unique
+  content   String?   @db.Text
+  createdAt DateTime  @default(now())
+  module    Module    @relation(fields: [moduleId], references: [id])
+  moduleId  String
 
-  @@index([moduleName])
+  @@index([moduleId])
 }
 
 enum Role {
