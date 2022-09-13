@@ -12,7 +12,7 @@ export async function load({ fetch }) {
 	const { userId } = await authRes.json();
 
 	if (modules.isEmpty()) {
-		const modulesRes = await fetch(`/api/${ userId }/modules.json`);
+		const modulesRes = await fetch(`/api/${userId}/modules.json`);
 
 		if (modulesRes.ok) {
 			const fetchedModules = await modulesRes.json();

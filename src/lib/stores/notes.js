@@ -1,6 +1,5 @@
 import { createPersistentStore } from '$lib/utils/persistentStore.js';
 import { NOTES } from '$lib/utils/constants.js';
-import { get } from 'svelte/store';
 
 function createNoteStore() {
 	const notes = createPersistentStore(NOTES);
@@ -9,8 +8,8 @@ function createNoteStore() {
 	return {
 		subscribe,
 		addNote: (moduleName, name) =>
-			update((notes) => [
-				...notes,
+			update((state) => [
+				...state,
 				{
 					moduleName,
 					name,
@@ -18,8 +17,6 @@ function createNoteStore() {
 					createdAt: Date.now(),
 				},
 			]),
-		getFromModule: (moduleName) =>
-			get(notes).filter((note) => note.moduleName === moduleName),
 		setNotes: (data) => update((notes) => [...notes, ...data]),
 		reset: () => set([]),
 	};

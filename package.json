@@ -19,7 +19,6 @@
     "@milkdown/plugin-cursor": "^6.4.1",
     "@milkdown/plugin-history": "^6.4.1",
     "@milkdown/plugin-indent": "^6.4.1",
-    "@milkdown/plugin-listener": "^6.4.1",
     "@milkdown/plugin-math": "^6.4.1",
     "@milkdown/plugin-slash": "^6.4.1",
     "@milkdown/plugin-trailing": "^6.4.1",
@@ -31,7 +30,8 @@
     "@sveltejs/adapter-vercel": "^1.0.0-next.66",
     "cookie": "^0.5.0",
     "firebase": "^9.9.2",
-    "firebase-admin": "^11.0.1"
+    "firebase-admin": "^11.0.1",
+    "svelte-previous": "^2.1.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.21.0",

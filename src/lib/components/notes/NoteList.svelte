@@ -9,9 +9,9 @@
 	const dispatch = createEventDispatcher();
 
 	// Experimental usage of id
-	function selectNote(name, content) {
-		dispatch('selectNote', { content });
-		paintItem(name);
+	function selectNote(note) {
+		dispatch('selectNote', note);
+		paintItem(note.name);
 	}
 
 	function paintItem(name) {
@@ -28,15 +28,14 @@
 
 <Drawer { open }>
 	<ul>
-		{#each notes as { name, content } (name)}
+		{#each notes as note (note.name)}
 			<li
-				id="{ name }"
-				on:click={ () => selectNote(name, content) }
-			>{ name }</li>
+				id="{ note.name }"
+				on:click={ () => selectNote(note) }
+			>{ note.name }</li>
 		{/each}
 	</ul>
 </Drawer>
-
 
 <style lang="scss">
   ul {

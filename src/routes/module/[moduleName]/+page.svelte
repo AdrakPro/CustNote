@@ -7,7 +7,7 @@
 
 	const { moduleName, notes } = $page.data;
 	let open = true;
-	let content = '';
+	let note = null;
 
 	$: size = open ? '300px' : '0';
 
@@ -19,7 +19,10 @@
 	}
 
 	function selectNote({ detail }) {
-		content = detail.content;
+		// Prevent user from selecting already selected note
+		if (note !== detail) {
+			note = detail;
+		}
 	}
 
 	function redirectToDashboard() {
@@ -46,8 +49,8 @@
 	</section>
 <!--	opcje, dodawnie, na samym dole drawera sticky-->
 	<section class="editor">
-		{#if content}
-			<Editor bind:content="{ content }" />
+		{#if note}
+			<Editor bind:note="{ note }" />
 		{/if}
 	</section>
 </div>

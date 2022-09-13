@@ -1,5 +1,11 @@
 <script lang="ts">
-	import { defaultValueCtx, Editor, rootCtx } from '@milkdown/core';
+	import {
+		defaultValueCtx,
+		Editor,
+		editorViewCtx,
+		rootCtx,
+		serializerCtx
+	} from '@milkdown/core';
 	import { gfm } from '@milkdown/preset-gfm';
 	import { indent, indentPlugin } from '@milkdown/plugin-indent';
 	import { clipboard } from '@milkdown/plugin-clipboard';
@@ -7,26 +13,26 @@
 	import { math } from '@milkdown/plugin-math';
 	import { history } from '@milkdown/plugin-history';
 	import { slash } from '@milkdown/plugin-slash';
+	import { trailing } from '@milkdown/plugin-trailing';
 
 	import { theme } from './style/theme.ts';
+	import { replaceAll } from '@milkdown/utils';
+
+	import { notes } from '$lib/stores/notes.js';
+	import { withPrevious } from 'svelte-previous';
+
 	import 'katex/dist/katex.min.css';
-	import { insert, replaceAll } from '@milkdown/utils';
 
-	export let content: string;
+	export let note;
+	const [currentNote, previousNote] = withPrevious(note);
 
-	// const getMarkdown = () =>
-	// 	editor.action((ctx) => {
-	// 		const editorView = ctx.get(editorViewCtx);
-	// 		const serializer = ctx.get(serializerCtx);
-	// 		return serializer(editorView.state.doc);
-	// 	});
+	$: $currentNote = note;
 
-	// TODO SOME OPTIMZATION NEED #1 load non need plugins after
-	function createEditor(dom, content) {
-		const editor = Editor.make()
+	function createEditor(dom, note) {
+		const editorPromise = Editor.make()
 			.config((ctx) => {
 				ctx.set(rootCtx, dom);
-				ctx.set(defaultValueCtx, content);
+				ctx.set(defaultValueCtx, note.content);
 			})
 			.use(theme)
 			.use(gfm)
@@ -39,22 +45,37 @@
 				type: 'tab',
 				size: 4,
 			}))
+			.use(trailing)
 			.create();
-		//	https://svelte.dev/docs#template-syntax-element-directives-use-action
+
 		return {
-			update(content) {
-				// Render note content
-				editor.then((editor) => {
-					editor.action(replaceAll(''));
-					editor.action(insert(content));
+			update() {
+				editorPromise.then((editor) => {
+					// Get Markdown string
+					const currentMarkdown = editor.action((ctx) => {
+						const editorView = ctx.get(editorViewCtx);
+						const serializer = ctx.get(serializerCtx);
+
+						return serializer(editorView.state.doc);
+					});
+
+					// Save note content before rendering markdown
+					if ($previousNote) {
+						$notes
+							.find((note) => note.name === $previousNote.name)
+							.content = currentMarkdown;
+					}
+
+					// Render markdown
+					editor.action(replaceAll($currentNote.content));
 				});
 			},
 
 			destroy() {
 				console.log('destroyed');
-			}
+			},
 		};
 	}
 </script>
 
-<div spellcheck="false" use:createEditor={ content }></div>
+<div spellcheck="false" use:createEditor={ $currentNote }></div>

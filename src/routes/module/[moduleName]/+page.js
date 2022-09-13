@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import { notes } from '$lib/stores/notes.js';
+import { get } from 'svelte/store';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params }) {
@@ -13,7 +14,7 @@ export async function load({ fetch, params }) {
 
 	// Todo refactor tego, plus modules + notes refactor do persistent stora
 
-	let fetchedNotes = notes.getFromModule(moduleName);
+	let fetchedNotes = fetchNotes(moduleName);
 	const isNotesEmpty = fetchedNotes.length === 0;
 
 	if (isNotesEmpty) {
@@ -31,4 +32,8 @@ export async function load({ fetch, params }) {
 	}
 
 	return { moduleName, notes: fetchedNotes };
+}
+
+function fetchNotes(moduleName) {
+	return get(notes).filter((note) => note.moduleName === moduleName)
 }
