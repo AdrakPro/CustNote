@@ -1,41 +1,98 @@
 <script lang="ts">
 	import Drawer from '$lib/components/notes/Drawer.svelte';
 	import { createEventDispatcher } from 'svelte';
-	import { notes } from '$lib/stores/notes.js';
+	import { notes as noteStore } from '$lib/stores/notes.js';
 
 	export let open = true;
+	export let moduleName;
+
+	let selectionIndex = 0;
 	let currentSelectedItem: HTMLElement;
+	let noteList: HTMLElement;
 
 	const dispatch = createEventDispatcher();
 
+	$: notes = noteStore.get(moduleName);
+
 	// Experimental usage of id
-	function selectNote(note) {
-		dispatch('selectNote', note);
-		paintItem(note.name);
+	function selectNote(note, index) {
+		if (note) {
+			dispatch('selectNote', note);
+			paintItem(index);
+		}
 	}
 
-	function paintItem(name) {
+	function paintItem(index) {
 		if (currentSelectedItem) {
 			currentSelectedItem.style.color = '#fff';
 		}
 
-		const selectedItem = document.getElementById(name);
+		const selectedItem = document.getElementById(index);
 		selectedItem.style.color = '#2492f9';
 		selectedItem.style.transition = 'color 250ms ease-in 15ms';
 		currentSelectedItem = selectedItem;
 	}
+
+	function selectNoteWithSpace({ keyCode }, note, index) {
+		if (keyCode === 32) {
+			selectNote(note, index);
+		}
+	}
+
+	function selectNextNote(event) {
+		if (event.altKey) {
+			noteList.focus();
+
+			if (event.keyCode === 40) {
+
+				++selectionIndex;
+
+				if (selectionIndex >= notes.length) {
+					selectionIndex = 0;
+				}
+
+				selectNote(notes[selectionIndex], selectionIndex);
+			}
+		}
+	}
+
+	// Prevent spamming
+	function selectPreviousNote(event) {
+		if (event.altKey) {
+			noteList.focus();
+
+			if (event.keyCode === 38) {
+				--selectionIndex;
+
+				if (selectionIndex === -1) {
+					selectionIndex = notes.length - 1;
+				}
+
+				selectNote(notes[selectionIndex], selectionIndex);
+			}
+		}
+	}
 </script>
 
 <Drawer { open }>
-	<ul>
-		{#each $notes as note (note.name)}
+	<ul bind:this={ noteList }>
+		{#each notes as note, i}
 			<li
-				id="{ note.name }"
-				on:click={ () => selectNote(note) }
+				id="{ i }"
+				tabindex="{ i + 1 }"
+				on:click={ () => selectNote(note, i) }
+				on:keydown={ (event) => {
+					selectNoteWithSpace(event, note, i);
+				} }
 			>{ note.name }</li>
 		{/each}
 	</ul>
 </Drawer>
+
+<svelte:window on:keydown={ (event) => {
+	selectNextNote(event);
+	selectPreviousNote(event);
+}} />
 
 <style lang="scss">
   ul {

@@ -4,9 +4,9 @@
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { notes } from '$lib/stores/notes.js';
 	import { put } from '$lib/api.js';
 	import { onInterval } from '$lib/utils/timer.js';
+	import { notes } from '$lib/stores/notes.js';
 
 	const { userId, moduleName } = $page.data;
 	let open = true;
@@ -56,6 +56,7 @@
 		/></span>
 		<NoteList
 			{ open }
+			{ moduleName }
 			on:selectNote={ selectNote }
 		/>
 	</section>

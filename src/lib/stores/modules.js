@@ -18,8 +18,8 @@ function createModuleStore() {
 					createdAt: Date.now(),
 				},
 			]),
-		setModules: (modules) => set(modules),
-		areModulesNotExist: () => get(modules).length === 0,
+		set: (modules) => set(modules),
+		notExist: () => get(modules).length === 0,
 		reset: () => set([]),
 	};
 }

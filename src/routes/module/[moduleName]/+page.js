@@ -12,17 +12,17 @@ export async function load({ fetch, params }) {
 	const { userId } = await authRes.json();
 	const { moduleName } = params;
 
-	if (notes.areNotesNotExist(moduleName)) {
+	if (notes.notExist(moduleName)) {
 		const notesRes = await fetch(
 			`/api/${userId}/module/${moduleName}/notes.json`
 		);
 		const fetchedNotes = await notesRes.json();
 
-		notes.setNotes(fetchedNotes);
+		notes.set(fetchedNotes);
 	}
 
 	return {
 		moduleName,
-		userId
+		userId,
 	};
 }

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { defaultValueCtx, Editor, rootCtx } from '@milkdown/core';
 	import { gfm } from '@milkdown/preset-gfm';
-	import { indent, indentPlugin } from '@milkdown/plugin-indent';
 	import { clipboard } from '@milkdown/plugin-clipboard';
 	import { cursor } from '@milkdown/plugin-cursor';
 	import { math } from '@milkdown/plugin-math';
@@ -35,10 +34,6 @@
 			.use(history)
 			.use(cursor)
 			.use(math)
-			.use(indent.configure(indentPlugin, {
-				type: 'tab',
-				size: 4,
-			}))
 			.use(trailing)
 			.create();
 
@@ -66,6 +61,6 @@
 </script>
 
 <div
-	use:createEditor={ $currentNote }
 	spellcheck="false"
+	use:createEditor={ $currentNote }
 ></div>

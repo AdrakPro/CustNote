@@ -19,18 +19,24 @@ function createNoteStore() {
 					createdAt: Date.now(),
 				},
 			]),
-		setContent: (name, content) => update((notes) => {
-			const modifiedNote = notes.find((note) => note.name === name);
+		setContent: (name, content) =>
+			update((notes) => {
+				const modifiedNote = notes.find((note) => note.name === name);
 
-			modifiedNote.content = content;
-			modifiedNote.modified = true;
+				modifiedNote.content = content;
+				modifiedNote.modified = true;
 
-			return notes;
-		}),
-		setNotes: (data) => update((notes) => [...notes, ...data]),
-		getModifiedNotes: () => get(notes).filter((note) => note.modified === true),
-		areNotesNotExist: (moduleName) =>
+				return notes;
+			}),
+		set: (data) => update((notes) => [...notes, ...data]),
+
+		get: (moduleName) =>
+			get(notes).filter((note) => note.moduleName === moduleName),
+
+		notExist: (moduleName) =>
 			get(notes).filter((note) => note.moduleName === moduleName).length === 0,
+
+		getModifiedNotes: () => get(notes).filter((note) => note.modified === true),
 		reset: () => set([]),
 	};
 }

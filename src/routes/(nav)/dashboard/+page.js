@@ -11,13 +11,13 @@ export async function load({ fetch }) {
 
 	const { userId } = await authRes.json();
 
-	if (modules.areModulesNotExist()) {
+	if (modules.notExist()) {
 		const modulesRes = await fetch(`/api/${ userId }/modules.json`);
 
 		if (modulesRes.ok) {
 			const fetchedModules = await modulesRes.json();
 
-			modules.setModules(fetchedModules);
+			modules.set(fetchedModules);
 		}
 	}
 
