@@ -1,6 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 import { notes } from '$lib/stores/notes.js';
-import { get } from 'svelte/store';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params }) {
@@ -10,12 +9,12 @@ export async function load({ fetch, params }) {
 		throw redirect(302, '/auth');
 	}
 
+	const { userId } = await authRes.json();
 	const { moduleName } = params;
 
 	// Todo refactor tego, plus modules + notes refactor do persistent stora
 
-	if (isNotesEmpty(moduleName)) {
-		const { userId } = await authRes.json();
+	if (notes.areNotesNotExist(moduleName)) {
 		const notesRes = await fetch(
 			`/api/${userId}/module/${moduleName}/notes.json`
 		);
@@ -24,11 +23,8 @@ export async function load({ fetch, params }) {
 		notes.setNotes(fetchedNotes);
 	}
 
-	return { moduleName };
-}
-
-function isNotesEmpty(moduleName) {
-	return (
-		get(notes).filter((note) => note.moduleName === moduleName).length === 0
-	);
+	return {
+		moduleName,
+		userId
+	};
 }

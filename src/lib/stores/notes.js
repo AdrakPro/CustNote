@@ -1,8 +1,10 @@
 import { createPersistentStore } from '$lib/utils/persistentStore.js';
 import { NOTES } from '$lib/utils/constants.js';
+import { get } from 'svelte/store';
 
 function createNoteStore() {
-	const { subscribe, update, set } = createPersistentStore(NOTES);
+	const notes = createPersistentStore(NOTES);
+	const { subscribe, update, set } = notes;
 
 	return {
 		subscribe,
@@ -17,7 +19,16 @@ function createNoteStore() {
 					createdAt: Date.now(),
 				},
 			]),
+		setContent: (name, content) => {
+			const modifiedNote = get(notes).find((note) => note.name === name);
+
+			modifiedNote.content = content;
+			modifiedNote.modified = true;
+		},
 		setNotes: (data) => update((notes) => [...notes, ...data]),
+		getModifiedNotes: () => get(notes).filter((note) => note.modified === true),
+		areNotesNotExist: (moduleName) =>
+			get(notes).filter((note) => note.moduleName === moduleName).length === 0,
 		reset: () => set([]),
 	};
 }

@@ -1,8 +1,10 @@
 import { createPersistentStore } from '$lib/utils/persistentStore.js';
 import { MODULES } from '$lib/utils/constants.js';
+import { get } from 'svelte/store';
 
 function createModuleStore() {
-	const { subscribe, update, set } = createPersistentStore(MODULES);
+	const modules = createPersistentStore(MODULES);
+	const { subscribe, update, set } = modules;
 
 	return {
 		subscribe,
@@ -17,6 +19,7 @@ function createModuleStore() {
 				},
 			]),
 		setModules: (modules) => set(modules),
+		areModulesNotExist: () => get(modules).length === 0,
 		reset: () => set([]),
 	};
 }
