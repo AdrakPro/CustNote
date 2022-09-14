@@ -250,7 +250,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 		}
 
 		.strike-through {
-			text-decoration-color: ${secondary};
+			text-decoration-color: ${primary};
 		}
 	`;
 
@@ -386,7 +386,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
       .editor {
         ${editorLayout};
-
+				
         ${blockquote};
         ${hr};
         ${list};

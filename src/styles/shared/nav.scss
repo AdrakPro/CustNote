@@ -16,7 +16,7 @@ nav {
   }
 
   a {
-    font-size: $fs-20;
+    font-size: $fs-18;
     opacity: $max-opacity;
     transition: opacity 150ms ease-in-out;
   }
@@ -48,7 +48,7 @@ nav {
 
     ul {
       display: flex;
-      padding-top: $s-20;
+      padding-top: $s-16;
       width: 100%;
 
       // Align last child to the right
@@ -71,7 +71,7 @@ nav {
         background-color: $blue;
         content: '';
         display: block;
-        height: 3px;
+        height: 2px;
         left: 0;
         position: absolute;
         right: 0;
