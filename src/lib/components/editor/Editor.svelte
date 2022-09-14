@@ -52,6 +52,7 @@
 						notes.setContent($previousNote.name, currentMarkdown);
 					}
 
+					// Ask on github is there any way to reset history
 					// Render markdown
 					editor.action(replaceAll($currentNote.content));
 				});
@@ -64,4 +65,7 @@
 	}
 </script>
 
-<div spellcheck="false" use:createEditor={ $currentNote }></div>
+<div
+	use:createEditor={ $currentNote }
+	spellcheck="false"
+></div>

@@ -19,12 +19,14 @@ function createNoteStore() {
 					createdAt: Date.now(),
 				},
 			]),
-		setContent: (name, content) => {
-			const modifiedNote = get(notes).find((note) => note.name === name);
+		setContent: (name, content) => update((notes) => {
+			const modifiedNote = notes.find((note) => note.name === name);
 
 			modifiedNote.content = content;
 			modifiedNote.modified = true;
-		},
+
+			return notes;
+		}),
 		setNotes: (data) => update((notes) => [...notes, ...data]),
 		getModifiedNotes: () => get(notes).filter((note) => note.modified === true),
 		areNotesNotExist: (moduleName) =>

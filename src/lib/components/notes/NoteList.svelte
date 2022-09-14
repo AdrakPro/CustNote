@@ -46,14 +46,13 @@
 
     li {
       cursor: pointer;
-      font-size: $fs-18;
       font-weight: $fw-bold;
       user-select: none;
 
       &::before {
         color: $blue;
         content: '»';
-        font-size: $fs-24;
+        font-size: $fs-20;
         margin-right: $s-6;
       }
 

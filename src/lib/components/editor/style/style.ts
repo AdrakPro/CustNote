@@ -99,7 +99,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 		}
 
 		.heading {
-			margin: 2.5rem 0;
+			margin: 1rem 0;
 		}
 	`;
 
