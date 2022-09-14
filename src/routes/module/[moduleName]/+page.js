@@ -12,8 +12,6 @@ export async function load({ fetch, params }) {
 	const { userId } = await authRes.json();
 	const { moduleName } = params;
 
-	// Todo refactor tego, plus modules + notes refactor do persistent stora
-
 	if (notes.areNotesNotExist(moduleName)) {
 		const notesRes = await fetch(
 			`/api/${userId}/module/${moduleName}/notes.json`
