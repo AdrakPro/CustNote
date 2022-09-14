@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { defaultValueCtx, Editor, editorViewCtx, rootCtx, serializerCtx } from '@milkdown/core';
+	import { defaultValueCtx, Editor, rootCtx } from '@milkdown/core';
 	import { gfm } from '@milkdown/preset-gfm';
 	import { indent, indentPlugin } from '@milkdown/plugin-indent';
 	import { clipboard } from '@milkdown/plugin-clipboard';
@@ -10,7 +10,7 @@
 	import { trailing } from '@milkdown/plugin-trailing';
 
 	import { theme } from './style/theme.ts';
-	import { replaceAll } from '@milkdown/utils';
+	import { getMarkdown, replaceAll } from '@milkdown/utils';
 
 	import { notes } from '$lib/stores/notes.js';
 	import { withPrevious } from 'svelte-previous';
@@ -45,16 +45,10 @@
 		return {
 			update() {
 				editorPromise.then((editor) => {
-					// Get Markdown string
-					const currentMarkdown = editor.action((ctx) => {
-						const editorView = ctx.get(editorViewCtx);
-						const serializer = ctx.get(serializerCtx);
-
-						return serializer(editorView.state.doc);
-					});
-
 					// Save note content before rendering markdown
 					if ($previousNote) {
+						const currentMarkdown = editor.action(getMarkdown());
+
 						notes.setContent($previousNote.name, currentMarkdown);
 					}
 
