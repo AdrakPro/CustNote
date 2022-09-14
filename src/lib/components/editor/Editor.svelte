@@ -1,11 +1,5 @@
 <script lang="ts">
-	import {
-		defaultValueCtx,
-		Editor,
-		editorViewCtx,
-		rootCtx,
-		serializerCtx
-	} from '@milkdown/core';
+	import { defaultValueCtx, Editor, editorViewCtx, rootCtx, serializerCtx } from '@milkdown/core';
 	import { gfm } from '@milkdown/preset-gfm';
 	import { indent, indentPlugin } from '@milkdown/plugin-indent';
 	import { clipboard } from '@milkdown/plugin-clipboard';
@@ -61,9 +55,7 @@
 
 					// Save note content before rendering markdown
 					if ($previousNote) {
-						$notes
-							.find((note) => note.name === $previousNote.name)
-							.content = currentMarkdown;
+						notes.setContent($previousNote.name, currentMarkdown);
 					}
 
 					// Render markdown

@@ -4,12 +4,25 @@
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { notes } from '$lib/stores/notes.js';
+	import { put } from '$lib/api.js';
+	import { onInterval } from '$lib/utils/timer.js';
 
-	const { moduleName } = $page.data;
+	const { userId, moduleName } = $page.data;
 	let open = true;
 	let note = null;
 
-	$: size = open ? '300px' : '0';
+	$: drawerSize = open ? '300px' : '0';
+
+	// Interval to save notes to database
+	// Now it's 5 minutes, because currently is personal use website, in future I would change that
+	onInterval(async () => {
+		const modifiedNotes = notes.getModifiedNotes();
+
+		for (const note of modifiedNotes) {
+			put(`/api/${ userId }/module/${ moduleName }/notes/${ note.name }.json`, { content: note.content }, userId);
+		}
+	}, 300_000);
 
 	function toggleDrawer({ keyCode }) {
 		// Esc key
@@ -31,7 +44,7 @@
 </script>
 
 <div class="container">
-	<section class="note-list" style="width: { size }">
+	<section class="note-list" style="width: { drawerSize }">
 		<span
 			class="icon"
 			class:hidden={ !open }
