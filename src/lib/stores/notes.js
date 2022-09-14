@@ -2,8 +2,7 @@ import { createPersistentStore } from '$lib/utils/persistentStore.js';
 import { NOTES } from '$lib/utils/constants.js';
 
 function createNoteStore() {
-	const notes = createPersistentStore(NOTES);
-	const { subscribe, update, set } = notes;
+	const { subscribe, update, set } = createPersistentStore(NOTES);
 
 	return {
 		subscribe,
@@ -14,6 +13,7 @@ function createNoteStore() {
 					moduleName,
 					name,
 					content: '',
+					modified: false,
 					createdAt: Date.now(),
 				},
 			]),

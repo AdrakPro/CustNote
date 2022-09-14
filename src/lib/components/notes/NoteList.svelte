@@ -1,9 +1,9 @@
 <script lang="ts">
 	import Drawer from '$lib/components/notes/Drawer.svelte';
 	import { createEventDispatcher } from 'svelte';
+	import { notes } from '$lib/stores/notes.js';
 
 	export let open = true;
-	export let notes;
 	let currentSelectedItem: HTMLElement;
 
 	const dispatch = createEventDispatcher();
@@ -28,7 +28,7 @@
 
 <Drawer { open }>
 	<ul>
-		{#each notes as note (note.name)}
+		{#each $notes as note (note.name)}
 			<li
 				id="{ note.name }"
 				on:click={ () => selectNote(note) }

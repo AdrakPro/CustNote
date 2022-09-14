@@ -5,7 +5,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
-	const { moduleName, notes } = $page.data;
+	const { moduleName } = $page.data;
 	let open = true;
 	let note = null;
 
@@ -42,12 +42,11 @@
 			width="180"
 		/></span>
 		<NoteList
-			{ notes }
 			{ open }
 			on:selectNote={ selectNote }
 		/>
 	</section>
-<!--	opcje, dodawnie, na samym dole drawera sticky-->
+	<!--	opcje, dodawnie, na samym dole drawera sticky-->
 	<section class="editor">
 		{#if note}
 			<Editor bind:note="{ note }" />

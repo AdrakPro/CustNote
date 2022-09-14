@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import { modules } from '$lib/stores/modules.js';
+import { get } from 'svelte/store';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
@@ -11,7 +12,7 @@ export async function load({ fetch }) {
 
 	const { userId } = await authRes.json();
 
-	if (modules.isEmpty()) {
+	if (isModulesEmpty()) {
 		const modulesRes = await fetch(`/api/${userId}/modules.json`);
 
 		if (modulesRes.ok) {
@@ -22,4 +23,8 @@ export async function load({ fetch }) {
 	}
 
 	return { userId };
+}
+
+function isModulesEmpty() {
+	return get(modules).length === 0;
 }

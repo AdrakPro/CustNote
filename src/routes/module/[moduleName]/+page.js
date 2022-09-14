@@ -14,26 +14,21 @@ export async function load({ fetch, params }) {
 
 	// Todo refactor tego, plus modules + notes refactor do persistent stora
 
-	let fetchedNotes = fetchNotes(moduleName);
-	const isNotesEmpty = fetchedNotes.length === 0;
-
-	if (isNotesEmpty) {
+	if (isNotesEmpty(moduleName)) {
 		const { userId } = await authRes.json();
-
 		const notesRes = await fetch(
 			`/api/${userId}/module/${moduleName}/notes.json`
 		);
+		const fetchedNotes = await notesRes.json();
 
-		if (notesRes.ok) {
-			fetchedNotes = await notesRes.json();
-
-			notes.setNotes(fetchedNotes);
-		}
+		notes.setNotes(fetchedNotes);
 	}
 
-	return { moduleName, notes: fetchedNotes };
+	return { moduleName };
 }
 
-function fetchNotes(moduleName) {
-	return get(notes).filter((note) => note.moduleName === moduleName)
+function isNotesEmpty(moduleName) {
+	return (
+		get(notes).filter((note) => note.moduleName === moduleName).length === 0
+	);
 }
