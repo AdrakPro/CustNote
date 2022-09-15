@@ -40,36 +40,30 @@
 	}
 
 	function selectNextNote(event) {
-		if (event.altKey) {
+		if (event.altKey && event.keyCode === 40) {
 			noteList.focus();
 
-			if (event.keyCode === 40) {
+			++selectionIndex;
 
-				++selectionIndex;
-
-				if (selectionIndex >= notes.length) {
-					selectionIndex = 0;
-				}
-
-				selectNote(notes[selectionIndex], selectionIndex);
+			if (selectionIndex >= notes.length) {
+				selectionIndex = 0;
 			}
+
+			selectNote(notes[selectionIndex], selectionIndex);
 		}
 	}
 
 	// Prevent spamming
 	function selectPreviousNote(event) {
-		if (event.altKey) {
+		if (event.altKey && event.keyCode === 38) {
 			noteList.focus();
+			--selectionIndex;
 
-			if (event.keyCode === 38) {
-				--selectionIndex;
-
-				if (selectionIndex === -1) {
-					selectionIndex = notes.length - 1;
-				}
-
-				selectNote(notes[selectionIndex], selectionIndex);
+			if (selectionIndex === -1) {
+				selectionIndex = notes.length - 1;
 			}
+
+			selectNote(notes[selectionIndex], selectionIndex);
 		}
 	}
 </script>
