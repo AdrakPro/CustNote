@@ -7,6 +7,7 @@
 	import { history } from '@milkdown/plugin-history';
 	import { slash } from '@milkdown/plugin-slash';
 	import { trailing } from '@milkdown/plugin-trailing';
+	import { prism } from '@milkdown/plugin-prism';
 
 	import { theme } from './style/theme.ts';
 	import { getMarkdown, replaceAll } from '@milkdown/utils';
@@ -15,6 +16,7 @@
 	import { withPrevious } from 'svelte-previous';
 
 	import 'katex/dist/katex.min.css';
+	import '/src/styles/highlight.min.css';
 
 	export let note;
 	const [currentNote, previousNote] = withPrevious(note);
@@ -28,6 +30,7 @@
 				ctx.set(defaultValueCtx, note.content);
 			})
 			.use(theme)
+			.use(prism)
 			.use(gfm)
 			.use(slash)
 			.use(clipboard)

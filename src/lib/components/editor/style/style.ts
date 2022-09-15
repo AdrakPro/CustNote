@@ -185,9 +185,11 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 	const code = css`
 		.code-fence {
 			background-color: ${surface};
-
-			.code-fence_selector-wrapper {
-				display: none;
+			
+			.code-fence_selector {
+				font-size: 12px;
+				height: 30px;
+				width: 140px;
 			}
 
 			pre {
