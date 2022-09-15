@@ -75,9 +75,7 @@
 				id="{ i }"
 				tabindex="{ i + 1 }"
 				on:click={ () => selectNote(note, i) }
-				on:keydown={ (event) => {
-					selectNoteWithSpace(event, note, i);
-				} }
+				on:keydown={ (event) => selectNoteWithSpace(event, note, i) }
 			>{ note.name }</li>
 		{/each}
 	</ul>

@@ -14,7 +14,7 @@ function createNoteStore() {
 				{
 					moduleName,
 					name,
-					content: '',
+					content: `# ${name}`,
 					modified: false,
 					createdAt: Date.now(),
 				},
