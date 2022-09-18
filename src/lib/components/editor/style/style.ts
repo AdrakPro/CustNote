@@ -199,6 +199,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 				margin: 0 18px;
 
 				${manager.get(ThemeScrollbar, ['x'])}
+				
 				code {
 					font-family: ${fontCode};
 				}

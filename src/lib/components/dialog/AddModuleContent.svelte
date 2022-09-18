@@ -2,11 +2,10 @@
 	import { onMount } from 'svelte';
 	import { modules } from '$lib/stores/modules.js';
 	import { dialog } from '$lib/stores/dialog.js';
-	import { page } from '$app/stores';
 	import { notify } from '$lib/stores/notify.js';
 	import { post } from '$lib/api.js';
 
-	const { userId } = $page.data;
+	export let userId: string;
 	let nameInput: HTMLInputElement;
 
 	onMount(() => nameInput.focus());
@@ -19,7 +18,7 @@
 			dialog.close();
 
 			// Create a module in database
-			const moduleRes = await post(`api/${userId}/module.json`, { name, userId }, userId);
+			const moduleRes = await post(`api/${userId}/module`, { name, userId }, userId);
 
 			if (!moduleRes.ok) {
 				notify.danger('Module cannot be saved! Try again!');

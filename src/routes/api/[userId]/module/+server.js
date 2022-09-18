@@ -1,4 +1,4 @@
-import { createDataInModel } from '$lib/prisma.js';
+import { createDataInModel } from '$lib/prisma';
 import { MODULE } from '$lib/utils/constants.js';
 
 /** @type {import('./$types').RequestHandler} */

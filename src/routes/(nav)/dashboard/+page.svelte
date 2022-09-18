@@ -5,6 +5,9 @@
 	import Dialog from '$lib/components/dialog/Dialog.svelte';
 	import Notify from '$lib/components/Notify.svelte';
 	import ModuleList from '$lib/components/dashboard/ModuleList.svelte';
+	import { page } from '$app/stores';
+
+	const { userId } = $page.data;
 </script>
 
 <Notify />
@@ -19,7 +22,7 @@
 	<ModuleList />
 </section>
 <Dialog>
-	<AddModuleContent />
+	<AddModuleContent { userId } />
 </Dialog>
 
 <svelte:head>
