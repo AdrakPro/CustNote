@@ -4,7 +4,7 @@
 	import { notes as noteStore } from '$lib/stores/notes.js';
 
 	export let open = true;
-	export let moduleName;
+	export let moduleName: string;
 
 	let selectionIndex = 0;
 	let currentSelectedItem: HTMLElement;
@@ -12,7 +12,8 @@
 
 	const dispatch = createEventDispatcher();
 
-	$: notes = noteStore.get(moduleName);
+	// Get notes that belong to module
+	$: notes = $noteStore.filter((note) => note.moduleName === moduleName);
 
 	// Experimental usage of id
 	function selectNote(note, index) {

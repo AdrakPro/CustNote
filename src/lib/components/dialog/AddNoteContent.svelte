@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { modules } from '$lib/stores/modules.js';
+	import { notes } from '$lib/stores/notes.js';
 	import { dialog } from '$lib/stores/dialog.js';
 	import { notify } from '$lib/stores/notify.js';
 	import { post } from '$lib/api.js';
 
 	export let userId: string;
+	export let moduleName: string;
 	let nameInput: HTMLInputElement;
 
 	onMount(() => nameInput.focus());
@@ -14,14 +15,18 @@
 		const name = nameInput.value;
 
 		if (validateSubmit(keyCode, name)) {
-			modules.addModule(name);
+			notes.addNote(moduleName, name);
 			dialog.close();
 
 			// Create a module in database
-			const moduleRes = await post(`/api/${userId}/module`, { name, userId }, userId);
+			const noteRes = await post(
+				`/api/${userId}/module/${moduleName}/notes`,
+				{ moduleName, name },
+				userId,
+			);
 
-			if (!moduleRes.ok) {
-				notify.danger('Module cannot be saved! Try again!');
+			if (!noteRes.ok) {
+				notify.danger('Note cannot be saved! Try again!');
 			}
 		}
 	}
@@ -32,10 +37,10 @@
 </script>
 
 <div class="dialog">
-	<h1>Enter module name:</h1>
+	<h1>Enter note name:</h1>
 	<input
 		bind:this={ nameInput }
-		name="module"
+		name="note"
 		type="text"
 	/>
 </div>

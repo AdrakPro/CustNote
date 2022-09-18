@@ -31,9 +31,6 @@ function createNoteStore() {
 			}),
 		set: (data) => update((notes) => [...notes, ...data]),
 
-		get: (moduleName) =>
-			get(notes).filter((note) => note.moduleName === moduleName),
-
 		notExist: (moduleName) =>
 			get(notes).filter((note) => note.moduleName === moduleName).length === 0,
 
