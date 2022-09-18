@@ -18,6 +18,9 @@ export function startNoteSavingInterval(userId, moduleName) {
 				{ content: note.content },
 				userId
 			);
+
+			// Reset modified status
+			note.modified = false;
 		}
 	}, 300_000);
 }
