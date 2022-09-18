@@ -23,11 +23,11 @@
 
 	$: $currentNote = note;
 
-	function createEditor(dom, note) {
+	function createEditor(dom) {
 		const editorPromise = Editor.make()
 			.config((ctx) => {
 				ctx.set(rootCtx, dom);
-				ctx.set(defaultValueCtx, note.content);
+				ctx.set(defaultValueCtx, $currentNote.content);
 			})
 			.use(theme)
 			.use(prism)
@@ -43,14 +43,13 @@
 		return {
 			update() {
 				editorPromise.then((editor) => {
-					// Save note content before rendering markdown
+					// Save content before rendering markdown
 					if ($previousNote) {
 						const currentMarkdown = editor.action(getMarkdown());
 
 						notes.setContent($previousNote.name, currentMarkdown);
 					}
 
-					// Ask on github is there any way to reset history
 					// Render markdown
 					editor.action(replaceAll($currentNote.content));
 				});

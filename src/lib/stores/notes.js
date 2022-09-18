@@ -14,6 +14,7 @@ function createNoteStore() {
 				{
 					moduleName,
 					name,
+					// Need enter to show slash plugin
 					content: `# ${name}`,
 					modified: false,
 					createdAt: Date.now(),
