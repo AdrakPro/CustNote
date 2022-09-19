@@ -62,7 +62,9 @@
 	}
 </script>
 
-<div
-	spellcheck="false"
-	use:createEditor={ $currentNote }
-></div>
+{#if $currentNote}
+	<div
+		spellcheck="false"
+		use:createEditor={ $currentNote }
+	></div>
+{/if}

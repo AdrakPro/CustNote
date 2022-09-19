@@ -9,8 +9,8 @@ function createNoteStore() {
 	return {
 		subscribe,
 		addNote: (moduleName, name) =>
-			update((state) => [
-				...state,
+			update((notes) => [
+				...notes,
 				{
 					moduleName,
 					name,

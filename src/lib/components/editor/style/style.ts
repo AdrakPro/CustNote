@@ -185,7 +185,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 	const code = css`
 		.code-fence {
 			background-color: ${surface};
-			
+
 			.code-fence_selector {
 				font-size: 12px;
 				height: 30px;
@@ -199,7 +199,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 				margin: 0 18px;
 
 				${manager.get(ThemeScrollbar, ['x'])}
-				
+
 				code {
 					font-family: ${fontCode};
 				}
