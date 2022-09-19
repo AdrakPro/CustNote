@@ -8,9 +8,9 @@ function createModuleStore() {
 
 	return {
 		subscribe,
-		addModule: (name) =>
-			update((state) => [
-				...state,
+		add: (name) =>
+			update((modules) => [
+				...modules,
 				{
 					name,
 					lastEdit: '',
@@ -18,6 +18,10 @@ function createModuleStore() {
 					createdAt: Date.now(),
 				},
 			]),
+		delete: (moduleName) =>
+			update((modules) =>
+				modules.filter((module) => module.name !== moduleName)
+			),
 		set: (modules) => set(modules),
 		notExist: () => get(modules).length === 0,
 		reset: () => set([]),

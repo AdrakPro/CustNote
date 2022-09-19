@@ -4,11 +4,11 @@
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import AddNote from '$lib/components/notes/AddNote.svelte';
 	import TaskReminder from '$lib/components/notes/TaskReminder.svelte';
-	import NoteSettings from '$lib/components/notes/NoteSettings.svelte';
+	import DeleteModule from '$lib/components/notes/DeleteModule.svelte';
 	import Dialog from '$lib/components/dialog/Dialog.svelte';
-	import AddNoteContent from '$lib/components/dialog/AddNoteContent.svelte';
 
 	import { goto } from '$app/navigation';
+	import { dialog } from '$lib/stores/dialog.js';
 	import { page } from '$app/stores';
 	import { startNoteSavingInterval } from '$lib/utils/timer.js';
 
@@ -24,7 +24,7 @@
 
 	function toggleDrawer({ keyCode }) {
 		// Esc key
-		if (keyCode === 27) {
+		if (keyCode === 27 && $dialog.name === '') {
 			open = !open;
 		}
 	}
@@ -56,8 +56,8 @@
 			width="180"
 		/></span>
 		<NoteList
-			{ moduleName }
 			{ userId }
+			{ moduleName }
 			{ open }
 			on:selectNote={ selectNote }
 		/>
@@ -66,22 +66,21 @@
 		class="utils"
 		class:hidden={ !open }
 	>
-		<AddNote />
+		<AddNote
+			{ userId }
+			{ moduleName }
+		/>
 		<TaskReminder />
-		<NoteSettings />
+		<DeleteModule
+			{ userId }
+			{ moduleName }
+		/>
 	</section>
 	<section class="editor">
-		{#if note}
-			<Editor bind:note="{ note }" />
-		{/if}
+		<Editor bind:note="{ note }" />
 	</section>
 </div>
-<Dialog>
-	<AddNoteContent
-		{ moduleName }
-		{ userId }
-	/>
-</Dialog>
+<Dialog />
 
 <svelte:window on:keydown={ (event) => toggleDrawer(event) } />
 

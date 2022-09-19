@@ -1,9 +1,11 @@
-<script>
-	import { dialog } from '$lib/stores/dialog.js';
+<script lang="ts">
+	import { ADD_MODULE, dialog } from '$lib/stores/dialog.js';
 	import Icon from '../Icon.svelte';
 
+	export let userId: string;
+
 	function show() {
-		dialog.show();
+		dialog.show(ADD_MODULE, { userId });
 	}
 </script>
 

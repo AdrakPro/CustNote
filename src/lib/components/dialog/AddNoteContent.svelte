@@ -5,9 +5,8 @@
 	import { notify } from '$lib/stores/notify.js';
 	import { post } from '$lib/api.js';
 
-	export let userId: string;
-	export let moduleName: string;
 	let nameInput: HTMLInputElement;
+	const { userId, moduleName } = dialog.get().data;
 
 	onMount(() => nameInput.focus());
 
@@ -19,13 +18,13 @@
 			dialog.close();
 
 			// Create a module in database
-			const noteRes = await post(
+			const { ok } = await post(
 				`/api/${userId}/module/${moduleName}/notes`,
 				{ moduleName, name },
 				userId,
 			);
 
-			if (!noteRes.ok) {
+			if (!ok) {
 				notify.danger('Note cannot be saved! Try again!');
 			}
 		}

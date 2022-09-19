@@ -5,8 +5,8 @@
 	import { notify } from '$lib/stores/notify.js';
 	import { post } from '$lib/api.js';
 
-	export let userId: string;
 	let nameInput: HTMLInputElement;
+	const { userId } = dialog.get().data;
 
 	onMount(() => nameInput.focus());
 
@@ -14,13 +14,13 @@
 		const name = nameInput.value;
 
 		if (validateSubmit(keyCode, name)) {
-			modules.addModule(name);
+			modules.add(name);
 			dialog.close();
 
 			// Create a module in database
-			const moduleRes = await post(`/api/${userId}/module`, { name, userId }, userId);
+			const { ok } = await post(`/api/${userId}/module`, { name, userId }, userId);
 
-			if (!moduleRes.ok) {
+			if (!ok) {
 				notify.danger('Module cannot be saved! Try again!');
 			}
 		}

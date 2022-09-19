@@ -1,17 +1,17 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
-	import { ADD_NOTE, dialog } from '$lib/stores/dialog.js';
+	import { DELETE_MODULE, dialog } from '$lib/stores/dialog.js';
 
 	export let userId: string;
 	export let moduleName: string;
 
-	function addNote() {
-		dialog.show(ADD_NOTE, { userId, moduleName });
+	function deleteModule() {
+		dialog.show(DELETE_MODULE, { userId, moduleName });
 	}
 </script>
 
-<button on:click={ () => addNote() }>
-	<Icon name="note_add" />
+<button on:click={ () => deleteModule() }>
+	<Icon name="delete" />
 </button>
 
 <style lang="scss">
