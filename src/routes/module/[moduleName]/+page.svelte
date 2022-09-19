@@ -57,6 +57,7 @@
 		/></span>
 		<NoteList
 			{ moduleName }
+			{ userId }
 			{ open }
 			on:selectNote={ selectNote }
 		/>

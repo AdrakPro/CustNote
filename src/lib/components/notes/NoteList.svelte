@@ -2,9 +2,13 @@
 	import Drawer from '$lib/components/notes/Drawer.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { notes as noteStore } from '$lib/stores/notes.js';
+	import { notify } from '$lib/stores/notify.js';
+	import { del } from '$lib/api.js';
 
 	export let open = true;
 	export let moduleName: string;
+	export let userId: string;
+
 
 	let selectionIndex = 0;
 	let currentSelectedItem: HTMLElement;
@@ -67,16 +71,29 @@
 			selectNote(notes[selectionIndex], selectionIndex);
 		}
 	}
+
+	async function deleteNote({ ctrlKey }, name) {
+		if (ctrlKey) {
+			noteStore.delete(name);
+
+			const { ok } = del(`/api/${userId}/module/${moduleName}/notes/${name}.json`, userId);
+
+			if (!ok) {
+				notify.danger('Note cannot be deleted! Try again.');
+			}
+		}
+	}
 </script>
 
 <Drawer { open }>
 	<ul bind:this={ noteList }>
-		{#each notes as note, i}
+		{#each notes as note, i (note.name)}
 			<li
 				id="{ i }"
 				tabindex="{ i + 1 }"
 				on:click={ () => selectNote(note, i) }
 				on:keydown={ (event) => selectNoteWithSpace(event, note, i) }
+				on:contextmenu|preventDefault={(event) => deleteNote(event, note.name) }
 			>{ note.name }</li>
 		{/each}
 	</ul>
