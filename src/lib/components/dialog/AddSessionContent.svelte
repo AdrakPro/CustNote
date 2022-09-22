@@ -24,8 +24,8 @@
 				let name = namesArray[i];
 
 				// User didn't specify name
-				if (name === undefined) {
-					name = '';
+				if (name === undefined || name === '') {
+					name = 'Not specified';
 				}
 
 				sessions.add(time, name);

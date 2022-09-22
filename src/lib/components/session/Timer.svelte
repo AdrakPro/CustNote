@@ -1,7 +1,8 @@
 <script>
-	import { isComplete, isRunning, sessions, time, timer } from '$lib/stores/session.js';
+	import { isComplete, isRunning, sessions, time, timer, restartKey } from '$lib/stores/session.js';
 	import { ADD_SESSION, dialog } from '$lib/stores/dialog.js';
 	import ProgressBar from '$lib/components/session/ProgressBar.svelte';
+	import SessionList from '$lib/components/session/SessionList.svelte';
 
 	$: pauseText = $isRunning ? 'Pause' : 'Continue';
 </script>
@@ -17,6 +18,9 @@
 		<button on:click={ () => timer.stop() }>Stop</button>
 	{/if}
 </div>
+{#key $restartKey}
+	<SessionList />
+{/key}
 
 <style lang="scss">
   .clock {

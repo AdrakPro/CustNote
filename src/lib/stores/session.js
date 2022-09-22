@@ -41,7 +41,6 @@ function createSessionStore() {
 
 				return sessions;
 			}),
-		isEmpty: () => get(sessions).length === 0,
 		reset: () => set([]),
 	};
 }
@@ -51,6 +50,7 @@ export const isRunning = writable(false);
 export const isComplete = writable(true);
 export const time = writable('0:0:0');
 export const progress = writable(0);
+export const restartKey = writable({});
 
 function createTimerStore() {
 	let totalTime;
@@ -81,6 +81,7 @@ function createTimerStore() {
 		progress.set(0);
 		timeSpent = 0;
 		sessions.reset();
+		restartKey.set({});
 		time.set('0:0:0');
 		isComplete.set(true);
 		isRunning.set(false);

@@ -155,6 +155,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 					content: counter(custom-counter) ' )';
 					font-size: 16px;
 					font-weight: bold;
+					padding-right: 4px;
 				}
 			}
 		}
