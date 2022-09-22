@@ -47,9 +47,11 @@
 			update() {
 				editorPromise.then((editor) => {
 					// Save content before rendering markdown
-					const currentMarkdown = editor.action(getMarkdown());
+					if ($previousNote) {
+						const currentMarkdown = editor.action(getMarkdown());
 
-					notes.setContent($previousNote.name, currentMarkdown);
+						notes.setContent($previousNote.name, currentMarkdown);
+					}
 
 					// Render markdown
 					editor.action(replaceAll($currentNote.content));
@@ -60,7 +62,13 @@
 			},
 
 			destroy() {
-				editorPromise.then((editor) => editor.action(destroy()));
+				editorPromise.then((editor) => {
+					// Edge case: save when only one note exists
+					const currentMarkdown = editor.action(getMarkdown());
+
+					notes.setContent($currentNote.name, currentMarkdown);
+					editor.action(destroy());
+				});
 			},
 		};
 	}

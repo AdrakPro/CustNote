@@ -22,19 +22,17 @@ export async function GET({ params }) {
 			},
 		},
 	};
-	const data = await getDataFromModel(MODULE, query);
+	const { notes, name } = await getDataFromModel(MODULE, query);
+	const headers = { 'cache-control': 'max-age=0, s-maxage=1800' };
 
-	if (data === null) {
-		return json([], { status: 204 });
+	if (notes === []) {
+		return json([], { headers, status: 204 });
 	}
-
-	const { notes, name } = data;
 
 	notes.forEach((note) => {
 		note.moduleName = name;
 		note.modified = false;
 	});
-	const headers = { 'cache-control': 'max-age=0, s-maxage=1800' };
 
 	return json(notes, { headers, status: 200 });
 }

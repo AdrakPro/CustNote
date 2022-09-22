@@ -9,7 +9,6 @@
 	export let moduleName: string;
 	export let userId: string;
 
-
 	let selectionIndex = 0;
 	let currentSelectedItem: HTMLElement;
 	let noteList: HTMLElement;
@@ -76,7 +75,7 @@
 		if (ctrlKey) {
 			noteStore.delete(name);
 
-			const { ok } = del(`/api/${userId}/module/${moduleName}/notes/${name}.json`, userId);
+			const { ok } = await del(`/api/${userId}/module/${moduleName}/notes/${name}.json`, userId);
 
 			if (!ok) {
 				notify.danger('Note cannot be deleted! Try again.');
@@ -113,8 +112,10 @@
 
     li {
       cursor: pointer;
+      font-size: $fs-18;
       font-weight: $fw-bold;
-			font-size: $fs-20;
+      letter-spacing: 0.02em;
+      margin-bottom: $s-6;
       user-select: none;
 
       &::before {
