@@ -11,6 +11,9 @@ export async function GET({ params }) {
 		},
 		include: {
 			modules: {
+				orderBy: {
+					createdAt: 'asc',
+				},
 				select: {
 					name: true,
 					createdAt: true,

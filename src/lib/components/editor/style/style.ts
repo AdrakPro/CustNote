@@ -51,6 +51,10 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 		}
 	`;
 
+	const paragraph = css`
+		font-size: 18px;
+	`;
+
 	const blockquote = css`
 		blockquote {
 			border-left: 4px solid ${secondary};
@@ -155,6 +159,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 					content: counter(custom-counter) ' )';
 					font-size: 16px;
 					font-weight: bold;
+					padding-right: 4px;
 				}
 			}
 		}
@@ -185,7 +190,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 	const code = css`
 		.code-fence {
 			background-color: ${surface};
-			
+
 			.code-fence_selector {
 				font-size: 12px;
 				height: 30px;
@@ -388,7 +393,8 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
       .editor {
         ${editorLayout};
-				
+
+				${paragraph};
         ${blockquote};
         ${hr};
         ${list};

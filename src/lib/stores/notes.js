@@ -9,11 +9,12 @@ function createNoteStore() {
 	return {
 		subscribe,
 		addNote: (moduleName, name) =>
-			update((state) => [
-				...state,
+			update((notes) => [
+				...notes,
 				{
 					moduleName,
 					name,
+					// Need enter to show slash plugin
 					content: `# ${name}`,
 					modified: false,
 					createdAt: Date.now(),
@@ -30,8 +31,8 @@ function createNoteStore() {
 			}),
 		set: (data) => update((notes) => [...notes, ...data]),
 
-		get: (moduleName) =>
-			get(notes).filter((note) => note.moduleName === moduleName),
+		delete: (name) =>
+			update((notes) => notes.filter((note) => note.name !== name)),
 
 		notExist: (moduleName) =>
 			get(notes).filter((note) => note.moduleName === moduleName).length === 0,

@@ -2,11 +2,16 @@
 	import NoteList from '$lib/components/notes/NoteList.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import Editor from '$lib/components/editor/Editor.svelte';
+	import AddNote from '$lib/components/notes/AddNote.svelte';
+	import TaskReminder from '$lib/components/notes/TaskReminder.svelte';
+	import DeleteModule from '$lib/components/notes/DeleteModule.svelte';
+	import Dialog from '$lib/components/dialog/Dialog.svelte';
+	import Notify from '$lib/components/Notify.svelte';
+
 	import { goto } from '$app/navigation';
+	import { dialog } from '$lib/stores/dialog.js';
 	import { page } from '$app/stores';
-	import { put } from '$lib/api.js';
-	import { onInterval } from '$lib/utils/timer.js';
-	import { notes } from '$lib/stores/notes.js';
+	import { startNoteSavingInterval } from '$lib/utils/timer.js';
 
 	const { userId, moduleName } = $page.data;
 	let open = true;
@@ -16,17 +21,11 @@
 
 	// Interval to save notes to database
 	// Now it's 5 minutes, because currently is personal use website, in future I would change that
-	onInterval(async () => {
-		const modifiedNotes = notes.getModifiedNotes();
-
-		for (const note of modifiedNotes) {
-			put(`/api/${ userId }/module/${ moduleName }/notes/${ note.name }.json`, { content: note.content }, userId);
-		}
-	}, 300_000);
+	startNoteSavingInterval(userId, moduleName);
 
 	function toggleDrawer({ keyCode }) {
 		// Esc key
-		if (keyCode === 27) {
+		if (keyCode === 27 && $dialog.name === '') {
 			open = !open;
 		}
 	}
@@ -44,7 +43,10 @@
 </script>
 
 <div class="container">
-	<section class="note-list" style="width: { drawerSize }">
+	<section
+		class="note-list"
+		style="width: { drawerSize }"
+	>
 		<span
 			class="icon"
 			class:hidden={ !open }
@@ -55,18 +57,32 @@
 			width="180"
 		/></span>
 		<NoteList
-			{ open }
+			{ userId }
 			{ moduleName }
+			{ open }
 			on:selectNote={ selectNote }
 		/>
 	</section>
-	<!--	opcje, dodawnie, na samym dole drawera sticky-->
+	<section
+		class="utils"
+		class:hidden={ !open }
+	>
+		<AddNote
+			{ userId }
+			{ moduleName }
+		/>
+		<TaskReminder />
+		<DeleteModule
+			{ userId }
+			{ moduleName }
+		/>
+	</section>
 	<section class="editor">
-		{#if note}
-			<Editor bind:note="{ note }" />
-		{/if}
+		<Editor bind:note="{ note }" />
 	</section>
 </div>
+<Dialog />
+<Notify />
 
 <svelte:window on:keydown={ (event) => toggleDrawer(event) } />
 
@@ -79,9 +95,10 @@
     display: grid;
     gap: 0 0;
     grid-template-areas:
-    'note-list editor';
+    'note-list editor'
+    'utils editor';
     grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 1fr 40px;
   }
 
   .note-list {
@@ -95,6 +112,15 @@
     grid-area: editor;
     height: 100vh;
     word-break: break-word;
+  }
+
+  .utils {
+    align-items: center;
+    border-top: 3px $blue solid;
+    box-shadow: $base-shadow;
+    display: flex;
+    grid-area: utils;
+    z-index: $max-z-index;
   }
 
   .icon {

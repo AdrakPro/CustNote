@@ -30,15 +30,15 @@
 <div class="input-fields">
 	<input
 		bind:value={ email }
-		type="email"
 		name="email"
 		placeholder="Email"
+		type="email"
 	/>
 	<input
 		bind:value={ password }
-		type="password"
 		name="password"
 		placeholder="Password"
+		type="password"
 	/>
 </div>
 <p class="info"><a href="#">Don't remember your password?</a></p>

@@ -11,6 +11,9 @@ export async function GET({ params }) {
 		},
 		include: {
 			notes: {
+				orderBy: {
+					createdAt: 'asc',
+				},
 				select: {
 					name: true,
 					content: true,

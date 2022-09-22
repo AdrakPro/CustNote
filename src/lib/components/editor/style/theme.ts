@@ -31,7 +31,7 @@ export const theme = themeFactory((emotion, manager) => {
 			return;
 		}
 
-		return `rgba(${rgb?.join(', ')}, ${opacity || 1})`;
+		return `rgba(${rgb.join(', ')}, ${opacity || 1})`;
 	});
 
 	manager.set(ThemeSize, (key) => {

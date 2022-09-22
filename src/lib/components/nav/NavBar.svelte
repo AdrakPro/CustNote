@@ -6,7 +6,7 @@
 
 	export let isOpenMenu = false;
 
-	function getNavBar() {
+	async function getNavBar() {
 		const currentPathName = $page.url.pathname;
 		let navBar;
 
@@ -17,6 +17,9 @@
 			case '/dashboard':
 				navBar = NotesNav;
 				break;
+			case '/session':
+				navBar = NotesNav;
+				break;
 		}
 
 		return navBar;
@@ -24,12 +27,14 @@
 </script>
 
 <input
-	id="toggle-menu"
-	class="toggle-menu"
 	bind:checked={ isOpenMenu }
+	class="toggle-menu"
+	id="toggle-menu"
 	type="checkbox"
 >
-<svelte:component this="{ getNavBar() }" />
+{#await getNavBar() then component}
+	<svelte:component this="{ component }" />
+{/await}
 <label
 	class="toggle-menu-label"
 	for="toggle-menu"
