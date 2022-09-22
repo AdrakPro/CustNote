@@ -51,6 +51,10 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 		}
 	`;
 
+	const paragraph = css`
+		font-size: 18px;
+	`;
+
 	const blockquote = css`
 		blockquote {
 			border-left: 4px solid ${secondary};
@@ -390,6 +394,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
       .editor {
         ${editorLayout};
 
+				${paragraph};
         ${blockquote};
         ${hr};
         ${list};

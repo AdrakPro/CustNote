@@ -114,6 +114,7 @@
     li {
       cursor: pointer;
       font-weight: $fw-bold;
+			font-size: $fs-20;
       user-select: none;
 
       &::before {
