@@ -6,6 +6,7 @@
 	import TaskReminder from '$lib/components/notes/TaskReminder.svelte';
 	import DeleteModule from '$lib/components/notes/DeleteModule.svelte';
 	import Dialog from '$lib/components/dialog/Dialog.svelte';
+	import Notify from '$lib/components/Notify.svelte';
 
 	import { goto } from '$app/navigation';
 	import { dialog } from '$lib/stores/dialog.js';
@@ -81,6 +82,7 @@
 	</section>
 </div>
 <Dialog />
+<Notify />
 
 <svelte:window on:keydown={ (event) => toggleDrawer(event) } />
 

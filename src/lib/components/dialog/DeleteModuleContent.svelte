@@ -20,7 +20,7 @@
 </script>
 
 <div class="dialog">
-	<h1>Are you sure to delete this module?</h1>
+	<p>Are you sure to delete this module?</p>
 	<button on:click={ () => deleteModule() }>Yes</button>
 	<button on:click={ () => dialog.close() }>No</button>
 </div>
@@ -29,11 +29,6 @@
   .dialog {
     align-items: center;
     display: flex;
-
-    h1 {
-      font-weight: $fw-bold;
-      margin-right: 10px;
-    }
 
     // Yes button should be different than no (feature)
     button {

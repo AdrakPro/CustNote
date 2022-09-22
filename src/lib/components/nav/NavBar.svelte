@@ -17,6 +17,9 @@
 			case '/dashboard':
 				navBar = NotesNav;
 				break;
+			case '/session':
+				navBar = NotesNav;
+				break;
 		}
 
 		return navBar;

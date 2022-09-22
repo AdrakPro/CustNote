@@ -5,9 +5,9 @@
 
 	let themes = {
 		danger: '#e95065',
-		success: '#84c991',
+		success: '#7838d6',
 		warning: '#f0ad4e',
-		info: '#46bddf',
+		info: '#2492f9',
 	};
 </script>
 

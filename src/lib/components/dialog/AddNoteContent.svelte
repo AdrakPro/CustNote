@@ -36,12 +36,14 @@
 </script>
 
 <div class="dialog">
-	<h1>Enter note name:</h1>
-	<input
-		bind:this={ nameInput }
-		name="note"
-		type="text"
-	/>
+	<label>
+		Enter note name:
+		<input
+			bind:this={ nameInput }
+			name="note"
+			type="text"
+		/>
+	</label>
 </div>
 
 <svelte:window on:keydown={ (event) => submit(event) } />
@@ -51,14 +53,9 @@
     align-items: center;
     display: flex;
 
-    h1 {
-      font-weight: $fw-bold;
-      margin-right: 10px;
-    }
-
     input {
-      padding: 0 5px 0 5px;
-      width: 200px;
+      padding: 0 $s-6 0 $s-6;
+      max-width: 50%;
     }
   }
 </style>

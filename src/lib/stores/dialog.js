@@ -36,3 +36,4 @@ export const dialog = createDialogStore();
 export const ADD_MODULE = 'AddModuleContent';
 export const DELETE_MODULE = 'DeleteModuleContent';
 export const ADD_NOTE = 'AddNoteContent';
+export const ADD_SESSION = 'AddSessionContent';

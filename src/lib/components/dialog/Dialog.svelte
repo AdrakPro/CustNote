@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { ADD_MODULE, ADD_NOTE, DELETE_MODULE, dialog } from '$lib/stores/dialog.js';
+	import { ADD_MODULE, ADD_NOTE, ADD_SESSION, DELETE_MODULE, dialog } from '$lib/stores/dialog.js';
 	import Icon from '$lib/components/Icon.svelte';
 	import AddNoteContent from './AddNoteContent.svelte';
 	import AddModuleContent from './AddModuleContent.svelte';
 	import DeleteModuleContent from './DeleteModuleContent.svelte';
+	import AddSessionContent from './AddSessionContent.svelte';
 
 	function closeOnEscape({ keyCode }) {
 		if (keyCode === 27) {
@@ -28,6 +29,9 @@
 			case DELETE_MODULE:
 				component = DeleteModuleContent;
 				break;
+			case ADD_SESSION:
+				component = AddSessionContent;
+				break;
 		}
 
 		return component;
@@ -51,7 +55,7 @@
 
 <style lang="scss">
   .container {
-    background-color: $dark-blue;
+    background-color: $blue;
     border-top-left-radius: $base-radius;
     border-top-right-radius: $base-radius;
     bottom: 0;
