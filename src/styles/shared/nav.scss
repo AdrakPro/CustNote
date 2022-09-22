@@ -16,7 +16,7 @@ nav {
   }
 
   a {
-    font-size: $fs-24;
+    font-size: $fs-20;
     opacity: $max-opacity;
     transition: opacity 150ms ease-in-out;
   }
@@ -71,7 +71,7 @@ nav {
         background-color: $blue;
         content: '';
         display: block;
-        height: 2px;
+        height: 3px;
         left: 0;
         position: absolute;
         right: 0;
