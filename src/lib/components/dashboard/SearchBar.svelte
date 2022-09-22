@@ -11,9 +11,9 @@
 	/>
 	<input
 		bind:value={ searchedText }
-		type="text"
 		name="search"
 		placeholder="Search..."
+		type="text"
 	/>
 </div>
 

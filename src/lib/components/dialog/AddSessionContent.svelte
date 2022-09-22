@@ -47,8 +47,8 @@
 	<label>
 		Enter time (min):
 		<input
-			bind:value={ time }
 			bind:this={ timeInput }
+			bind:value={ time }
 			max="60"
 			min="1"
 			name="time"

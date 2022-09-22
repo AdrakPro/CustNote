@@ -27,9 +27,9 @@
 </script>
 
 <input
-	id="toggle-menu"
-	class="toggle-menu"
 	bind:checked={ isOpenMenu }
+	class="toggle-menu"
+	id="toggle-menu"
 	type="checkbox"
 >
 {#await getNavBar() then component}

@@ -1,5 +1,5 @@
 <script>
-	import { isComplete, isRunning, sessions, time, timer, restartKey } from '$lib/stores/session.js';
+	import { isComplete, isRunning, restartKey, sessions, time, timer } from '$lib/stores/session.js';
 	import { ADD_SESSION, dialog } from '$lib/stores/dialog.js';
 	import ProgressBar from '$lib/components/session/ProgressBar.svelte';
 	import SessionList from '$lib/components/session/SessionList.svelte';

@@ -200,7 +200,6 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 				margin: 0 18px;
 
 				${manager.get(ThemeScrollbar, ['x'])}
-
 				code {
 					font-family: ${fontCode};
 				}
@@ -390,7 +389,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
       .editor {
         ${editorLayout};
-				
+
         ${blockquote};
         ${hr};
         ${list};

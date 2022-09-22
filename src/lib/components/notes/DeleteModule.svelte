@@ -17,9 +17,9 @@
 <style lang="scss">
   button {
     align-items: center;
-    cursor: pointer;
     background-color: transparent;
     color: $white;
+    cursor: pointer;
     margin: 3px 0 0 $s-6;
   }
 </style>

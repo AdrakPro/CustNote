@@ -54,8 +54,8 @@
     display: flex;
 
     input {
-      padding: 0 $s-6 0 $s-6;
       max-width: 50%;
+      padding: 0 $s-6 0 $s-6;
     }
   }
 </style>

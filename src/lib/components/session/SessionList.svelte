@@ -24,7 +24,7 @@
         padding-right: $s-6;
       }
 
-			&:first-child {
+      &:first-child {
         color: $blue;
         font-weight: bold;
       }
