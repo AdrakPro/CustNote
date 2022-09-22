@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { defaultValueCtx, Editor, rootCtx } from '@milkdown/core';
+	import { defaultValueCtx, Editor, editorViewCtx, rootCtx } from '@milkdown/core';
 	import { gfm } from '@milkdown/preset-gfm';
 	import { clipboard } from '@milkdown/plugin-clipboard';
 	import { cursor } from '@milkdown/plugin-cursor';
@@ -8,9 +8,10 @@
 	import { slash } from '@milkdown/plugin-slash';
 	import { trailing } from '@milkdown/plugin-trailing';
 	import { prism } from '@milkdown/plugin-prism';
+	import { diagram } from '@milkdown/plugin-diagram';
 
 	import { theme } from './style/theme.ts';
-	import { getMarkdown, replaceAll } from '@milkdown/utils';
+	import { destroy, getMarkdown, replaceAll } from '@milkdown/utils';
 
 	import { notes } from '$lib/stores/notes.js';
 	import { withPrevious } from 'svelte-previous';
@@ -23,6 +24,7 @@
 
 	$: $currentNote = note;
 
+	// todo https://github.com/Saul-Mirone/milkdown/discussions/517
 	function createEditor(dom) {
 		const editorPromise = Editor.make()
 			.config((ctx) => {
@@ -38,25 +40,27 @@
 			.use(cursor)
 			.use(math)
 			.use(trailing)
+			.use(diagram)
 			.create();
 
 		return {
 			update() {
 				editorPromise.then((editor) => {
 					// Save content before rendering markdown
-					if ($previousNote) {
-						const currentMarkdown = editor.action(getMarkdown());
+					const currentMarkdown = editor.action(getMarkdown());
 
-						notes.setContent($previousNote.name, currentMarkdown);
-					}
+					notes.setContent($previousNote.name, currentMarkdown);
 
 					// Render markdown
 					editor.action(replaceAll($currentNote.content));
+
+					// Focus editor
+					editor.action((ctx) => ctx.get(editorViewCtx).focus());
 				});
 			},
 
 			destroy() {
-				console.log('destroyed');
+				editorPromise.then((editor) => editor.action(destroy()));
 			},
 		};
 	}
