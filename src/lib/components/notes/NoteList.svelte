@@ -43,8 +43,8 @@
 		}
 	}
 
-	function selectNextNote(event) {
-		if (event.altKey && event.keyCode === 40) {
+	function selectNextNote({ altKey, keyCode }) {
+		if (altKey && keyCode === 40) {
 			noteList.focus();
 
 			++selectionIndex;
@@ -57,9 +57,9 @@
 		}
 	}
 
-	// Prevent spamming
-	function selectPreviousNote(event) {
-		if (event.altKey && event.keyCode === 38) {
+	// Todo Prevent spamming
+	function selectPreviousNote({ altKey, keyCode }) {
+		if (altKey && keyCode === 38) {
 			noteList.focus();
 			--selectionIndex;
 

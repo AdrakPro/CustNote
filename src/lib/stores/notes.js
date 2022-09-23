@@ -3,7 +3,7 @@ import { NOTES } from '$lib/utils/constants.js';
 import { get } from 'svelte/store';
 
 function createNoteStore() {
-	const notes = createPersistentStore(NOTES);
+	const notes = createPersistentStore(NOTES, []);
 	const { subscribe, update, set } = notes;
 
 	return {

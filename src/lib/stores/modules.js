@@ -3,7 +3,7 @@ import { MODULES } from '$lib/utils/constants.js';
 import { get } from 'svelte/store';
 
 function createModuleStore() {
-	const modules = createPersistentStore(MODULES);
+	const modules = createPersistentStore(MODULES, []);
 	const { subscribe, update, set } = modules;
 
 	return {

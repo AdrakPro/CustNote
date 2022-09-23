@@ -3,7 +3,6 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import Editor from '$lib/components/editor/Editor.svelte';
 	import AddNote from '$lib/components/notes/AddNote.svelte';
-	import TaskReminder from '$lib/components/notes/TaskReminder.svelte';
 	import DeleteModule from '$lib/components/notes/DeleteModule.svelte';
 	import Dialog from '$lib/components/dialog/Dialog.svelte';
 	import Notify from '$lib/components/Notify.svelte';
@@ -57,9 +56,9 @@
 			width="180"
 		/></span>
 		<NoteList
-			{ userId }
 			{ moduleName }
 			{ open }
+			{ userId }
 			on:selectNote={ selectNote }
 		/>
 	</section>
@@ -68,13 +67,12 @@
 		class:hidden={ !open }
 	>
 		<AddNote
-			{ userId }
 			{ moduleName }
+			{ userId }
 		/>
-		<TaskReminder />
 		<DeleteModule
-			{ userId }
 			{ moduleName }
+			{ userId }
 		/>
 	</section>
 	<section class="editor">
@@ -132,6 +130,6 @@
   }
 
   .hidden {
-		display: none;
+    display: none;
   }
 </style>
