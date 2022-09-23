@@ -9,16 +9,16 @@
 		const { Line } = (await import('progressbar.js')).default;
 
 		progressBar = new Line('#progress-bar', {
-			strokeWidth: 1.7,
+			strokeWidth: 1.5,
 			trailColor: '#fff',
 			duration: 1200,
 			easing: 'easeOut',
 
 			svgStyle: {
-				display: 'block',
 				'border-radius': '999px',
-				width: '80%',
+				display: 'block',
 				'margin-left': '10%',
+				width: '80%',
 			},
 
 			from: { color: '#1088f9' },
