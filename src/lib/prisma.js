@@ -8,7 +8,7 @@ if (DEV) {
 	global.prisma = prisma;
 }
 
-export async function createDataInModel(model, data) {
+export async function createRecord(model, data) {
 	try {
 		await prisma[model].create({ data });
 	} catch (e) {
@@ -28,7 +28,7 @@ export async function getDataFromModel(model, query) {
 	return data;
 }
 
-export async function updateData(model, query) {
+export async function updateRecord(model, query) {
 	try {
 		await prisma[model].update(query);
 	} catch (e) {
@@ -36,7 +36,7 @@ export async function updateData(model, query) {
 	}
 }
 
-export async function deleteData(model, query) {
+export async function deleteRecord(model, query) {
 	try {
 		await prisma[model].delete(query);
 	} catch (e) {

@@ -1,4 +1,4 @@
-import { deleteData, updateData } from '$lib/prisma.js';
+import { deleteRecord, updateRecord } from '$lib/prisma.js';
 import { NOTE } from '$lib/utils/constants.js';
 import { error, json } from '@sveltejs/kit';
 
@@ -15,7 +15,7 @@ export async function PUT({ request, params }) {
 		},
 	};
 
-	updateData(NOTE, query).catch((e) => {
+	updateRecord(NOTE, query).catch((e) => {
 		return new error(500, e.message);
 	});
 
@@ -31,7 +31,7 @@ export async function DELETE({ params }) {
 		},
 	};
 
-	await deleteData(NOTE, query).catch((e) => {
+	await deleteRecord(NOTE, query).catch((e) => {
 		return new error(500, e.message);
 	});
 

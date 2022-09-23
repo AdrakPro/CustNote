@@ -33,8 +33,9 @@ model Note {
   id        String    @id @default(uuid())
   name      String    @db.VarChar(255) @unique
   content   String?   @db.Text
+  revise    DateTime? @db.Date
   createdAt DateTime  @default(now())
-  module    Module    @relation(fields: [moduleId], references: [id])
+  module    Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
   moduleId  String
 
   @@index([moduleId])

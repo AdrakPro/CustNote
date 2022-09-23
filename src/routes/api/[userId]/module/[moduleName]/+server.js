@@ -1,4 +1,4 @@
-import { deleteData } from '$lib/prisma.js';
+import { deleteRecord } from '$lib/prisma.js';
 import { MODULE } from '$lib/utils/constants.js';
 import { error, json } from '@sveltejs/kit';
 
@@ -11,7 +11,7 @@ export async function DELETE({ params }) {
 		},
 	};
 
-	await deleteData(MODULE, query).catch((e) => {
+	await deleteRecord(MODULE, query).catch((e) => {
 		return new error(500, e.message);
 	});
 

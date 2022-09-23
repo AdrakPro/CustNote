@@ -1,11 +1,11 @@
-import { createDataInModel } from '$lib/prisma';
+import { createRecord } from '$lib/prisma';
 import { NOTE } from '$lib/utils/constants.js';
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
 	const { moduleName, name } = await request.json();
 
-	await createDataInModel(NOTE, {
+	await createRecord(NOTE, {
 		name,
 		module: { connect: { name: moduleName } },
 	});

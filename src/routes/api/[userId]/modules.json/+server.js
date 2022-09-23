@@ -24,7 +24,7 @@ export async function GET({ params }) {
 	const data = await getDataFromModel(USER, query);
 
 	if (data === null) {
-		return json([], { status: 204 });
+		return json([]);
 	}
 
 	const { modules } = data;

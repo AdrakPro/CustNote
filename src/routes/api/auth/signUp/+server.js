@@ -1,4 +1,4 @@
-import { createDataInModel } from '$lib/prisma.js';
+import { createRecord } from '$lib/prisma.js';
 import { auth } from '$lib/firebase/firebase-admin.js';
 import { USER, WEB_API_KEY } from '$lib/utils/constants.js';
 import { tokensCookie } from '$lib/utils/tokenManager.js';
@@ -30,7 +30,7 @@ export async function POST({ request }) {
 	const customToken = await auth().createCustomToken(uid);
 	const headers = tokensCookie(refreshToken, customToken);
 
-	await createDataInModel(USER, { id: uid });
+	await createRecord(USER, { id: uid });
 
 	return new Response(undefined, { headers, status: 200 });
 }
