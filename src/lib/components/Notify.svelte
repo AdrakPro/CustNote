@@ -5,7 +5,7 @@
 
 	let themes = {
 		danger: '#e95065',
-		success: '#7838d6',
+		success: '#a82ffc',
 		warning: '#f0ad4e',
 		info: '#2492f9',
 	};
@@ -36,7 +36,7 @@
     pointer-events: none;
     position: fixed;
     right: 0;
-    top: 10px;
+    top: 30px;
     z-index: $max-z-index;
   }
 

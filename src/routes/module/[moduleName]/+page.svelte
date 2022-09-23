@@ -132,6 +132,6 @@
   }
 
   .hidden {
-    visibility: hidden;
+		display: none;
   }
 </style>
