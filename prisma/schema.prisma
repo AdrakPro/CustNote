@@ -30,13 +30,14 @@ model Module {
 }
 
 model Note {
-  id        String    @id @default(uuid())
-  name      String    @db.VarChar(255) @unique
-  content   String?   @db.Text
-  revise    DateTime? @db.Date
-  createdAt DateTime  @default(now())
-  module    Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
-  moduleId  String
+  id             String    @id @default(uuid())
+  name           String    @db.VarChar(255) @unique
+  content        String?   @db.Text
+  reviseDeadline DateTime? @db.Date
+  reviseCount    Int?      @default(0)
+  createdAt      DateTime  @default(now())
+  module         Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  moduleId       String
 
   @@index([moduleId])
 }

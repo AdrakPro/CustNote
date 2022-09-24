@@ -12,3 +12,4 @@ export const MODULE = 'module';
 export const NOTE = 'note';
 export const MODULES = 'modules';
 export const NOTES = 'notes';
+export const REVISE_MODE = 'reviseMode';

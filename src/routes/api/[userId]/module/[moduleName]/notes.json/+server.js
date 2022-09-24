@@ -17,6 +17,8 @@ export async function GET({ params }) {
 				select: {
 					name: true,
 					content: true,
+					reviseDeadline: true,
+					reviseCount: true,
 					createdAt: true,
 				},
 			},
