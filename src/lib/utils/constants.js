@@ -10,4 +10,4 @@ export const USER = 'user';
 export const MODULE = 'module';
 export const NOTE = 'note';
 export const MODULES = 'modules';
-export const REVISE = 'revise';
+export const REVISE_MODE = 'revise';
