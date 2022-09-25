@@ -34,7 +34,7 @@ model Note {
   name           String    @db.VarChar(255) @unique
   content        String?   @db.Text
   reviseDeadline DateTime? @db.Date
-  reviseCount    Int?      @default(0)
+  reviseCount    Int?      @default(1)
   createdAt      DateTime  @default(now())
   module         Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
   moduleId       String
