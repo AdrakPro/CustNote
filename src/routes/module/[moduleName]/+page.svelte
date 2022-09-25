@@ -6,11 +6,10 @@
 	import DeleteModule from '$lib/components/notes/DeleteModule.svelte';
 	import Dialog from '$lib/components/dialog/Dialog.svelte';
 	import Notify from '$lib/components/Notify.svelte';
-
-	import { goto } from '$app/navigation';
 	import { dialog } from '$lib/stores/dialog.js';
 	import { page } from '$app/stores';
 	import { startNoteSavingInterval } from '$lib/utils/timer.js';
+	import { redirectTo } from '$lib/utils/redirect.js';
 
 	const { userId, moduleName } = $page.data;
 	let open = true;
@@ -36,8 +35,8 @@
 		}
 	}
 
-	function redirectToDashboard() {
-		goto('/dashboard');
+	async function redirectToDashboard() {
+		await redirectTo('/dashboard');
 	}
 </script>
 

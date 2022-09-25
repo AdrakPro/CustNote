@@ -1,5 +1,5 @@
 <script>
-	import { goto } from '$app/navigation';
+	import { redirectTo } from '$lib/utils/redirect.js';
 
 	export let name;
 	export let lastEdit;
@@ -7,7 +7,7 @@
 	async function redirectToModule() {
 		const moduleName = name.toLowerCase();
 
-		await goto(`/module/${ moduleName }`);
+		await redirectTo(`/module/${ moduleName }`);
 	}
 </script>
 

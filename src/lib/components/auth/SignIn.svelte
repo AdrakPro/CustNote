@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import { notify } from '$lib/stores/notify.js';
 	import { validateEmailAndPassword } from '$lib/utils/validators.ts';
 	import { post } from '$lib/api.js';
+	import { redirectTo } from '$lib/utils/redirect.js';
 
 	let email = '';
 	let password = '';
@@ -15,10 +15,10 @@
 			return;
 		}
 
-		const signInRes = await post('api/auth/signIn.json', { email, password }, null);
+		const { ok } = await post('api/auth/signIn.json', { email, password }, null);
 
-		if (signInRes.ok) {
-			await goto('/dashboard');
+		if (ok) {
+			await redirectTo('/dashboard');
 		} else {
 			// TODO sprawdz czy ma polaczenie z internetem
 			notify.danger('Wrong email or password!');

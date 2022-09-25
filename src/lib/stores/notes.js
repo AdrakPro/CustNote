@@ -1,9 +1,8 @@
-import { createPersistentStore } from '$lib/utils/persistentStore.js';
-import { NOTES } from '$lib/utils/constants.js';
-import { get } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 
+// Fow now it's not persistent store, because revise deadlines need to refresh every 4:00
 function createNoteStore() {
-	const notes = createPersistentStore(NOTES, []);
+	const notes = writable([]);
 	const { subscribe, update, set } = notes;
 
 	return {
@@ -33,6 +32,9 @@ function createNoteStore() {
 
 		delete: (name) =>
 			update((notes) => notes.filter((note) => note.name !== name)),
+
+		deleteMany: (moduleName) =>
+			update((notes) => notes.filter((note) => note.moduleName !== moduleName)),
 
 		notExist: (moduleName) =>
 			get(notes).filter((note) => note.moduleName === moduleName).length === 0,

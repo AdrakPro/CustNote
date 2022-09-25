@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { redirectTo } from '$lib/utils/redirect.js';
 	import { post } from '$lib/api.js';
 	import { notify } from '$lib/stores/notify.js';
 	import { validateSignUpForm } from '$lib/utils/validators.ts';
@@ -16,10 +16,10 @@
 			return;
 		}
 
-		const signUpRes = await post('api/auth/signUp', { email, password, username }, null);
+		const { ok } = await post('api/auth/signUp', { email, password, username }, null);
 
-		if (signUpRes.ok) {
-			await goto('/dashboard');
+		if (ok) {
+			await redirectTo('/dashboard');
 		} else {
 			notify.danger('The email is already in use!');
 		}
