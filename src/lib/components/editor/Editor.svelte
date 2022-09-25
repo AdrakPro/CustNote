@@ -26,10 +26,12 @@
 
 	// todo https://github.com/Saul-Mirone/milkdown/discussions/517
 	function createEditor(dom) {
+		const defaultContent = $currentNote.content || '';
+
 		const editorPromise = Editor.make()
 			.config((ctx) => {
 				ctx.set(rootCtx, dom);
-				ctx.set(defaultValueCtx, $currentNote.content);
+				ctx.set(defaultValueCtx, defaultContent);
 			})
 			.use(theme)
 			.use(prism)

@@ -19,12 +19,12 @@ model User {
 }
 
 model Module {
-  id        String    @id @default(uuid())
-  name      String    @db.VarChar(255) @unique
-  notes     Note[]
-  createdAt DateTime  @default(now())
-  user      User      @relation(fields: [userId], references: [id])
-  userId    String
+  id           String    @id @default(uuid())
+  name         String    @db.VarChar(255) @unique
+  notes        Note[]
+  createdAt    DateTime  @default(now())
+  user         User      @relation(fields: [userId], references: [id])
+  userId       String
 
   @@index([userId])
 }
@@ -40,6 +40,11 @@ model Note {
   moduleId       String
 
   @@index([moduleId])
+}
+
+model Revise {
+  id         Int     @id
+  reviseMode Boolean
 }
 
 enum Role {

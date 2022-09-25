@@ -8,6 +8,6 @@ jobs:
     steps:
       - name: Call API route to update revise deadlines
         run: |
-          curl --request POST \
+          curl --request PUT \
           --url 'https://custnote.me/api/cron' \
           --header 'Authorization: Bearer ${{ secrets.API_SECRET_KEY }}'

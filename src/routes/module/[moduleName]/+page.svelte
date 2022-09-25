@@ -6,10 +6,13 @@
 	import DeleteModule from '$lib/components/notes/DeleteModule.svelte';
 	import Dialog from '$lib/components/dialog/Dialog.svelte';
 	import Notify from '$lib/components/Notify.svelte';
-	import { dialog } from '$lib/stores/dialog.js';
-	import { page } from '$app/stores';
+	import ReviseTracker from '$lib/components/notes/ReviseTracker.svelte';
+
 	import { startNoteSavingInterval } from '$lib/utils/timer.js';
 	import { redirectTo } from '$lib/utils/redirect.js';
+	import { reviseMode } from '$lib/stores/reviseMode.js';
+	import { dialog } from '$lib/stores/dialog.js';
+	import { page } from '$app/stores';
 
 	const { userId, moduleName } = $page.data;
 	let open = true;
@@ -73,6 +76,9 @@
 			{ moduleName }
 			{ userId }
 		/>
+		{#if $reviseMode}
+			<ReviseTracker { note } />
+		{/if}
 	</section>
 	<section class="editor">
 		<Editor bind:note="{ note }" />

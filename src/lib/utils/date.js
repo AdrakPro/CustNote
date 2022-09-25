@@ -8,8 +8,13 @@ export function getNewDeadline(oldDeadline, reviseCount) {
 }
 
 export function isPastDeadline(deadline) {
-	const now = new Date().getDate();
-	const diffInDays = deadline.getDate() - now;
+	const diffInDays = getDifferenceInDays(deadline);
 
 	return diffInDays <= 0;
+}
+
+export function getDifferenceInDays(deadline) {
+	const now = new Date().getDate();
+
+	return deadline.getDate() - now;
 }

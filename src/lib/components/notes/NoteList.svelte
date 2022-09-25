@@ -18,7 +18,7 @@
 	// Get notes that belong to module
 	$: notes = $noteStore.filter((note) => note.moduleName === moduleName);
 
-	// Experimental usage of id
+	// Experimental usage of id on element
 	function selectNote(note, index) {
 		if (note) {
 			dispatch('selectNote', note);
