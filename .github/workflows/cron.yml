@@ -6,7 +6,7 @@ jobs:
   cron:
     runs-on: ubuntu-latest
     steps:
-      - name: Call API route to update revise mode
+      - name: Call API route to update revise deadlines
         run: |
           curl --request POST \
           --url 'https://custnote.me/api/cron' \
