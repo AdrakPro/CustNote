@@ -1,0 +1,13 @@
+name: Daily cron
+on:
+  schedule:
+    - cron: '0 4 * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call API route to update revise deadlines
+        run: |
+          curl --request POST \
+          --url 'https://custnote.me/api/cron' \
+          --header 'Authorization: Bearer ${{ secrets.API_SECRET_KEY }}'
