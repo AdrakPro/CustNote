@@ -24,15 +24,13 @@ export async function GET({ params }) {
 			},
 		},
 	};
-	const data = await getDataFromModel(MODULE, query);
+	const module = await getDataFromModel(MODULE, query);
 
-	if (data === null) {
+	if (module === null) {
 		return json([]);
 	}
 
-	const { notes, name } = data;
-
-	console.log(notes);
+	const { notes, name } = module;
 
 	notes.forEach((note) => {
 		note.moduleName = name;

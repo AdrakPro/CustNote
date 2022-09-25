@@ -7,16 +7,16 @@
 <div class="container">
 	<h1 class="error">{ $page.status } : { $page.error.message }</h1>
 	<img
-		src="https://c.tenor.com/7tzqV8r23qoAAAAd/jd.gif"
 		alt="dancing monster"
+		src="https://c.tenor.com/7tzqV8r23qoAAAAd/jd.gif"
 	/>
 </div>
 
 <style lang="scss">
   .container {
-    height: 100vh;
     display: grid;
     gap: $s-32;
+    height: 100vh;
     place-content: center;
     place-items: center;
 

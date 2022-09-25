@@ -7,7 +7,7 @@
 </div>
 
 <style lang="scss">
-	.container {
-		text-align: center;
-	}
+  .container {
+    text-align: center;
+  }
 </style>

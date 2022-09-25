@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client';
 import { DEV } from '$lib/utils/constants.js';
-import { error } from '@sveltejs/kit';
 
 let prisma = global.prisma || new PrismaClient();
 
@@ -12,7 +11,7 @@ export async function createRecord(model, data) {
 	try {
 		await prisma[model].create({ data });
 	} catch (e) {
-		throw new error(400, e.message);
+		return new Response(undefined, { status: 500, statusText: e.message });
 	}
 }
 
@@ -22,7 +21,19 @@ export async function getDataFromModel(model, query) {
 	try {
 		data = await prisma[model].findUnique(query);
 	} catch (e) {
-		throw new error(400, e.message);
+		return new Response(undefined, { status: 500, statusText: e.message });
+	}
+
+	return data;
+}
+
+export async function getAllDataFromModel(model) {
+	let data;
+
+	try {
+		data = await prisma[model].findMany();
+	} catch (e) {
+		return new Response(undefined, { status: 500, statusText: e.message });
 	}
 
 	return data;
@@ -32,7 +43,7 @@ export async function updateRecord(model, query) {
 	try {
 		await prisma[model].update(query);
 	} catch (e) {
-		throw new error(400, e.message);
+		return new Response(undefined, { status: 500, statusText: e.message });
 	}
 }
 
@@ -40,6 +51,6 @@ export async function deleteRecord(model, query) {
 	try {
 		await prisma[model].delete(query);
 	} catch (e) {
-		throw new error(400, e.message);
+		return new Response(undefined, { status: 500, statusText: e.message });
 	}
 }

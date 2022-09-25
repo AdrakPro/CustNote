@@ -8,9 +8,9 @@
 </script>
 
 <button
-	on:click={ () => switchReviseMode() }
 	class:active={ $reviseMode }
 	class:disabled={ !$reviseMode }
+	on:click={ () => switchReviseMode() }
 >
 	<Icon name="event_available" />
 	<span>Revise mode</span>
@@ -35,16 +35,16 @@
     }
   }
 
-	// Todo mixins?
-	.active {
-		transition: all 250ms ease;
-		color: $blue;
-		border-color: $blue;
-	}
-
-	.disabled {
+  // Todo mixins?
+  .active {
+    border-color: $blue;
+    color: $blue;
     transition: all 250ms ease;
-    color: $white;
+  }
+
+  .disabled {
     border-color: $white;
-	}
+    color: $white;
+    transition: all 250ms ease;
+  }
 </style>

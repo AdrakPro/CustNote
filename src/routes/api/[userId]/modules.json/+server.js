@@ -21,13 +21,13 @@ export async function GET({ params }) {
 			},
 		},
 	};
-	const data = await getDataFromModel(USER, query);
+	const user = await getDataFromModel(USER, query);
 
-	if (data === null) {
+	if (user === null) {
 		return json([]);
 	}
 
-	const { modules } = data;
+	const { modules } = user;
 	const headers = { 'cache-control': 'max-age=0, s-maxage=1800' };
 
 	return json(modules, { headers, status: 200 });

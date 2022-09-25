@@ -24,8 +24,8 @@ body {
   background: linear-gradient(140deg, #43484d, #46484b, #484848);
   color: #fff;
   font-family: Arimo, sans-serif;
-  font-weight: 400;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
 }
@@ -43,8 +43,8 @@ button {
 
 // Todo add firefox support
 ::-webkit-scrollbar {
-  width: 6px;
   height: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -70,17 +70,17 @@ button {
 }
 
 .material-icons {
-  font-family: 'Material Icons Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
+  direction: ltr;
   display: inline-block;
+  font-family: 'Material Icons Outlined';
+  -webkit-font-feature-settings: 'liga';
+  font-size: 24px;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 1;
+  text-transform: none;
   white-space: nowrap;
   word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
 }

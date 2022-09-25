@@ -15,7 +15,7 @@ function createModuleStore() {
 					name,
 					lastEdit: '',
 					// todo fix rozni sie od createdAt prismy
-					createdAt: Date.now(),
+					createdAt: new Date(),
 				},
 			]),
 		delete: (moduleName) =>
