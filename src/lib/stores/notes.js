@@ -1,4 +1,5 @@
 import { get, writable } from 'svelte/store';
+import { getNewDeadline } from '$lib/utils/date.js';
 
 // Fow now it's not persistent store, because revise deadlines need to refresh every 4:00
 function createNoteStore() {
@@ -15,6 +16,8 @@ function createNoteStore() {
 					name,
 					// Need enter to show slash plugin
 					content: `# ${ name }`,
+					reviseDeadline: getNewDeadline(new Date(), 0),
+					reviseCount: 0,
 					modified: false,
 					createdAt: Date.now(),
 				},

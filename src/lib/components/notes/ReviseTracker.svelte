@@ -2,7 +2,7 @@
 	import { getDifferenceInDays } from '$lib/utils/date.js';
 
 	export let note;
-	const isReviseNotDone = note?.reviseCount <= 4;
+	const isReviseNotDone = note?.reviseCount <= 3;
 
 	function getDays() {
 		// Don't know why revisedDeadline is not Date object (in end point cron it is)
