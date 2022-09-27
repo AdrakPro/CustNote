@@ -2,7 +2,7 @@
 	import { getDifferenceInDays } from '$lib/utils/date.js';
 
 	export let note;
-	const isReviseDone = note?.reviseCount <= 4;
+	const isReviseNotDone = note?.reviseCount <= 4;
 
 	function getDays() {
 		// Don't know why revisedDeadline is not Date object (in end point cron it is)
@@ -29,7 +29,7 @@
 </script>
 
 <!--Todo manage text when its one day left-->
-{#if isReviseDone}
+{#if isReviseNotDone}
 	<div
 		class="container"
 		style="color: { getColor() }"
