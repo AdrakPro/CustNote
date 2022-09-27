@@ -9,8 +9,8 @@ import cookie from 'cookie';
 export async function POST({ request }) {
 	const { email, password } = await request.json();
 	const userRes = await post(
-		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${WEB_API_KEY}`,
-		{ email, password, returnSecureToken: true }
+		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${ WEB_API_KEY }`,
+		{ email, password, returnSecureToken: true },
 	);
 
 	if (!userRes.ok) {
@@ -46,8 +46,8 @@ export async function GET({ request }) {
 		user = await auth().verifyIdToken(customToken);
 	} catch (e) {
 		const refreshRes = await post(
-			`https://identitytoolkit.googleapis.com/v1/token?key=${WEB_API_KEY}`,
-			{ grant_type: 'refresh_token', refresh_token: refreshToken }
+			`https://identitytoolkit.googleapis.com/v1/token?key=${ WEB_API_KEY }`,
+			{ grant_type: 'refresh_token', refresh_token: refreshToken },
 		);
 
 		if (!refreshRes.ok) {
@@ -75,6 +75,6 @@ export async function GET({ request }) {
 			username: user.name.toLowerCase(),
 			userId: user.uid,
 		},
-		{ headers, status: 200 }
+		{ headers, status: 200 },
 	);
 }

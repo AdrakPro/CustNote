@@ -26,6 +26,7 @@
     display: flex;
     margin-left: 1rem;
     padding: 0 $s-12 0 $s-12;
+    user-select: none;
 
     &:hover {
       animation: opacity ease-in-out 250ms;

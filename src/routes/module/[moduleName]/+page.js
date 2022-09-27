@@ -14,7 +14,7 @@ export async function load({ fetch, params }) {
 
 	if (notes.notExist(moduleName)) {
 		const notesRes = await fetch(
-			`/api/${userId}/module/${moduleName}/notes.json`
+			`/api/${ userId }/module/${ moduleName }/notes.json`,
 		);
 		const fetchedNotes = await notesRes.json();
 

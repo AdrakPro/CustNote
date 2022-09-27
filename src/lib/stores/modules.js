@@ -20,7 +20,7 @@ function createModuleStore() {
 			]),
 		delete: (moduleName) =>
 			update((modules) =>
-				modules.filter((module) => module.name !== moduleName)
+				modules.filter((module) => module.name !== moduleName),
 			),
 		set: (modules) => set(modules),
 		notExist: () => get(modules).length === 0,

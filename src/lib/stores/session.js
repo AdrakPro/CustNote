@@ -71,7 +71,7 @@ function createTimerStore() {
 
 		currentProgress = timeSpent / totalTime;
 		progress.set(currentProgress);
-		time.set(`${hours}:${minutes}:${seconds}`);
+		time.set(`${ hours }:${ minutes }:${ seconds }`);
 	};
 
 	const incrementTime = () => (timeSpent += SECOND);
@@ -101,11 +101,11 @@ function createTimerStore() {
 			const { name } = sessions.shift();
 
 			if (name === 'break') {
-				notify.danger(`The ${name} has been ended! ʕ•ᴥ•ʔ`);
+				notify.danger(`The ${ name } has been ended! ʕ•ᴥ•ʔ`);
 
 				return;
 			}
-			notify.info(`The session ${name} has been completed! (~‾▿‾)~`);
+			notify.info(`The session ${ name } has been completed! (~‾▿‾)~`);
 		}
 	};
 

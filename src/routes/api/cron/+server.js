@@ -1,16 +1,11 @@
-/** @type {import('./$types').RequestHandler} */
-import {
-	getAllDataFromModel,
-	getDataFromModel,
-	updateRecord,
-} from '$lib/prisma.js';
+import { getAllDataFromModel, getDataFromModel, updateRecord } from '$lib/prisma.js';
 import { getNewDeadline, isPastDeadline } from '$lib/utils/date.js';
 import { NOTE, REVISE_MODE, WEB_API_KEY } from '$lib/utils/constants.js';
 
 /** @type {import('./$types').RequestHandler} */
 export async function PUT({ request }) {
 	const isAuthorized =
-		request.headers.get('authorization') === `Bearer ${WEB_API_KEY}`;
+		request.headers.get('authorization') === `Bearer ${ WEB_API_KEY }`;
 	// Its experimental use, in future the revise system will be reworked
 	const { isReviseMode } = await getDataFromModel(REVISE_MODE, {
 		where: {

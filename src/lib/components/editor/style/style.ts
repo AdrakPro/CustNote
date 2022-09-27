@@ -1,10 +1,5 @@
 import type { Emotion, ThemeManager } from '@milkdown/core';
-import {
-	ThemeBorder,
-	ThemeFont,
-	ThemeScrollbar,
-	ThemeSize,
-} from '@milkdown/core';
+import { ThemeBorder, ThemeFont, ThemeScrollbar, ThemeSize } from '@milkdown/core';
 import { getPalette } from '@milkdown/design-system';
 import { injectProsemirrorView } from '@milkdown/theme-pack-helper';
 

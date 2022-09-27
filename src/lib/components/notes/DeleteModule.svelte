@@ -21,5 +21,6 @@
     color: $white;
     cursor: pointer;
     margin: 3px 0 0 $s-6;
+    user-select: none;
   }
 </style>

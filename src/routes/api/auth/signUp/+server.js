@@ -17,9 +17,9 @@ export async function POST({ request }) {
 	await auth().setCustomUserClaims(uid, { early_access: true });
 
 	const signInRes = await post(
-		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${WEB_API_KEY}`,
+		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${ WEB_API_KEY }`,
 		{ email, password, returnSecureToken: true },
-		null
+		null,
 	);
 
 	if (!signInRes.ok) {

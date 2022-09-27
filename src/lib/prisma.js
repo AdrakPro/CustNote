@@ -11,7 +11,7 @@ export async function createRecord(model, data) {
 	try {
 		await prisma[model].create({ data });
 	} catch (e) {
-		return new Response(undefined, { status: 500, statusText: e.message });
+		return new Response(undefined, { status: 500 });
 	}
 }
 
@@ -21,7 +21,7 @@ export async function getDataFromModel(model, query) {
 	try {
 		data = await prisma[model].findUnique(query);
 	} catch (e) {
-		return new Response(undefined, { status: 500, statusText: e.message });
+		return new Response(undefined, { status: 500 });
 	}
 
 	return data;
@@ -33,7 +33,7 @@ export async function getAllDataFromModel(model) {
 	try {
 		data = await prisma[model].findMany();
 	} catch (e) {
-		return new Response(undefined, { status: 500, statusText: e.message });
+		return new Response(undefined, { status: 500 });
 	}
 
 	return data;
@@ -43,7 +43,7 @@ export async function updateRecord(model, query) {
 	try {
 		await prisma[model].update(query);
 	} catch (e) {
-		return new Response(undefined, { status: 500, statusText: e.message });
+		return new Response(undefined, { status: 500 });
 	}
 }
 
@@ -51,6 +51,6 @@ export async function deleteRecord(model, query) {
 	try {
 		await prisma[model].delete(query);
 	} catch (e) {
-		return new Response(undefined, { status: 500, statusText: e.message });
+		return new Response(undefined, { status: 500 });
 	}
 }

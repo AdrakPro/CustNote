@@ -97,7 +97,7 @@ export const theme = themeFactory((emotion, manager) => {
 					background-color: ${main};
 				}
 			`;
-		}
+		},
 	);
 
 	manager.set(ThemeShadow, () => {

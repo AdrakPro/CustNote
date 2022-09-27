@@ -14,9 +14,9 @@ export function startNoteSavingInterval(userId, moduleName) {
 
 		for (const note of modifiedNotes) {
 			put(
-				`/api/${userId}/module/${moduleName}/notes/${note.name}.json`,
+				`/api/${ userId }/module/${ moduleName }/notes/${ note.name }.json`,
 				{ content: note.content },
-				userId
+				userId,
 			);
 
 			// Reset modified status

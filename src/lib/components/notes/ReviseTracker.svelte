@@ -41,5 +41,6 @@
     font-weight: $fw-bold;
     margin: 0 $s-12 0 auto;
     padding: 3px;
+    user-select: none;
   }
 </style>
