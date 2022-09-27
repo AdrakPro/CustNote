@@ -22,5 +22,5 @@ export function startNoteSavingInterval(userId, moduleName) {
 			// Reset modified status
 			note.modified = false;
 		}
-	}, 300_000);
+	}, 60_000);
 }
