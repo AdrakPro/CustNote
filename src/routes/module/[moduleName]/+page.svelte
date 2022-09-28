@@ -21,7 +21,6 @@
 	$: drawerSize = open ? '300px' : '0';
 
 	// Interval to save notes to database
-	// Now it's 5 minutes, because currently is personal use website, in future I would change that
 	startNoteSavingInterval(userId, moduleName);
 
 	function toggleDrawer({ keyCode }) {
