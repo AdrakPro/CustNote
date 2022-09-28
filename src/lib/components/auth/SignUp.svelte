@@ -19,7 +19,7 @@
 		const { ok } = await post('api/auth/signUp', { email, password, username }, null);
 
 		if (ok) {
-			await redirectTo('/dashboard');
+			redirectTo('/dashboard');
 		} else {
 			notify.danger('The email is already in use!');
 		}

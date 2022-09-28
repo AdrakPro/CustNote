@@ -9,7 +9,7 @@
 	const { userId, moduleName } = dialog.get().data;
 
 	async function deleteModule() {
-		await redirectTo('/dashboard');
+		redirectTo('/dashboard');
 
 		modules.delete(moduleName);
 		notes.deleteMany(moduleName);

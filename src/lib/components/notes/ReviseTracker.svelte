@@ -2,15 +2,11 @@
 	import { getDifferenceInDays } from '$lib/utils/date.js';
 
 	export let note;
-	const isReviseNotDone = note?.reviseCount <= 3;
+	$: isReviseNotDone = note?.reviseCount <= 3;
 
-	function getDays() {
-		// Don't know why revisedDeadline is not Date object (in end point cron it is)
-		return getDifferenceInDays(new Date(note.reviseDeadline));
-	}
+	$: days = getDifferenceInDays(new Date(note?.reviseDeadline));
 
-	function getColor() {
-		const days = getDays();
+	$: getColor = () => {
 		let color;
 
 		if (days >= 4) {
@@ -33,7 +29,7 @@
 	<div
 		class="container"
 		style="color: { getColor() }"
-	>{ getDays() } days left to revise!
+	>{ days } days left to revise!
 	</div>
 {/if}
 

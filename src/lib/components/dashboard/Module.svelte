@@ -4,10 +4,10 @@
 	export let name;
 	export let lastEdit;
 
-	async function redirectToModule() {
+	function redirectToModule() {
 		const moduleName = name.toLowerCase();
 
-		await redirectTo(`/module/${ moduleName }`);
+		redirectTo(`/module/${ moduleName }`);
 	}
 </script>
 

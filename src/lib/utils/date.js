@@ -14,7 +14,11 @@ export function isPastDeadline(deadline) {
 }
 
 export function getDifferenceInDays(deadline) {
-	const now = new Date().getDate();
+	const MS_PER_DAY = 1000 * 60 * 60 * 24;
+	const now = new Date();
 
-	return deadline.getDate() - now;
+	const utc1 = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+	const utc2 = Date.UTC(deadline.getFullYear(), deadline.getMonth(), deadline.getDate());
+
+	return Math.floor((utc2 - utc1) / MS_PER_DAY);
 }

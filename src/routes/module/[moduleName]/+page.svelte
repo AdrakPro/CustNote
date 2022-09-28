@@ -37,8 +37,8 @@
 		}
 	}
 
-	async function redirectToDashboard() {
-		await redirectTo('/dashboard');
+	function redirectToDashboard() {
+		redirectTo('/dashboard');
 	}
 </script>
 

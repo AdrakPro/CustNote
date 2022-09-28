@@ -18,7 +18,7 @@
 		const { ok } = await post('api/auth/signIn.json', { email, password }, null);
 
 		if (ok) {
-			await redirectTo('/dashboard');
+			redirectTo('/dashboard');
 		} else {
 			// TODO sprawdz czy ma polaczenie z internetem
 			notify.danger('Wrong email or password!');
