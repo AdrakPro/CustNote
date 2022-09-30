@@ -24,10 +24,10 @@ function createNoteStore() {
 			]),
 		setContent: (name, content) =>
 			update((notes) => {
-				const modifiedNote = notes.find((note) => note.name === name);
+				const index = notes.findIndex((note) => note.name === name);
 
-				modifiedNote.content = content;
-				modifiedNote.modified = true;
+				notes[index].content = content;
+				notes[index].modified = true;
 
 				return notes;
 			}),

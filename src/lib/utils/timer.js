@@ -11,7 +11,6 @@ function onInterval(callback, milliseconds) {
 export function startNoteSavingInterval(userId, moduleName) {
 	onInterval(async () => {
 		const modifiedNotes = notes.getModifiedNotes();
-
 		for (const note of modifiedNotes) {
 			put(
 				`/api/${ userId }/module/${ moduleName }/notes/${ note.name }.json`,
