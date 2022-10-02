@@ -19,8 +19,11 @@ function createModuleStore() {
 				},
 			]),
 		delete: (moduleName) =>
-			update((modules) =>
-				modules.filter((module) => module.name !== moduleName),
+			update((modules) => {
+					const index = modules.findIndex((module) => module.name === moduleName);
+
+					return modules.splice(index, 0);
+				},
 			),
 		set: (modules) => set(modules),
 		notExist: () => get(modules).length === 0,
