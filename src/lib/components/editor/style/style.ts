@@ -66,10 +66,8 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
 	const heading = css`
 		h1 {
-			color: ${secondary};
 			font-size: 3rem;
 			line-height: 1.167;
-			text-align: center;
 		}
 
 		h2 {
@@ -98,8 +96,10 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 		}
 
 		.heading {
-			margin: 1rem 0;
-		}
+      color: ${secondary};
+      margin: 1rem 0;
+      text-align: center;
+    }
 	`;
 
 	const hr = css`
