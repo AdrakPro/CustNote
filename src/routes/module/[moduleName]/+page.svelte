@@ -123,6 +123,9 @@
     display: flex;
     grid-area: utils;
     z-index: $max-z-index;
+		position: fixed;
+		bottom: 0;
+		width: 300px;
   }
 
   .icon {

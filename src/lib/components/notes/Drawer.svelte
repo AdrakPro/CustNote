@@ -40,6 +40,7 @@
     position: fixed;
     transition: transform 350ms ease;
     width: 300px;
+    background: linear-gradient(140deg, #43484d, #46484b, #484848);
 
     &.right {
       right: 0;

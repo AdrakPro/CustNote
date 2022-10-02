@@ -373,7 +373,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
         font-size: 24px;
       }
 
-      background: transparent;
+      background: linear-gradient(140deg, #43484d, #46484b, #484848);
       position: relative;
       margin: 0 auto 0 auto;
       height: 100%;
