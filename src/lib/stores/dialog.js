@@ -26,7 +26,7 @@ function createDialogStore() {
 
 				return dialog;
 			}),
-		get: () => get(dialog),
+		getData: () => get(dialog).data,
 	};
 }
 

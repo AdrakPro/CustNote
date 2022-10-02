@@ -6,7 +6,7 @@
 	import { del } from '$lib/api.js';
 	import { redirectTo } from '$lib/utils/redirect.js';
 
-	const { userId, moduleName } = dialog.get().data;
+	const { userId, moduleName } = dialog.getData();
 
 	async function deleteModule() {
 		redirectTo('/dashboard');

@@ -6,7 +6,7 @@
 	import { post } from '$lib/api.js';
 
 	let nameInput: HTMLInputElement;
-	const { userId, moduleName } = dialog.get().data;
+	const { userId, moduleName } = dialog.getData();
 
 	onMount(() => nameInput.focus());
 
