@@ -18,6 +18,6 @@ export async function saveNotes(userId, moduleName) {
 		);
 
 		// Reset modified status
-		note.modified = false;
+		notes.resetModify(note.name);
 	}
 }

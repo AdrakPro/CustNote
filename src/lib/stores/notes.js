@@ -45,6 +45,15 @@ function createNoteStore() {
 
 		getModifiedNotes: () => get(notes).filter((note) => note.modified === true),
 
+		resetModify: (name) =>
+			update((notes) => {
+				const note = notes.find((note) => note.name === name);
+
+				note.modified = false;
+
+				return notes;
+			}),
+
 		reset: () => set([]),
 	};
 }

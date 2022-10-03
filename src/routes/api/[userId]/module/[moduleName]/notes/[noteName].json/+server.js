@@ -15,9 +15,11 @@ export async function PUT({ request, params }) {
 		},
 	};
 
-	updateRecord(NOTE, query).catch((e) => {
-		return new error(500, e.message);
-	});
+	if (content) {
+		updateRecord(NOTE, query).catch((e) => {
+			return new error(500, e.message);
+		});
+	}
 
 	return new Response(undefined, { status: 200 });
 }
