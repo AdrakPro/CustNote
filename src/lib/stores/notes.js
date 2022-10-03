@@ -22,6 +22,7 @@ function createNoteStore() {
 					createdAt: Date.now(),
 				},
 			]),
+		// gdy note name nie jest uniklany to bugi sie robia
 		setContent: (name, content) =>
 			update((notes) => {
 				const note = notes.find((note) => note.name === name);
@@ -43,6 +44,7 @@ function createNoteStore() {
 			get(notes).filter((note) => note.moduleName === moduleName).length === 0,
 
 		getModifiedNotes: () => get(notes).filter((note) => note.modified === true),
+
 		reset: () => set([]),
 	};
 }

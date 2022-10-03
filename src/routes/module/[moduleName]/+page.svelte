@@ -8,7 +8,7 @@
 	import Notify from '$lib/components/Notify.svelte';
 	import ReviseTracker from '$lib/components/notes/ReviseTracker.svelte';
 
-	import { startNoteSavingInterval } from '$lib/utils/timer.js';
+	import { saveNotes, startNoteSavingInterval } from '$lib/utils/timer.js';
 	import { redirectTo } from '$lib/utils/redirect.js';
 	import { reviseMode } from '$lib/stores/reviseMode.js';
 	import { dialog } from '$lib/stores/dialog.js';
@@ -38,6 +38,7 @@
 	}
 
 	function redirectToDashboard() {
+		saveNotes(userId, moduleName);
 		redirectTo('/dashboard');
 	}
 </script>
@@ -123,9 +124,9 @@
     display: flex;
     grid-area: utils;
     z-index: $max-z-index;
-		position: fixed;
-		bottom: 0;
-		width: 300px;
+    position: fixed;
+    bottom: 0;
+    width: 300px;
   }
 
   .icon {

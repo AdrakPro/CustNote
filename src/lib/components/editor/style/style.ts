@@ -233,7 +233,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 
 		.strong {
 			font-weight: bold;
-			color: ${secondary};
+			color: ${primary};
 		}
 
 		em {

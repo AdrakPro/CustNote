@@ -16,7 +16,7 @@
 	const dispatch = createEventDispatcher();
 
 	// Get notes that belong to module
-	$: notes = $noteStore.filter((note) => note.moduleName === moduleName);
+	$: notes = $noteStore.filter((note) => moduleName.includes(note.moduleName));
 
 	// Experimental usage of id on element
 	function selectNote(note, index) {

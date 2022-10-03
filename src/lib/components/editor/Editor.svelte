@@ -68,7 +68,10 @@
 					// Edge case: save when only one note exists
 					const currentMarkdown = editor.action(getMarkdown());
 
-					notes.setContent($currentNote.name, currentMarkdown);
+					if (currentMarkdown) {
+						notes.setContent($currentNote.name, currentMarkdown);
+					}
+
 					editor.action(destroy());
 				});
 			},

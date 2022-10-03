@@ -10,7 +10,7 @@
 		info: '#2492f9',
 	};
 </script>
-
+<!--Bug scrollable editor overflow toast -->
 <div class="notifications">
 	{#each $notify as { type, message, id } (id)}
 		<div

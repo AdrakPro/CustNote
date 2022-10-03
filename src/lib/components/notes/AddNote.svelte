@@ -8,11 +8,20 @@
 	function addNote() {
 		dialog.show(ADD_NOTE, { userId, moduleName });
 	}
+
+	function addNoteOnShortKey({ altKey, keyCode }) {
+		// Alt+n
+		if (altKey && keyCode === 78) {
+			addNote();
+		}
+	}
 </script>
 
 <button on:click={ () => addNote() }>
 	<Icon name="note_add" />
 </button>
+
+<svelte:window on:keydown={ (event) => addNoteOnShortKey(event) } />
 
 <style lang="scss">
   button {

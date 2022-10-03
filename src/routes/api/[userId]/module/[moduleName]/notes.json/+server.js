@@ -33,7 +33,7 @@ export async function GET({ params }) {
 	const { notes, name } = module;
 
 	notes.forEach((note) => {
-		note.moduleName = name;
+		note.moduleName = name.toLowerCase();
 		note.modified = false;
 	});
 
