@@ -37,7 +37,5 @@ export async function GET({ params }) {
 		note.modified = false;
 	});
 
-	const headers = { 'cache-control': 'max-age=0, s-maxage=1800' };
-
-	return json(notes, { headers, status: 200 });
+	return json(notes, { status: 200 });
 }

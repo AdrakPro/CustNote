@@ -40,6 +40,7 @@ function createNoteStore() {
 		deleteMany: (moduleName) =>
 			update((notes) => notes.filter((note) => note.moduleName !== moduleName)),
 
+		// get is messing up (for now it works bec of console.log)
 		notExist: (moduleName) => {
 			console.log(get(notes).filter((note) => note.moduleName === moduleName));
 			return get(notes).filter((note) => note.moduleName === moduleName).length === 0;
