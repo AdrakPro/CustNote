@@ -10,8 +10,9 @@ export function startNoteSavingInterval(userId, moduleName) {
 
 export async function saveNotes(userId, moduleName) {
 	const modifiedNotes = notes.getModifiedNotes();
+
 	for (const note of modifiedNotes) {
-		await put(
+		put(
 			`/api/${ userId }/module/${ moduleName }/notes/${ note.name }.json`,
 			{ content: note.content },
 			userId,

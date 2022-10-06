@@ -15,12 +15,14 @@
 
 	import { notes } from '$lib/stores/notes.js';
 	import { withPrevious } from 'svelte-previous';
+	import { createEventDispatcher } from 'svelte';
 
 	import 'katex/dist/katex.min.css';
 	import '/src/styles/highlight.min.css';
 
 	export let note;
 	const [currentNote, previousNote] = withPrevious(note);
+	const dispatch = createEventDispatcher();
 
 	$: $currentNote = note;
 
@@ -67,12 +69,12 @@
 				editorPromise.then((editor) => {
 					// Edge case: save when only one note exists
 					const currentMarkdown = editor.action(getMarkdown());
-
-					if (currentMarkdown) {
-						notes.setContent($currentNote.name, currentMarkdown);
-					}
-
 					editor.action(destroy());
+
+					dispatch('destroy', {
+						content: currentMarkdown,
+						name: $currentNote.name,
+					});
 				});
 			},
 		};

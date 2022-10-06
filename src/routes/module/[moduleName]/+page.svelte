@@ -13,6 +13,7 @@
 	import { reviseMode } from '$lib/stores/reviseMode.js';
 	import { dialog } from '$lib/stores/dialog.js';
 	import { page } from '$app/stores';
+	import { notes } from '$lib/stores/notes.js';
 
 	const { userId, moduleName } = $page.data;
 	let open = true;
@@ -37,9 +38,13 @@
 		}
 	}
 
-	function redirectToDashboard() {
-		saveNotes(userId, moduleName);
-		redirectTo('/dashboard');
+	async function onEditorDestroy({ detail }) {
+		const { content, name } = detail;
+
+		if (content) {
+			notes.setContent(name, content);
+			saveNotes(userId, moduleName);
+		}
 	}
 </script>
 
@@ -51,7 +56,7 @@
 		<span
 			class="icon"
 			class:hidden={ !open }
-			on:click={ () => redirectToDashboard() }
+			on:click={ () => redirectTo('/dashboard') }
 		><Icon
 			height="48"
 			src="/logo-smaller.png"
@@ -81,7 +86,10 @@
 		{/if}
 	</section>
 	<section class="editor">
-		<Editor bind:note="{ note }" />
+		<Editor
+			bind:note="{ note }"
+			on:destroy={ onEditorDestroy }
+		/>
 	</section>
 </div>
 <Dialog />
