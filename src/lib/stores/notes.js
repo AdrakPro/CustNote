@@ -1,9 +1,11 @@
 import { get, writable } from 'svelte/store';
 import { getNewDeadline } from '$lib/utils/date.js';
+import { createPersistentStore } from '$lib/utils/persistentStore.js';
+import { NOTES } from '$lib/utils/constants.js';
 
 // Fow now it's not persistent store, because revise deadlines need to refresh every 4:00
 function createNoteStore() {
-	const notes = writable([]);
+	const notes = createPersistentStore(NOTES, []);
 	const { subscribe, update, set } = notes;
 
 	return {
