@@ -43,7 +43,7 @@
 
 		if (content) {
 			notes.setContent(name, content);
-			saveNotes(userId, moduleName);
+			await saveNotes(userId, moduleName);
 		}
 	}
 </script>
