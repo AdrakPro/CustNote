@@ -32,7 +32,7 @@ model Module {
 model Note {
   id             String    @id @default(uuid())
   name           String    @db.VarChar(255) @unique
-  content        String?   @db.Text
+  content        String?   @db.MediumText
   reviseDeadline DateTime? @db.Date
   reviseCount    Int?      @default(1)
   createdAt      DateTime  @default(now())
