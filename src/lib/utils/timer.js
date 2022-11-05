@@ -12,13 +12,15 @@ export async function saveNotes(userId, moduleName) {
 	const modifiedNotes = notes.getModifiedNotes();
 
 	for (const note of modifiedNotes) {
+		let { name, content } = note;
+
 		await put(
-			`/api/${ userId }/module/${ moduleName }/notes/${ note.name }.json`,
-			{ content: note.content },
+			`/api/${ userId }/module/${ moduleName }/notes/${ name }.json`,
+			{ content: content },
 			userId,
 		);
 
 		// Reset modified status
-		notes.resetModify(note.name);
+		notes.resetModify(name);
 	}
 }

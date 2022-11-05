@@ -54,7 +54,9 @@
 					if ($previousNote) {
 						const currentMarkdown = editor.action(getMarkdown());
 
-						notes.setContent($previousNote.name, currentMarkdown);
+						if (currentMarkdown) {
+							notes.setContent($previousNote.name, currentMarkdown);
+						}
 					}
 
 					// Render markdown
