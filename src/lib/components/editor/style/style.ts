@@ -96,6 +96,7 @@ export const getStyle = (manager: ThemeManager, emotion: Emotion) => {
 		}
 
 		.heading {
+			font-weight: bold;
       color: ${secondary};
       margin: 1rem 0;
       text-align: center;
