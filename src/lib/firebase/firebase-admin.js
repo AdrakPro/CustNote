@@ -5,6 +5,6 @@ const serviceAccount = JSON.parse(SERVICE_ACCOUNT);
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
-});
+}, 'SERVER');
 
 export const auth = admin.auth;
