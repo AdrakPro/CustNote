@@ -3,7 +3,7 @@ import { notes } from '$lib/stores/notes.js';
 import { put } from '$lib/api.js';
 
 export function startNoteSavingInterval(userId, moduleName) {
-	const interval = setInterval(async () => saveNotes(userId, moduleName), 10_000);
+	const interval = setInterval(async () => saveNotes(userId, moduleName), 3_000);
 
 	onDestroy(() => clearInterval(interval));
 }
@@ -15,8 +15,8 @@ export async function saveNotes(userId, moduleName) {
 		let { name, content } = note;
 
 		await put(
-			`/api/${ userId }/module/${ moduleName }/notes/${ name }.json`,
-			{ content: content },
+			`/api/${userId}/module/${moduleName}/notes/${name}.json`,
+			{ content },
 			userId,
 		);
 
