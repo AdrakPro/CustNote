@@ -73,10 +73,12 @@
 					const currentMarkdown = editor.action(getMarkdown());
 					editor.action(destroy());
 
-					dispatch('destroy', {
-						content: currentMarkdown,
-						name: $currentNote.name,
-					});
+					if (currentMarkdown) {
+						dispatch('destroy', {
+							content: currentMarkdown,
+							name: $currentNote.name,
+						});
+					}
 				});
 			},
 		};

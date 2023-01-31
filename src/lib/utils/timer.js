@@ -14,11 +14,13 @@ export async function saveNotes(userId, moduleName) {
 	for (const note of modifiedNotes) {
 		let { name, content } = note;
 
-		await put(
-			`/api/${userId}/module/${moduleName}/notes/${name}.json`,
-			{ content },
-			userId,
-		);
+		if (content) {
+			await put(
+				`/api/${userId}/module/${moduleName}/notes/${name}.json`,
+				{ content },
+				userId,
+			);
+		}
 
 		// Reset modified status
 		notes.resetModify(name);
