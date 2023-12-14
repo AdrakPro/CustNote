@@ -1,18 +1,14 @@
 <script>
-	import Icon from '../Icon.svelte';
+  import Icon from '../Icon.svelte';
 
-	export let isLoginForm = true;
+  export let isLoginForm = true;
 
-	$: getText = () => isLoginForm ? 'LOG IN' : 'SIGN UP';
+  $: getText = () => (isLoginForm ? 'LOG IN' : 'SIGN UP');
 </script>
 
 <button class="google-button">
-	<Icon
-		height="28"
-		src="icons/google.png"
-		width="28"
-	/>
-	<span>{ getText() } WITH GOOGLE</span>
+  <Icon height="28" src="icons/google.png" width="28" />
+  <span>{getText()} WITH GOOGLE</span>
 </button>
 
 <style lang="scss">

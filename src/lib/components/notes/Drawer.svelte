@@ -1,15 +1,12 @@
 <script>
-	export let open = true;
-	export let placement = 'left';
+  export let open = true;
+  export let placement = 'left';
 </script>
 
-<aside
-	class="drawer"
-	class:open
->
-	<div class="panel { placement }">
-		<slot />
-	</div>
+<aside class="drawer" class:open>
+  <div class="panel {placement}">
+    <slot />
+  </div>
 </aside>
 
 <style lang="scss">
@@ -40,7 +37,12 @@
     position: fixed;
     transition: transform 350ms ease;
     width: 300px;
-    background: linear-gradient(140deg, #43484d, #46484b, #484848);
+    background: linear-gradient(
+      140deg,
+      #43484d,
+      #46484b,
+      #484848
+    );
 
     &.right {
       right: 0;

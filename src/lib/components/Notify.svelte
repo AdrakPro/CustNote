@@ -1,28 +1,29 @@
 <script>
-	import { flip } from 'svelte/animate';
-	import { fly } from 'svelte/transition';
-	import { notify } from '$lib/stores/notify.js';
+  import { flip } from 'svelte/animate';
+  import { fly } from 'svelte/transition';
+  import { notify } from '$lib/stores/notify.js';
 
-	let themes = {
-		danger: '#e95065',
-		success: '#a82ffc',
-		warning: '#f0ad4e',
-		info: '#2492f9',
-	};
+  let themes = {
+    danger: '#e95065',
+    success: '#a82ffc',
+    warning: '#f0ad4e',
+    info: '#2492f9'
+  };
 </script>
+
 <!--Bug scrollable editor overflow toast -->
 <div class="notifications">
-	{#each $notify as { type, message, id } (id)}
-		<div
-			animate:flip
-			class="toast"
-			style="background: { themes[type] };"
-			transition:fly={ { y: 15, duration: '1200' } }
-		>
-			<p class="content">{ message }</p>
-			<!--{#if icon}<Icon src="icons/{ icon }.png" />{/if}-->
-		</div>
-	{/each}
+  {#each $notify as { type, message, id } (id)}
+    <div
+      animate:flip
+      class="toast"
+      style="background: {themes[type]};"
+      transition:fly={{ y: 15, duration: '1200' }}
+    >
+      <p class="content">{message}</p>
+      <!--{#if icon}<Icon src="icons/{ icon }.png" />{/if}-->
+    </div>
+  {/each}
 </div>
 
 <style lang="scss">

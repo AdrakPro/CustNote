@@ -1,36 +1,36 @@
 <script>
-	import { getDifferenceInDays } from '$lib/utils/date.js';
+  import { getDifferenceInDays } from '$lib/utils/date.js';
 
-	export let note;
-	$: isReviseNotDone = note?.reviseCount <= 3;
+  export let note;
+  $: isReviseNotDone = note?.reviseCount <= 3;
 
-	$: days = getDifferenceInDays(new Date(note?.reviseDeadline));
+  $: days = getDifferenceInDays(
+    new Date(note?.reviseDeadline)
+  );
 
-	$: getColor = () => {
-		let color;
+  $: getColor = () => {
+    let color;
 
-		if (days >= 4) {
-			color = '#2492f9';
-		} else if (days <= 3) {
-			color = '#a82ffc';
-		}
+    if (days >= 4) {
+      color = '#2492f9';
+    } else if (days <= 3) {
+      color = '#a82ffc';
+    }
 
-		// Override value if true
-		if (days <= 1) {
-			color = '#e95065';
-		}
+    // Override value if true
+    if (days <= 1) {
+      color = '#e95065';
+    }
 
-		return color;
-	}
+    return color;
+  };
 </script>
 
 <!--Todo manage text when its one day left-->
 {#if isReviseNotDone}
-	<div
-		class="container"
-		style="color: { getColor() }"
-	>{ days } days left to revise!
-	</div>
+  <div class="container" style="color: {getColor()}">
+    {days} days left to revise!
+  </div>
 {/if}
 
 <style lang="scss">

@@ -12,14 +12,14 @@ const app = initializeApp(firebaseOptions, 'CLIENT');
 const auth = getAuth(app);
 
 export async function signOut() {
-	await post('/api/auth/signOut');
-	await _signOut(auth);
-	redirectTo('/auth');
-	resetStores();
+  await post('/api/auth/signOut');
+  await _signOut(auth);
+  redirectTo('/auth');
+  resetStores();
 }
 
 function resetStores() {
-	modules.reset();
-	notes.reset();
-	reviseMode.set(false);
+  modules.reset();
+  notes.reset();
+  reviseMode.set(false);
 }

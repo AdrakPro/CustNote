@@ -1,15 +1,13 @@
 <script>
-	import { page } from '$app/stores';
+  import { page } from '$app/stores';
 
-	console.log($page.error);
+  console.log($page.error);
 </script>
 
 <div class="container">
-	<h1 class="error">{ $page.status } : { $page.error.message }</h1>
-	<img
-		alt="dancing monster"
-		src="https://c.tenor.com/7tzqV8r23qoAAAAd/jd.gif"
-	/>
+  <h1 class="error">
+    {$page.status} : {$page.error.message}
+  </h1>
 </div>
 
 <style lang="scss">

@@ -1,12 +1,13 @@
 <script>
-	import { sessions } from '$lib/stores/session.js';
+  import { sessions } from '$lib/stores/session.js';
 
-	$: list = Object.values($sessions);
+  $: list = Object.values($sessions);
 </script>
+
 <ol class="list">
-	{#each list as { name }}
-		<li>{ name }</li>
-	{/each}
+  {#each list as { name }}
+    <li>{name}</li>
+  {/each}
 </ol>
 
 <style lang="scss">

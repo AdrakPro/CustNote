@@ -1,43 +1,40 @@
 <script>
-	import WelcomeNav from '$lib/components/nav/WelcomeNav.svelte';
-	import NotesNav from '$lib/components/nav/NotesNav.svelte';
-	import { page } from '$app/stores';
-	import '$styles/nav.scss';
+  import WelcomeNav from '$lib/components/nav/WelcomeNav.svelte';
+  import NotesNav from '$lib/components/nav/NotesNav.svelte';
+  import { page } from '$app/stores';
+  import '$styles/nav.scss';
 
-	export let isOpenMenu = false;
+  export let isOpenMenu = false;
 
-	function getNavBar() {
-		const currentPathName = $page.url.pathname;
-		let navBar;
+  function getNavBar() {
+    const currentPathName = $page.url.pathname;
+    let navBar;
 
-		switch (currentPathName) {
-			case '/':
-				navBar = WelcomeNav;
-				break;
-			case '/dashboard':
-				navBar = NotesNav;
-				break;
-			case '/session':
-				navBar = NotesNav;
-				break;
-		}
+    switch (currentPathName) {
+      case '/':
+        navBar = WelcomeNav;
+        break;
+      case '/dashboard':
+        navBar = NotesNav;
+        break;
+      case '/session':
+        navBar = NotesNav;
+        break;
+    }
 
-		return navBar;
-	}
+    return navBar;
+  }
 </script>
 
 <input
-	bind:checked={ isOpenMenu }
-	class="toggle-menu"
-	id="toggle-menu"
-	type="checkbox"
->
-<svelte:component this="{ getNavBar() }" />
-<label
-	class="toggle-menu-label"
-	for="toggle-menu"
->
-	<span></span>
+  bind:checked={isOpenMenu}
+  class="toggle-menu"
+  id="toggle-menu"
+  type="checkbox"
+/>
+<svelte:component this={getNavBar()} />
+<label class="toggle-menu-label" for="toggle-menu">
+  <span></span>
 </label>
 
 <style lang="scss">

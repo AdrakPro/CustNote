@@ -6,31 +6,36 @@ import { post } from '$lib/api.js';
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
-	const { email, password, username } = await request.json();
-	const userRecord = await auth().createUser({
-		email,
-		password,
-		displayName: username,
-	});
-	const { uid } = userRecord;
+  const { email, password, username } =
+    await request.json();
+  const userRecord = await auth().createUser({
+    email,
+    password,
+    displayName: username
+  });
+  const { uid } = userRecord;
 
-	await auth().setCustomUserClaims(uid, { early_access: true });
+  await auth().setCustomUserClaims(uid, {
+    early_access: true
+  });
+  const signInRes = await post(
+    `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${WEB_API_KEY}`,
+    { email, password, returnSecureToken: true },
+    null
+  );
 
-	const signInRes = await post(
-		`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${ WEB_API_KEY }`,
-		{ email, password, returnSecureToken: true },
-		null,
-	);
+  console.log(signInRes);
+  if (!signInRes.ok) {
+    return new Response(undefined, {
+      status: signInRes.status
+    });
+  }
 
-	if (!signInRes.ok) {
-		return new Response(undefined, { status: signInRes.status });
-	}
+  const { refreshToken } = await signInRes.json();
+  const customToken = await auth().createCustomToken(uid);
+  const headers = tokensCookie(refreshToken, customToken);
 
-	const { refreshToken } = await signInRes.json();
-	const customToken = await auth().createCustomToken(uid);
-	const headers = tokensCookie(refreshToken, customToken);
+  await createRecord(USER, { id: uid });
 
-	await createRecord(USER, { id: uid });
-
-	return new Response(undefined, { headers, status: 200 });
+  return new Response(undefined, { headers, status: 200 });
 }

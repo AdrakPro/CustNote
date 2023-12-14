@@ -1,27 +1,29 @@
 <script lang="ts">
-	import Icon from '$lib/components/Icon.svelte';
-	import { ADD_NOTE, dialog } from '$lib/stores/dialog.js';
+  import Icon from '$lib/components/Icon.svelte';
+  import { ADD_NOTE, dialog } from '$lib/stores/dialog.js';
 
-	export let userId: string;
-	export let moduleName: string;
+  export let userId: string;
+  export let moduleName: string;
 
-	function addNote() {
-		dialog.show(ADD_NOTE, { userId, moduleName });
-	}
+  function addNote() {
+    dialog.show(ADD_NOTE, { userId, moduleName });
+  }
 
-	function addNoteOnShortKey({ altKey, keyCode }) {
-		// Alt+n
-		if (altKey && keyCode === 78) {
-			addNote();
-		}
-	}
+  function addNoteOnShortKey({ altKey, keyCode }) {
+    // Alt+n
+    if (altKey && keyCode === 78) {
+      addNote();
+    }
+  }
 </script>
 
-<button on:click={ () => addNote() }>
-	<Icon name="note_add" />
+<button on:click={() => addNote()}>
+  <Icon name="note_add" />
 </button>
 
-<svelte:window on:keydown={ (event) => addNoteOnShortKey(event) } />
+<svelte:window
+  on:keydown={(event) => addNoteOnShortKey(event)}
+/>
 
 <style lang="scss">
   button {

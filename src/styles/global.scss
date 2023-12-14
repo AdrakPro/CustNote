@@ -21,7 +21,12 @@
 
 /* Set core body defaults */
 body {
-  background: linear-gradient(140deg, #43484d, #46484b, #484848);
+  background: linear-gradient(
+    140deg,
+    #43484d,
+    #46484b,
+    #484848
+  );
   color: #fff;
   font-family: Arimo, sans-serif;
   font-size: 16px;

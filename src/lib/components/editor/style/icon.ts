@@ -1,205 +1,207 @@
 import type { Icon, IconValue } from '@milkdown/design-system';
 
 type IconMeta = {
-	icon: string;
-	label: string;
+  icon: string;
+  label: string;
 };
 
 const iconMapping: Record<Icon, IconMeta> = {
-	h1: {
-		label: 'h1',
-		icon: 'looks_one',
-	},
+  h1: {
+    label: 'h1',
+    icon: 'looks_one'
+  },
 
-	h2: {
-		label: 'h2',
-		icon: 'looks_two',
-	},
+  h2: {
+    label: 'h2',
+    icon: 'looks_two'
+  },
 
-	h3: {
-		label: 'h3',
-		icon: 'looks_3',
-	},
+  h3: {
+    label: 'h3',
+    icon: 'looks_3'
+  },
 
-	loading: {
-		label: 'loading',
-		icon: 'hourglass_empty',
-	},
+  loading: {
+    label: 'loading',
+    icon: 'hourglass_empty'
+  },
 
-	quote: {
-		label: 'quote',
-		icon: 'format_quote',
-	},
+  quote: {
+    label: 'quote',
+    icon: 'format_quote'
+  },
 
-	code: {
-		label: 'code',
-		icon: 'code',
-	},
+  code: {
+    label: 'code',
+    icon: 'code'
+  },
 
-	table: {
-		label: 'table',
-		icon: 'table_chart',
-	},
+  table: {
+    label: 'table',
+    icon: 'table_chart'
+  },
 
-	divider: {
-		label: 'divider',
-		icon: 'horizontal_rule',
-	},
+  divider: {
+    label: 'divider',
+    icon: 'horizontal_rule'
+  },
 
-	image: {
-		label: 'image',
-		icon: 'image',
-	},
+  image: {
+    label: 'image',
+    icon: 'image'
+  },
 
-	brokenImage: {
-		label: 'broken image',
-		icon: 'broken_image',
-	},
+  brokenImage: {
+    label: 'broken image',
+    icon: 'broken_image'
+  },
 
-	bulletList: {
-		label: 'bullet list',
-		icon: 'format_list_bulleted',
-	},
+  bulletList: {
+    label: 'bullet list',
+    icon: 'format_list_bulleted'
+  },
 
-	orderedList: {
-		label: 'ordered list',
-		icon: 'format_list_numbered',
-	},
+  orderedList: {
+    label: 'ordered list',
+    icon: 'format_list_numbered'
+  },
 
-	taskList: {
-		label: 'task list',
-		icon: 'checklist',
-	},
+  taskList: {
+    label: 'task list',
+    icon: 'checklist'
+  },
 
-	bold: {
-		label: 'bold',
-		icon: 'format_bold',
-	},
+  bold: {
+    label: 'bold',
+    icon: 'format_bold'
+  },
 
-	italic: {
-		label: 'italic',
-		icon: 'format_italic',
-	},
+  italic: {
+    label: 'italic',
+    icon: 'format_italic'
+  },
 
-	inlineCode: {
-		label: 'inline code',
-		icon: 'code',
-	},
+  inlineCode: {
+    label: 'inline code',
+    icon: 'code'
+  },
 
-	strikeThrough: {
-		label: 'strike through',
-		icon: 'strikethrough_s',
-	},
+  strikeThrough: {
+    label: 'strike through',
+    icon: 'strikethrough_s'
+  },
 
-	link: {
-		label: 'link',
-		icon: 'link',
-	},
+  link: {
+    label: 'link',
+    icon: 'link'
+  },
 
-	leftArrow: {
-		label: 'left arrow',
-		icon: 'chevron_left',
-	},
+  leftArrow: {
+    label: 'left arrow',
+    icon: 'chevron_left'
+  },
 
-	rightArrow: {
-		label: 'right arrow',
-		icon: 'chevron_right',
-	},
+  rightArrow: {
+    label: 'right arrow',
+    icon: 'chevron_right'
+  },
 
-	upArrow: {
-		label: 'up arrow',
-		icon: 'expand_less',
-	},
+  upArrow: {
+    label: 'up arrow',
+    icon: 'expand_less'
+  },
 
-	downArrow: {
-		label: 'down arrow',
-		icon: 'expand_more',
-	},
+  downArrow: {
+    label: 'down arrow',
+    icon: 'expand_more'
+  },
 
-	alignLeft: {
-		label: 'align left',
-		icon: 'format_align_left',
-	},
+  alignLeft: {
+    label: 'align left',
+    icon: 'format_align_left'
+  },
 
-	alignRight: {
-		label: 'align right',
-		icon: 'format_align_right',
-	},
+  alignRight: {
+    label: 'align right',
+    icon: 'format_align_right'
+  },
 
-	alignCenter: {
-		label: 'align center',
-		icon: 'format_align_center',
-	},
+  alignCenter: {
+    label: 'align center',
+    icon: 'format_align_center'
+  },
 
-	delete: {
-		label: 'delete',
-		icon: 'delete',
-	},
+  delete: {
+    label: 'delete',
+    icon: 'delete'
+  },
 
-	select: {
-		label: 'select',
-		icon: 'select_all',
-	},
+  select: {
+    label: 'select',
+    icon: 'select_all'
+  },
 
-	unchecked: {
-		label: 'unchecked',
-		icon: 'check_box_outline_blank',
-	},
+  unchecked: {
+    label: 'unchecked',
+    icon: 'check_box_outline_blank'
+  },
 
-	checked: {
-		label: 'checked',
-		icon: 'check_box',
-	},
+  checked: {
+    label: 'checked',
+    icon: 'check_box'
+  },
 
-	undo: {
-		label: 'undo',
-		icon: 'turn_left',
-	},
+  undo: {
+    label: 'undo',
+    icon: 'turn_left'
+  },
 
-	redo: {
-		label: 'redo',
-		icon: 'turn_right',
-	},
+  redo: {
+    label: 'redo',
+    icon: 'turn_right'
+  },
 
-	liftList: {
-		label: 'lift list',
-		icon: 'format_indent_decrease',
-	},
+  liftList: {
+    label: 'lift list',
+    icon: 'format_indent_decrease'
+  },
 
-	sinkList: {
-		label: 'sink list',
-		icon: 'format_indent_increase',
-	},
+  sinkList: {
+    label: 'sink list',
+    icon: 'format_indent_increase'
+  },
 
-	dragHandle: {
-		label: 'drag handle',
-		icon: 'drag_indicator',
-	},
+  dragHandle: {
+    label: 'drag handle',
+    icon: 'drag_indicator'
+  },
 
-	text: {
-		label: 'text',
-		icon: 'title',
-	},
+  text: {
+    label: 'text',
+    icon: 'title'
+  }
 };
 
-export const getIcon = (id: Icon): IconValue | undefined => {
-	const target = iconMapping[id];
+export const getIcon = (
+  id: Icon
+): IconValue | undefined => {
+  const target = iconMapping[id];
 
-	if (!target) {
-		return;
-	}
+  if (!target) {
+    return;
+  }
 
-	const span = document.createElement('span');
-	span.className = 'icon material-icons';
-	const icon = iconMapping[id];
+  const span = document.createElement('span');
+  span.className = 'icon material-icons';
+  const icon = iconMapping[id];
 
-	if (icon) {
-		span.textContent = icon.icon;
-		span.dataset['label'] = icon.label;
-	}
+  if (icon) {
+    span.textContent = icon.icon;
+    span.dataset['label'] = icon.label;
+  }
 
-	return {
-		dom: span,
-		label: target.label,
-	};
+  return {
+    dom: span,
+    label: target.label
+  };
 };

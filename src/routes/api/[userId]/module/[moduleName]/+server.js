@@ -4,17 +4,17 @@ import { error, json } from '@sveltejs/kit';
 
 /** @type {import('./$types').RequestHandler} */
 export async function DELETE({ params }) {
-	const { moduleName } = params;
-	const query = {
-		where: {
-			name: moduleName,
-		},
-	};
+  const { moduleName } = params;
+  const query = {
+    where: {
+      name: moduleName
+    }
+  };
 
-	await deleteRecord(MODULE, query).catch((e) => {
-		return new error(500, e.message);
-	});
+  await deleteRecord(MODULE, query).catch((e) => {
+    return new error(500, e.message);
+  });
 
-	// module was deleted successfully
-	return json({});
+  // module was deleted successfully
+  return json({});
 }

@@ -1,25 +1,32 @@
 <script>
-	import { isComplete, isRunning, restartKey, sessions, time, timer } from '$lib/stores/session.js';
-	import { ADD_SESSION, dialog } from '$lib/stores/dialog.js';
-	import ProgressBar from '$lib/components/session/ProgressBar.svelte';
-	import SessionList from '$lib/components/session/SessionList.svelte';
+  import { isComplete, isRunning, restartKey, sessions, time, timer } from '$lib/stores/session.js';
+  import { ADD_SESSION, dialog } from '$lib/stores/dialog.js';
+  import ProgressBar from '$lib/components/session/ProgressBar.svelte';
+  import SessionList from '$lib/components/session/SessionList.svelte';
 
-	$: pauseText = $isRunning ? 'Pause' : 'Continue';
+  $: pauseText = $isRunning ? 'Pause' : 'Continue';
 </script>
 
-<div class="clock">{ $time }</div>
+<div class="clock">{$time}</div>
 <ProgressBar />
 <div class="buttons">
-	{#if $isComplete}
-		<button disabled="{ $sessions.length === 0 }" on:click={ () => timer.start() }>Start</button>
-		<button on:click={ () => dialog.show(ADD_SESSION) }>Add sessions</button>
-	{:else}
-		<button on:click={ () => timer.switchPause() }>{ pauseText }</button>
-		<button on:click={ () => timer.stop() }>Stop</button>
-	{/if}
+  {#if $isComplete}
+    <button
+      disabled={$sessions.length === 0}
+      on:click={() => timer.start()}>Start</button
+    >
+    <button on:click={() => dialog.show(ADD_SESSION)}
+      >Add sessions</button
+    >
+  {:else}
+    <button on:click={() => timer.switchPause()}
+      >{pauseText}</button
+    >
+    <button on:click={() => timer.stop()}>Stop</button>
+  {/if}
 </div>
 {#key $restartKey}
-	<SessionList />
+  <SessionList />
 {/key}
 
 <style lang="scss">

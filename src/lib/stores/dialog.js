@@ -1,33 +1,33 @@
 import { get, writable } from 'svelte/store';
 
 function createDialogStore() {
-	const dialog = writable({
-		name: '',
-		show: false,
-		data: null,
-	});
-	const { subscribe, update } = dialog;
+  const dialog = writable({
+    name: '',
+    show: false,
+    data: null
+  });
+  const { subscribe, update } = dialog;
 
-	return {
-		subscribe,
-		show: (name, data) =>
-			update((dialog) => {
-				dialog.name = name;
-				dialog.show = true;
-				dialog.data = data;
+  return {
+    subscribe,
+    show: (name, data) =>
+      update((dialog) => {
+        dialog.name = name;
+        dialog.show = true;
+        dialog.data = data;
 
-				return dialog;
-			}),
-		close: () =>
-			update((dialog) => {
-				dialog.name = '';
-				dialog.show = false;
-				dialog.data = null;
+        return dialog;
+      }),
+    close: () =>
+      update((dialog) => {
+        dialog.name = '';
+        dialog.show = false;
+        dialog.data = null;
 
-				return dialog;
-			}),
-		getData: () => get(dialog).data,
-	};
+        return dialog;
+      }),
+    getData: () => get(dialog).data
+  };
 }
 
 export const dialog = createDialogStore();

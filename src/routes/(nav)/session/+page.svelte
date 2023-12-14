@@ -1,9 +1,9 @@
 <script>
-	import Countdown from '$lib/components/session/Timer.svelte';
+  import Countdown from '$lib/components/session/Timer.svelte';
 </script>
 
 <div class="container">
-	<Countdown />
+  <Countdown />
 </div>
 
 <style lang="scss">

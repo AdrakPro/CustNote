@@ -3,19 +3,22 @@ import path from 'node:path';
 
 /** @type { import('vite').UserConfig } */
 const config = {
-	plugins: [sveltekit()],
+  plugins: [sveltekit()],
 
-	resolve: {
-		alias: {
-			$styles: path.resolve(__dirname, './src/styles/shared'),
-		},
-	},
+  resolve: {
+    alias: {
+      $styles: path.resolve(
+        __dirname,
+        './src/styles/shared'
+      )
+    }
+  },
 
-	server: {
-		fs: {
-			allow: ['static'],
-		},
-	},
+  server: {
+    fs: {
+      allow: ['static']
+    }
+  }
 };
 
 export default config;

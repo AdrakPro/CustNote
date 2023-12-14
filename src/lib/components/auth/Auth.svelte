@@ -1,41 +1,46 @@
 <script>
-	import GoogleAuth from './GoogleAuth.svelte';
-	import SignIn from './SignIn.svelte';
-	import SignUp from './SignUp.svelte';
-	import Icon from '$lib/components/Icon.svelte';
-	import '$styles/auth.scss';
+  import GoogleAuth from './GoogleAuth.svelte';
+  import SignIn from './SignIn.svelte';
+  import SignUp from './SignUp.svelte';
+  import Icon from '$lib/components/Icon.svelte';
+  import '$styles/auth.scss';
 
-	let isLoginForm = true;
+  let isLoginForm = true;
 
-	function selectLogInTab() {
-		isLoginForm = true;
-	}
+  function selectLogInTab() {
+    isLoginForm = true;
+  }
 
-	function selectSignUpTab() {
-		isLoginForm = false;
-	}
+  function selectSignUpTab() {
+    isLoginForm = false;
+  }
 </script>
 
 <div>
-	<h1 class="title">
-		<Icon height="70" src="/logo.png" width="263" />
-	</h1>
-	<ul class="auth-tabs">
-		<li
-			class:highlighted-tab={ isLoginForm }
-			on:click={ () => selectLogInTab() }
-		><span>Log In</span></li>
-		<li class:highlighted-tab={ !isLoginForm }
-				on:click={ () => selectSignUpTab() }
-		><span>Sign Up</span></li>
-	</ul>
-	<GoogleAuth { isLoginForm } />
-	<p class="line"><span>or</span></p>
-	{#if isLoginForm}
-		<SignIn />
-	{:else}
-		<SignUp />
-	{/if}
+  <h1 class="title">
+    <Icon height="70" src="/logo.png" width="263" />
+  </h1>
+  <ul class="auth-tabs">
+    <li
+      class:highlighted-tab={isLoginForm}
+      on:click={() => selectLogInTab()}
+    >
+      <span>Log In</span>
+    </li>
+    <li
+      class:highlighted-tab={!isLoginForm}
+      on:click={() => selectSignUpTab()}
+    >
+      <span>Sign Up</span>
+    </li>
+  </ul>
+  <GoogleAuth {isLoginForm} />
+  <p class="line"><span>or</span></p>
+  {#if isLoginForm}
+    <SignIn />
+  {:else}
+    <SignUp />
+  {/if}
 </div>
 
 <style lang="scss">

@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { ADD_MODULE, dialog } from '$lib/stores/dialog.js';
-	import Icon from '../Icon.svelte';
+  import { ADD_MODULE, dialog } from '$lib/stores/dialog.js';
+  import Icon from '../Icon.svelte';
 
-	export let userId: string;
+  export let userId: string;
 
-	function show() {
-		dialog.show(ADD_MODULE, { userId });
-	}
+  function show() {
+    dialog.show(ADD_MODULE, { userId });
+  }
 </script>
 
-<button on:click={ () => show() }>
-	<Icon name="add" />
-	<span>New module</span>
+<button on:click={() => show()}>
+  <Icon name="add" />
+  <span>New module</span>
 </button>
 
 <style lang="scss">

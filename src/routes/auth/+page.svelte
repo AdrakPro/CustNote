@@ -1,17 +1,17 @@
 <script>
-	import Auth from '$lib/components/auth/Auth.svelte';
-	import Notify from '$lib/components/Notify.svelte';
+  import Auth from '$lib/components/auth/Auth.svelte';
+  import Notify from '$lib/components/Notify.svelte';
 </script>
 
 <Notify />
 <div class="container">
-	<div class="auth-form">
-		<Auth />
-	</div>
+  <div class="auth-form">
+    <Auth />
+  </div>
 </div>
 
 <svelte:head>
-	<title>CustNote | Auth</title>
+  <title>CustNote | Auth</title>
 </svelte:head>
 
 <style lang="scss">

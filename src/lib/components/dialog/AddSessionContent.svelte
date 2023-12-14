@@ -1,101 +1,101 @@
 <script lang="ts">
-	import { sessions } from '$lib/stores/session.js';
-	import { dialog } from '$lib/stores/dialog.js';
-	import { onMount } from 'svelte';
+  import { sessions } from '$lib/stores/session.js';
+  import { dialog } from '$lib/stores/dialog.js';
+  import { onMount } from 'svelte';
 
-	let timeInput: HTMLInputElement;
+  let timeInput: HTMLInputElement;
 
-	// Default values for setting up sessions
-	let includeBreaks = true;
-	let time = 25;
-	let breakTime = 5;
-	let repeat = 4;
-	let names = '';
+  // Default values for setting up sessions
+  let includeBreaks = true;
+  let time = 25;
+  let breakTime = 5;
+  let repeat = 4;
+  let names = '';
 
-	onMount(() => timeInput.focus());
+  onMount(() => timeInput.focus());
 
-	function submitTime({ keyCode }) {
-		if (validateSubmit(keyCode)) {
-			dialog.close();
+  function submitTime({ keyCode }) {
+    if (validateSubmit(keyCode)) {
+      dialog.close();
 
-			const namesArray = names.split(',');
+      const namesArray = names.split(',');
 
-			for (let i = 0; i < repeat; ++i) {
-				let name = namesArray[i];
+      for (let i = 0; i < repeat; ++i) {
+        let name = namesArray[i];
 
-				// User didn't specify name
-				if (name === undefined || name === '') {
-					name = 'Not specified';
-				}
+        // User didn't specify name
+        if (name === undefined || name === '') {
+          name = 'Not specified';
+        }
 
-				sessions.add(time, name);
+        sessions.add(time, name);
 
-				if (includeBreaks) {
-					sessions.add(breakTime, 'break');
-				}
-			}
-		}
-	}
+        if (includeBreaks) {
+          sessions.add(breakTime, 'break');
+        }
+      }
+    }
+  }
 
-	function validateSubmit(keyCode) {
-		// Enter
-		return keyCode === 13;
-	}
+  function validateSubmit(keyCode) {
+    // Enter
+    return keyCode === 13;
+  }
 </script>
 
 <div class="dialog">
-	<label>
-		Enter time (min):
-		<input
-			bind:this={ timeInput }
-			bind:value={ time }
-			max="60"
-			min="1"
-			name="time"
-			type="number"
-		/>
-	</label>
-	<label>
-		Include breaks:
-		<input
-			bind:checked={ includeBreaks }
-			name="breaks"
-			type="checkbox"
-		>
-	</label>
-	<label>
-		Enter break time (min):
-		<input
-			bind:value={ breakTime }
-			disabled="{ !includeBreaks }"
-			max="60"
-			min="1"
-			name="breakTime"
-			type="number"
-		/>
-	</label>
-	<label>
-		Repeat times:
-		<input
-			bind:value={ repeat }
-			max="15"
-			min="1"
-			name="repeat"
-			type="number"
-		/>
-	</label>
-	<label>
-		Session names:
-		<input
-			bind:value={ names }
-			name="names"
-			placeholder="Name, Name, ..."
-			type="text"
-		/>
-	</label>
+  <label>
+    Enter time (min):
+    <input
+      bind:this={timeInput}
+      bind:value={time}
+      max="60"
+      min="1"
+      name="time"
+      type="number"
+    />
+  </label>
+  <label>
+    Include breaks:
+    <input
+      bind:checked={includeBreaks}
+      name="breaks"
+      type="checkbox"
+    />
+  </label>
+  <label>
+    Enter break time (min):
+    <input
+      bind:value={breakTime}
+      disabled={!includeBreaks}
+      max="60"
+      min="1"
+      name="breakTime"
+      type="number"
+    />
+  </label>
+  <label>
+    Repeat times:
+    <input
+      bind:value={repeat}
+      max="15"
+      min="1"
+      name="repeat"
+      type="number"
+    />
+  </label>
+  <label>
+    Session names:
+    <input
+      bind:value={names}
+      name="names"
+      placeholder="Name, Name, ..."
+      type="text"
+    />
+  </label>
 </div>
 
-<svelte:window on:keydown={ (event) => submitTime(event) } />
+<svelte:window on:keydown={(event) => submitTime(event)} />
 
 <style lang="scss">
   .dialog {

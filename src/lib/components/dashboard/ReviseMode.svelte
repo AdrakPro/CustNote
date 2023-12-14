@@ -1,19 +1,19 @@
 <script>
-	import Icon from '$lib/components/Icon.svelte';
-	import { reviseMode } from '$lib/stores/reviseMode.js';
+  import Icon from '$lib/components/Icon.svelte';
+  import { reviseMode } from '$lib/stores/reviseMode.js';
 
-	function switchReviseMode() {
-		reviseMode.set(!$reviseMode);
-	}
+  function switchReviseMode() {
+    reviseMode.set(!$reviseMode);
+  }
 </script>
 
 <button
-	class:active={ $reviseMode }
-	class:disabled={ !$reviseMode }
-	on:click={ () => switchReviseMode() }
+  class:active={$reviseMode}
+  class:disabled={!$reviseMode}
+  on:click={() => switchReviseMode()}
 >
-	<Icon name="event_available" />
-	<span>Revise mode</span>
+  <Icon name="event_available" />
+  <span>Revise mode</span>
 </button>
 
 <style lang="scss">

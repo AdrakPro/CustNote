@@ -1,22 +1,19 @@
 <script>
-	import { redirectTo } from '$lib/utils/redirect.js';
+  import { redirectTo } from '$lib/utils/redirect.js';
 
-	export let name;
-	export let lastEdit;
+  export let name;
+  export let lastEdit;
 
-	function redirectToModule() {
-		const moduleName = name.toLowerCase();
+  function redirectToModule() {
+    const moduleName = name.toLowerCase();
 
-		redirectTo(`/module/${ moduleName }`);
-	}
+    redirectTo(`/module/${moduleName}`);
+  }
 </script>
 
-<div
-	class="module"
-	on:click={ () => redirectToModule() }
->
-	<h1 class="title">{ name }</h1>
-	<p class="sub-text">Last edit: { lastEdit }</p>
+<div class="module" on:click={() => redirectToModule()}>
+  <h1 class="title">{name}</h1>
+  <p class="sub-text">Last edit: {lastEdit}</p>
 </div>
 
 <style lang="scss">

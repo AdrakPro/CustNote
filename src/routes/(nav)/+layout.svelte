@@ -1,24 +1,30 @@
 <script>
-	import Icon from '$lib/components/Icon.svelte';
-	import NavBar from '$lib/components/nav/NavBar.svelte';
-	import Dialog from '$lib/components/dialog/Dialog.svelte';
-	import Notify from '$lib/components/Notify.svelte';
+  import Icon from '$lib/components/Icon.svelte';
+  import NavBar from '$lib/components/nav/NavBar.svelte';
+  import Dialog from '$lib/components/dialog/Dialog.svelte';
+  import Notify from '$lib/components/Notify.svelte';
 
-	let isOpenMenu = false;
+  let isOpenMenu = false;
 </script>
 
-<div class:mobile-nav={ isOpenMenu }>
-	<Dialog />
-	<Notify />
-	<header>
-		<span class="logo"><Icon height="48" src="/logo-smaller.png" width="180" /></span>
-		<NavBar bind:isOpenMenu={ isOpenMenu } />
-	</header>
+<div class:mobile-nav={isOpenMenu}>
+  <Dialog />
+  <Notify />
+  <header>
+    <span class="logo"
+      ><Icon
+        height="48"
+        src="/logo-smaller.png"
+        width="180"
+      /></span
+    >
+    <NavBar bind:isOpenMenu />
+  </header>
 
-	<main>
-		<div class="header-dummy"></div>
-		<slot />
-	</main>
+  <main>
+    <div class="header-dummy"></div>
+    <slot />
+  </main>
 </div>
 
 <style lang="scss">

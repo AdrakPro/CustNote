@@ -1,20 +1,17 @@
 <script>
-	import Icon from '../Icon.svelte';
+  import Icon from '../Icon.svelte';
 
-	export let searchedText = '';
+  export let searchedText = '';
 </script>
 
 <div class="search-bar">
-	<Icon
-		name="search"
-		style="margin-left: 5px"
-	/>
-	<input
-		bind:value={ searchedText }
-		name="search"
-		placeholder="Search..."
-		type="text"
-	/>
+  <Icon name="search" style="margin-left: 5px" />
+  <input
+    bind:value={searchedText}
+    name="search"
+    placeholder="Search..."
+    type="text"
+  />
 </div>
 
 <style lang="scss">

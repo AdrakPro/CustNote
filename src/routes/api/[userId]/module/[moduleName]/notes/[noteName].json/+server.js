@@ -4,39 +4,39 @@ import { error, json } from '@sveltejs/kit';
 
 /** @type {import('./$types').RequestHandler} */
 export async function PUT({ request, params }) {
-	const { content } = await request.json();
-	const { noteName } = params;
-	const query = {
-		where: {
-			name: noteName,
-		},
-		data: {
-			content,
-		},
-	};
+  const { content } = await request.json();
+  const { noteName } = params;
+  const query = {
+    where: {
+      name: noteName
+    },
+    data: {
+      content
+    }
+  };
 
-	if (content) {
-		updateRecord(NOTE, query).catch((e) => {
-			return new error(500, e.message);
-		});
-	}
+  if (content) {
+    updateRecord(NOTE, query).catch((e) => {
+      return new error(500, e.message);
+    });
+  }
 
-	return new Response(undefined, { status: 200 });
+  return new Response(undefined, { status: 200 });
 }
 
 /** @type {import('./$types').RequestHandler} */
 export async function DELETE({ params }) {
-	const { noteName } = params;
-	const query = {
-		where: {
-			name: noteName,
-		},
-	};
+  const { noteName } = params;
+  const query = {
+    where: {
+      name: noteName
+    }
+  };
 
-	await deleteRecord(NOTE, query).catch((e) => {
-		return new error(500, e.message);
-	});
+  await deleteRecord(NOTE, query).catch((e) => {
+    return new error(500, e.message);
+  });
 
-	// note was deleted successfully
-	return json({});
+  // note was deleted successfully
+  return json({});
 }

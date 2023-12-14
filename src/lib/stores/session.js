@@ -5,44 +5,46 @@ const SECOND = 1000;
 const MINUTE = 60 * SECOND;
 
 function createSessionStore() {
-	const sessions = writable([]);
-	const { subscribe, update, set } = sessions;
+  const sessions = writable([]);
+  const { subscribe, update, set } = sessions;
 
-	return {
-		subscribe,
-		add: (time, name) =>
-			update((sessions) => {
-				return [
-					...sessions,
-					{
-						time: time * MINUTE,
-						name,
-					},
-				];
-			}),
-		shift: () => {
-			let shiftedSession;
+  return {
+    subscribe,
+    add: (time, name) =>
+      update((sessions) => {
+        return [
+          ...sessions,
+          {
+            time: time * MINUTE,
+            name
+          }
+        ];
+      }),
+    shift: () => {
+      let shiftedSession;
 
-			update((sessions) => {
-				shiftedSession = sessions.shift();
+      update((sessions) => {
+        shiftedSession = sessions.shift();
 
-				return sessions;
-			});
+        return sessions;
+      });
 
-			return shiftedSession;
-		},
-		getTotalTime: () => get(sessions).reduce((n, { time }) => n + time, 0),
-		setCompletionTimes: () =>
-			update((sessions) => {
-				for (let i = 1; i < sessions.length; ++i) {
-					// Sum previous time with next
-					sessions[i].time = sessions[i - 1].time + sessions[i].time;
-				}
+      return shiftedSession;
+    },
+    getTotalTime: () =>
+      get(sessions).reduce((n, { time }) => n + time, 0),
+    setCompletionTimes: () =>
+      update((sessions) => {
+        for (let i = 1; i < sessions.length; ++i) {
+          // Sum previous time with next
+          sessions[i].time =
+            sessions[i - 1].time + sessions[i].time;
+        }
 
-				return sessions;
-			}),
-		reset: () => set([]),
-	};
+        return sessions;
+      }),
+    reset: () => set([])
+  };
 }
 
 export const sessions = createSessionStore();
@@ -53,83 +55,87 @@ export const progress = writable(0);
 export const restartKey = writable({});
 
 function createTimerStore() {
-	let totalTime;
-	let timer;
-	let timeSpent = 0;
-	let currentProgress = 0;
+  let totalTime;
+  let timer;
+  let timeSpent = 0;
+  let currentProgress = 0;
 
-	const updateTimer = () => {
-		let seconds = (totalTime - timeSpent) / SECOND;
-		// 3,600 seconds in 1 hour
-		const hours = Math.floor(seconds / 3600);
-		// Seconds remaining after extracting hours
-		seconds %= 3600;
-		// 60 seconds in 1 minute
-		const minutes = Math.floor(seconds / 60);
-		// Keep only seconds not extracted to minutes:
-		seconds %= 60;
+  const updateTimer = () => {
+    let seconds = (totalTime - timeSpent) / SECOND;
+    // 3,600 seconds in 1 hour
+    const hours = Math.floor(seconds / 3600);
+    // Seconds remaining after extracting hours
+    seconds %= 3600;
+    // 60 seconds in 1 minute
+    const minutes = Math.floor(seconds / 60);
+    // Keep only seconds not extracted to minutes:
+    seconds %= 60;
 
-		currentProgress = timeSpent / totalTime;
-		progress.set(currentProgress);
-		time.set(`${ hours }:${ minutes }:${ seconds }`);
-	};
+    currentProgress = timeSpent / totalTime;
+    progress.set(currentProgress);
+    time.set(`${hours}:${minutes}:${seconds}`);
+  };
 
-	const incrementTime = () => (timeSpent += SECOND);
+  const incrementTime = () => (timeSpent += SECOND);
 
-	const stopTimer = () => {
-		clearInterval(timer);
-		progress.set(0);
-		timeSpent = 0;
-		sessions.reset();
-		restartKey.set({});
-		time.set('0:0:0');
-		isComplete.set(true);
-		isRunning.set(false);
-	};
+  const stopTimer = () => {
+    clearInterval(timer);
+    progress.set(0);
+    timeSpent = 0;
+    sessions.reset();
+    restartKey.set({});
+    time.set('0:0:0');
+    isComplete.set(true);
+    isRunning.set(false);
+  };
 
-	const isSessionEnded = () => {
-		if (currentProgress === 1) {
-			stopTimer();
-			notify.success(`All sessions have been completed! ᕕ(ᐛ)ᕗ`);
+  const isSessionEnded = () => {
+    if (currentProgress === 1) {
+      stopTimer();
+      notify.success(
+        `All sessions have been completed! ᕕ(ᐛ)ᕗ`
+      );
 
-			return;
-		}
+      return;
+    }
 
-		const { time } = get(sessions)[0];
+    const { time } = get(sessions)[0];
 
-		if (time === timeSpent) {
-			const { name } = sessions.shift();
+    if (time === timeSpent) {
+      const { name } = sessions.shift();
 
-			if (name === 'break') {
-				notify.danger(`The ${ name } has been ended! ʕ•ᴥ•ʔ`);
+      if (name === 'break') {
+        notify.danger(`The ${name} has been ended! ʕ•ᴥ•ʔ`);
 
-				return;
-			}
-			notify.info(`The session ${ name } has been completed! (~‾▿‾)~`);
-		}
-	};
+        return;
+      }
+      notify.info(
+        `The session ${name} has been completed! (~‾▿‾)~`
+      );
+    }
+  };
 
-	return {
-		start: () => {
-			isComplete.set(false);
-			isRunning.set(true);
+  return {
+    start: () => {
+      isComplete.set(false);
+      isRunning.set(true);
 
-			totalTime = sessions.getTotalTime();
-			sessions.setCompletionTimes();
+      totalTime = sessions.getTotalTime();
+      sessions.setCompletionTimes();
 
-			timer = setInterval(() => {
-				if (get(isRunning)) {
-					incrementTime();
-					updateTimer();
-					isSessionEnded();
-				}
-			}, SECOND);
-		},
-		stop: () => stopTimer(),
-		switchPause: () => {
-			isRunning.set(!get(isRunning));
-		},
-	};
+      timer = setInterval(() => {
+        if (get(isRunning)) {
+          incrementTime();
+          updateTimer();
+          isSessionEnded();
+        }
+      }, SECOND);
+    },
+    stop: () => stopTimer(),
+    switchPause: () => {
+      isRunning.set(!get(isRunning));
+    }
+  };
 }
 
 export const timer = createTimerStore();
