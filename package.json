@@ -1,5 +1,5 @@
 {
-  "name": "cust-note",
+  "name": "custnote",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
@@ -32,6 +32,7 @@
     "cookie": "^0.5.0",
     "firebase": "^9.9.2",
     "firebase-admin": "^11.0.1",
+    "prettier-plugin-svelte": "^3.1.2",
     "progressbar.js": "^1.1.0",
     "svelte-previous": "^2.1.1"
   },
@@ -44,7 +45,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-svelte3": "^4.0.0",
-    "prettier": "2.7.1",
+    "prettier": "3.1.1",
     "prisma": "^4.2.1",
     "sass": "^1.52.3",
     "svelte": "^3.55.1",
