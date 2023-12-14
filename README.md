@@ -4,13 +4,14 @@
 
 ## Disclaimer
 
-The purpose of project is to master SvelteKit and relational databases. In a result I learnt Milkdown WYSIWYG editor, Firebase auth system, SCSS and PlanetScale database with Prisma ORM.
+The goal of the project is to master SvelteKit and relational databases. As a result, I learned Milkdown's WYSIWYG editor, Firebase auth system, SCSS and PlanetScale database with Prisma ORM.
 
 I used it to take notes on my university courses. Looking now, tests would save a lot of time.
 
 The project is deployed on Vercel: https://cust-note-adrakpro.vercel.app.
 
 Test account email and password are: `adam@gmail.com, 123456` or feel free to create own account with fake data.
+(Sometimes PlanetScale deactivates due to inactivity).
 
 ## Environment Variables
 
